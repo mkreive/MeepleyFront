@@ -8,7 +8,6 @@ export default function Header() {
     return (
         <div className={cn('container')}>
             <div className={cn('logo')}></div>
-            <div className={cn('company_name')}>monka</div>
         </div>
     );
 }

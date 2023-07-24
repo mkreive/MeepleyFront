@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# meepley - board game related stuff
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of contents
 
-## Available Scripts
+-   [Overview](#overview)
+    -   [My challenge](#the-challenge)
+    -   [Screenshot](#screenshot)
+    -   [Links](#links)
+-   [My process](#my-process)
+    -   [Built with](#built-with)
+    -   [What I learned](#what-i-learned)
+    -   [Continued development](#continued-development)
+-   [Author](#author)
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+Welcome to MEEPLEY, an online platform dedicated to all things board games! My mission is to create a haven for board game lovers where they can trade, sell, and immerse themselves in the wonderful world of tabletop gaming. Whether you're a seasoned gamer or just starting your board game journey, you'll find something special here.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### My challenge
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Users should be able to:
 
-### `npm test`
+-   View the optimal layout for each page depending on their device's screen size
+-   See hover states for all interactive elements throughout the site
+-   Be able to filter board games by title, genre
+-   Be able to click a board game from the index page so that they can read more information and reserve/buy the game
+-   Write a review about the game
+-   Send a question/query for site administration
+-   See their purchase/reservation history
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Admins should be able to:
 
-### `npm run build`
+-   Answer questions/queries from customers
+-   Add/delete/update board games
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Screenshot
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![](https://res.cloudinary.com/kreiva/image/upload/v1665132907/Screenshot_2022-10-07_at_09.59.30_doq8xd.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Links
 
-### `npm run eject`
+-   Solution URL:()
+-   Live Site URL for frontend part:(https://github.com/mkreive/MeepleyFront)
+-   Live Site URL for backend part:(https://github.com/mkreive/MeepleyBack)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Built with
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-   Semantic HTML5 markup
+-   Sass styling
+-   React
+-   Spring Boot
+-   MySql
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### What I learned
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Author
 
-## Learn More
+-   Website - [Monika](https://github.com/mkreive)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Developers
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[//]: contributor-faces
 
-### Code Splitting
+<a href="https://github.com/mkreive"><img src="https://res.cloudinary.com/kreiva/image/upload/v1665136364/as_uwjvbi.png" title="Monika Kreive" width="80" height="80"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[//]: contributor-faces
