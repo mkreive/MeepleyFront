@@ -1,0 +1,58 @@
+.container {
+    position: relative;
+    width: 1.6rem;
+    height: 1.5rem;
+    margin-right: 4.2rem;
+}
+
+.menu-button-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+input {
+    display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+    display: block;
+    background-color: var(--color-white);
+    position: absolute;
+    height: 0.3rem;
+    width: 1.6rem;
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.menu-button::before {
+    content: '';
+    margin-top: -0.6rem;
+}
+
+.menu-button::after {
+    content: '';
+    margin-top: 0.6rem;
+}
+
+input:checked + .menu-button-container .menu-button::before {
+    margin-top: 0;
+    transform: rotate(405deg);
+}
+
+input:checked + .menu-button-container .menu-button {
+    background: rgba(255, 255, 255, 0);
+}
+
+input:checked + .menu-button-container .menu-button::after {
+    margin-top: 0;
+    transform: rotate(-405deg);
+}

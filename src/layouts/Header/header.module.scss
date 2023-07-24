@@ -1,14 +1,12 @@
 .container {
     align-items: center;
-    border-bottom: 0.2rem solid var(--color-secondary);
     display: flex;
     flex-direction: row;
-    height: 9.6rem;
+    height: 10rem;
     justify-content: space-between;
-    max-width: 180rem;
+    max-width: 160rem;
     position: sticky;
     top: 0;
+    z-index: 99;
     width: 100%;
-    z-index: 88;
-    color: white;
 }

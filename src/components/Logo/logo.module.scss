@@ -1,8 +1,11 @@
+@import '../../sass/respond-to-media.scss';
+
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-left: 5rem;
 }
 
 .logo {
@@ -10,4 +13,15 @@
     z-index: 99;
     width: 10rem;
     height: 10rem;
+}
+
+@include respond(phone) {
+    .container {
+        margin-left: 2rem;
+    }
+    .logo {
+        background: url('../../../public/favicon.ico') no-repeat center center / contain;
+        width: 7rem;
+        height: 7rem;
+    }
 }

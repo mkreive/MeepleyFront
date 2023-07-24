@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    gap: 2rem;
+    margin-right: 5rem;
+}
+
+.nav__link {
+    background: none;
+    border: 0;
+    color: var(--color-black);
+    cursor: pointer;
+    font-family: var(--font-family-regular);
+    font-size: var(--font-size-base);
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.15s ease-in;
+
+    &:hover {
+        color: var(--color-primary);
+    }
+}
