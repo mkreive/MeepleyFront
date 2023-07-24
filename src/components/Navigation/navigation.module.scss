@@ -1,10 +1,30 @@
-.container {
+@import '../../sass/respond-to-media.scss';
+
+.nav--desktop {
     display: flex;
+    flex-direction: row;
     gap: 2rem;
     margin-right: 5rem;
+
+    @include respond(phone) {
+        display: none;
+    }
 }
 
-.nav__link {
+.nav--mobile {
+    display: none;
+
+    @include respond(phone) {
+        display: flex;
+        margin-top: 10rem;
+        gap: 2rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.link {
     background: none;
     border: 0;
     color: var(--color-black);

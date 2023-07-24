@@ -1,8 +1,9 @@
 .container {
     position: relative;
-    width: 1.6rem;
-    height: 1.5rem;
-    margin-right: 4.2rem;
+    width: 3rem;
+    height: 3rem;
+    margin-right: 2rem;
+    z-index: 77;
 }
 
 .menu-button-container {
@@ -26,21 +27,21 @@ input {
 .menu-button::before,
 .menu-button::after {
     display: block;
-    background-color: var(--color-white);
+    background-color: var(--color-primary);
     position: absolute;
-    height: 0.3rem;
-    width: 1.6rem;
+    height: 0.4rem;
+    width: 3rem;
     transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .menu-button::before {
     content: '';
-    margin-top: -0.6rem;
+    margin-top: -0.9rem;
 }
 
 .menu-button::after {
     content: '';
-    margin-top: 0.6rem;
+    margin-top: 0.9rem;
 }
 
 input:checked + .menu-button-container .menu-button::before {
