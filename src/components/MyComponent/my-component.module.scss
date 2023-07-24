@@ -1,0 +1,10 @@
+.container {
+    align-items: center;
+    background-color: var(--color-tertiary);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: auto;
+    padding: 3.5rem 3rem 3.8rem;
+    font-size: var(--font-size-heading-big);
+}

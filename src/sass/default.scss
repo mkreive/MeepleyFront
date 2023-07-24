@@ -1,0 +1,60 @@
+default.scss/* Global element rules
+   Elements, that needs to be styled globally, should be styled here.
+   only native html elements/selectors should be here, if you have class styled in this file - consider separating it to another file.
+*/
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    background-color: var(--color-white);
+    font-family: var(--font-family-regular);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-base);
+    margin: 0;
+    min-height: 100vh;
+    min-width: 100%;
+}
+
+p,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+button {
+    &::selection {
+        background-color: var(--color-secondary);
+        text-shadow: none;
+    }
+}
+
+[disabled] {
+    cursor: not-allowed;
+}
+
+[aria-busy='true'] {
+    cursor: wait;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}

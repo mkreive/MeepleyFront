@@ -1,0 +1,14 @@
+.container {
+    align-items: center;
+    border-bottom: 0.2rem solid var(--color-secondary);
+    display: flex;
+    flex-direction: row;
+    height: 9.6rem;
+    justify-content: space-between;
+    max-width: 180rem;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 88;
+    color: white;
+}

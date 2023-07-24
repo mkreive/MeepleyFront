@@ -1,0 +1,53 @@
+:root {
+    /* Colors */
+    --color-default: #21212c;
+    --color-primary: #21212c;
+    --color-secondary: #2c2c37;
+    --color-tertiary: #6261c0;
+
+    --color-background: #f2f2f2;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-gray-light: #f6f5f7;
+    --color-gray-medium-light: #ededed;
+    --color-gray-medium: #868686;
+    --color-gray-medium-dark: #5c5c5c;
+    --color-gray-dark: #3e3c4e;
+
+    --color-blue-light: #6dc1e0;
+    --color-mint: #87e3b3;
+    --color-peach: #de9188;
+
+    /* BORDERS */
+    --border-radius-main: 2rem;
+    --border-radius-s: 1rem;
+    --border-radius-round: 50%;
+    --border-colored: 0.2rem solid var(--color-primary);
+    --box-shadow: -1.9rem 2.1rem 0 0.1rem var(--color-gray-light);
+
+    /* Typography */
+    --font-size-base: 1.8rem;
+    --font-size-regular: 1.6rem;
+    --font-size-heading-big: 4.8rem;
+    --font-size-heading-medium: 3.2rem;
+    --font-size-heading-small: 2rem;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-family-regular: 'Raleway', sans-serif;
+    --font-family-heading: 'Montserrat', sans-serif;
+    --line-height-base: 1.5;
+    --line-height-heading: 1.2;
+
+    /* Spacers */
+    --spacer-xxs: 0.2rem;
+    --spacer-xs: 0.4rem;
+    --spacer-s: 1rem;
+    --spacer-m: 1.2rem;
+    --spacer-l: 2rem;
+    --spacer-xl: 2.4rem;
+    --spacer-xxl: 3.2rem;
+    --spacer-xxxl: 4rem;
+    --spacer-xxxxl: 5rem;
+    --spacer-xxxxxl: 7rem;
+    --spacer-xxxxxxl: 8rem;
+}

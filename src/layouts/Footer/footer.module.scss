@@ -1,0 +1,11 @@
+.container {
+    align-items: center;
+    border-top: 0.2rem solid var(--color-secondary);
+    display: flex;
+    flex-direction: row;
+    height: 9.6rem;
+    justify-content: space-between;
+    max-width: 180rem;
+    width: 100%;
+    margin-top: auto;
+}
