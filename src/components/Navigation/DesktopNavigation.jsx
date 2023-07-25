@@ -14,6 +14,9 @@ export default function DesktopNavigation() {
             <Link className={cn('link')} to='/games'>
                 Games
             </Link>
+            <Link className={cn('link')} to='/forums'>
+                Forums
+            </Link>
             {/* <Link className={cn('link')} to='/account'>
                 Account
             </Link>
