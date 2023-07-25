@@ -1,0 +1,48 @@
+@import '../../sass/respond-to-media.scss';
+
+.big {
+    color: var(--color-primary);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-heading-big);
+    font-weight: var(--font-weight-bold);
+
+    @include respond(phone) {
+        font-size: var(--font-size-heading-medium);
+    }
+}
+
+.medium {
+    letter-spacing: -0.06rem;
+    color: var(--color-black);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-heading-medium);
+    font-weight: var(--font-weight-bold);
+}
+
+.medium--secondary {
+    color: var(--color-secondary);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-heading-medium);
+    font-weight: var(--font-weight-bold);
+}
+
+.small {
+    color: var(--color-black);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-heading-small);
+    font-weight: var(--font-weight-bold);
+}
+
+.small--secondary {
+    color: var(--color-secondary);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-heading-small);
+    font-weight: var(--font-weight-bold);
+}
+
+.small--accent {
+    color: var(--color-accent);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-heading-small);
+    font-weight: var(--font-weight-bold);
+}

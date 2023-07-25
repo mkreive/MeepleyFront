@@ -35,6 +35,9 @@ h5,
 h6,
 a,
 button {
+    margin: 0;
+    padding: 0;
+
     &::selection {
         background-color: var(--color-secondary);
         text-shadow: none;

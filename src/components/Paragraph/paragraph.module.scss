@@ -1,0 +1,56 @@
+@import '../../sass/respond-to-media.scss';
+
+.big {
+    font-size: var(--font-size-big);
+    color: var(--color-black);
+    line-height: 1.5;
+
+    @include respond(phone) {
+        font-size: var(--font-size-regular);
+    }
+}
+
+.big--gray {
+    font-size: var(--font-size-big);
+    color: var(--color-gray-dark);
+
+    @include respond(phone) {
+        font-size: var(--font-size-regular);
+    }
+}
+
+.big--primary {
+    font-size: var(--font-size-big);
+    color: var(--color-primary);
+
+    @include respond(phone) {
+        font-size: var(--font-size-regular);
+    }
+}
+
+.regular {
+    font-size: var(--font-size-base);
+    color: var(--color-black);
+
+    @include respond(phone) {
+        font-size: var(--font-size-regular);
+    }
+}
+
+.regular--primary {
+    font-size: var(--font-size-base);
+    color: var(--color-primary);
+
+    @include respond(phone) {
+        font-size: var(--font-size-regular);
+    }
+}
+
+.small {
+    font-size: var(--font-size-regular);
+    color: var(--color-black);
+
+    @include respond(phone) {
+        font-size: var(--font-size-small);
+    }
+}

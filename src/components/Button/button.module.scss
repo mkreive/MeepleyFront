@@ -1,0 +1,23 @@
+@import '../../sass/respond-to-media.scss';
+
+.btn {
+    transition: all 0.15s ease-in;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: white;
+    background-color: var(--color-secondary);
+    padding: 1.5rem 3rem;
+    cursor: pointer;
+    border: none;
+    width: max-content;
+    height: max-content;
+    border-radius: 5rem;
+
+    &:hover {
+        transition: all 0.15s ease-in;
+        background-color: var(--color-green);
+    }
+
+    @include respond(phone) {
+    }
+}
