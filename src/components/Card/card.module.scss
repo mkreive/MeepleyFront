@@ -1,0 +1,12 @@
+.container {
+    align-items: center;
+    background-color: var(--color-white);
+    border: var(--border-colored);
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: auto;
+    padding: 3.5rem 3rem 3.8rem;
+}

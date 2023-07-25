@@ -1,6 +1,6 @@
 import React from 'react';
-import { useFetchData } from '~/hooks';
-import { filterNewGames } from '~/utils';
+import { useFetchData } from '../../hooks/useFetchData';
+import { filterNewGames } from '../../utils/filterNewGames';
 import classNames from 'classnames/bind';
 import styles from './home-page.module.scss';
 import Hero from '../../components/Hero/Hero';
