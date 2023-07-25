@@ -13,12 +13,12 @@ export default function MobileNavigation(props) {
             <Link className={cn('link')} to='/games'>
                 Games
             </Link>
-            <Link className={cn('link')} to='/account'>
+            {/* <Link className={cn('link')} to='/account'>
                 Account
             </Link>
             <Link className={cn('link')} to='/services'>
                 Services
-            </Link>
+            </Link> */}
             <Link className={cn('link')} to='/login'>
                 Login
             </Link>

@@ -15,8 +15,10 @@
     display: none;
 
     @include respond(phone) {
+        top: 13rem;
+        position: absolute;
+        width: 100%;
         display: flex;
-        margin-top: 10rem;
         gap: 2rem;
         flex-direction: column;
         align-items: center;
