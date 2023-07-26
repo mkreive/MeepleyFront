@@ -7,7 +7,7 @@
             "rating": 8.4,
             "category": "STRATEGY",
             "players": "1-4",
-            "img": "require('../../assets/games/01-spiritisland.jpg)",
+            "img": "../../assets/games/01-spiritisland.jpg",
             "amount": 19
         },
         {
@@ -17,7 +17,7 @@
             "rating": 8.9,
             "category": "STRATEGY",
             "players": "1-5",
-            "img": "require('../../assets/games/02-mageknight.jpg)",
+            "img": "../../assets/games/02-mageknight.jpg",
             "amount": 12
         },
         {
@@ -27,7 +27,7 @@
             "rating": 8.0,
             "category": "THEMATIC",
             "players": "1-4",
-            "img": "require('../../assets/games/03-keeptheheroesout.jpg)",
+            "img": "../../assets/games/03-keeptheheroesout.jpg",
             "amount": 8
         },
         {
@@ -37,7 +37,7 @@
             "rating": 7.9,
             "category": "STRATEGY",
             "players": "1-4",
-            "img": "require('../../assets/games/04-turingmachine.jpg)",
+            "img": "../../assets/games/04-turingmachine.jpg",
             "amount": 20
         },
         {
@@ -47,7 +47,7 @@
             "rating": 7.4,
             "category": "THEMATIC",
             "players": "2",
-            "img": "require('../../assets/games/05-faraway.jpg)",
+            "img": "../../assets/games/05-faraway.jpg",
             "amount": 3
         },
         {
@@ -57,7 +57,7 @@
             "rating": 8.0,
             "category": "STRATEGY",
             "players": "1-4",
-            "img": "require('../../assets/games/06-agricola.jpg)",
+            "img": "../../assets/games/06-agricola.jpg",
             "amount": 15
         },
         {
@@ -67,7 +67,7 @@
             "rating": 8.0,
             "category": "FAMILY",
             "players": "1-4",
-            "img": "require('../../assets/games/07-cascadia.jpg)",
+            "img": "../../assets/games/07-cascadia.jpg",
             "amount": 33
         },
         {
@@ -77,7 +77,7 @@
             "rating": 8.2,
             "category": "THEMATIC",
             "players": "1-4",
-            "img": "require('../../assets/games/08-obsession.jpg)",
+            "img": "../../assets/games/08-obsession.jpg",
             "amount": 10
         },
         {
@@ -87,7 +87,7 @@
             "rating": 7.8,
             "category": "STRATEGY",
             "players": "1-4",
-            "img": "require('../../assets/games/09-theloop.jpg)",
+            "img": "../../assets/games/09-theloop.jpg",
             "amount": 33
         }
     ]

@@ -8,7 +8,6 @@ import GameBox from '../../components/GameBox/GameBox';
 const cn = classNames.bind(styles);
 
 export default function NewGamesSection(props) {
-    // const { loading, data, error } = props;
     const { loading = false, data, error = false } = props;
 
     return (

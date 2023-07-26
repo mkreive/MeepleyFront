@@ -1,20 +1,15 @@
 .image {
-    border-radius: var(--border-radius-round);
-    height: 8rem;
-    width: 8rem;
-}
-
-.text-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 0.2rem 0;
+    border-radius: var(--border-radius-s);
+    height: auto;
+    width: auto;
+    max-width: 37rem;
 }
 
 .heading-container {
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: var(--spacer-xs);
     text-align: center;
+    margin-top: var(--spacer-m);
+    margin-bottom: var(--spacer-xxl);
 }

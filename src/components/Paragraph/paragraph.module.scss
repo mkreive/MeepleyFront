@@ -46,6 +46,15 @@
     }
 }
 
+.regular--gray {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-medium);
+
+    @include respond(phone) {
+        font-size: var(--font-size-regular);
+    }
+}
+
 .small {
     font-size: var(--font-size-regular);
     color: var(--color-black);

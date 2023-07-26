@@ -40,9 +40,22 @@
     font-weight: var(--font-weight-bold);
 }
 
+.small--gray {
+    color: var(--color-gray-medium);
+    font-family: var(--font-family-regular);
+    font-size: var(--font-size-heading-small);
+}
+
 .small--accent {
     color: var(--color-accent);
     font-family: var(--font-family-heading);
     font-size: var(--font-size-heading-small);
     font-weight: var(--font-weight-bold);
+}
+
+.very-small {
+    color: var(--color-gray-medium);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-base);
+    font-weight: 700;
 }

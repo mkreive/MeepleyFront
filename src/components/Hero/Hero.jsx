@@ -24,7 +24,7 @@ export default function Hero() {
                     and connect with a vibrant community of like-minded gamers.
                 </Paragraph>
                 <Link to='/games' className={cn('link')}>
-                    <Button theme='orange'>See top games</Button>
+                    <Button theme='secondary'>See top games</Button>
                 </Link>
             </article>
             <HeroImage />

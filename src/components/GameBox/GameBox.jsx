@@ -4,34 +4,26 @@ import styles from './game-box.module.scss';
 import Heading from '../Heading/Heading';
 import Paragraph from '../Paragraph/Paragraph';
 import Card from '../Card/Card';
+import Button from '../Button/Button';
 
 const cn = classNames.bind(styles);
 
 export default function GameBox(props) {
     const { game } = props;
-    console.log(game);
 
     return (
         <Card>
-            <Heading tag='h3' style='small'>
-                Game
-            </Heading>
-            <img
-                src={require('../../assets/games/01-spiritisland.jpg')}
-                alt='board game image'
-                className={cn('image')}
-            />
-            <div className={cn('text-container')}>
-                <Paragraph style='colored'>{game.name}</Paragraph>
-            </div>
+            <img src={require('../../assets/games/07-cascadia.jpg')} alt='board game cover' className={cn('image')} />
+
             <div className={cn('heading-container')}>
-                <Heading tag='h4' style='small'>
-                    {game.designer}
+                <Paragraph style='regular--gray'>{game.category}</Paragraph>
+                <Heading tag='h4' style='medium'>
+                    {game.name}
                 </Heading>
-                <Heading tag='h5' style='very-small--primary'>
-                    {game.category}
-                </Heading>
+                <Paragraph style='regular'>{game.designer}</Paragraph>
             </div>
+
+            <Button theme='black'>Reserve</Button>
         </Card>
     );
 }

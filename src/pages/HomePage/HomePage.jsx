@@ -14,7 +14,6 @@ export default function HomePage() {
     const { loading, error } = useFetchData(gamesUrl);
     const data = homeData.games;
     const newGames = filterNewGames(data, 3);
-    console.log(newGames);
 
     return (
         <div className={cn('wrapper')}>
