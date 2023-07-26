@@ -7,6 +7,7 @@ import homeData from './homeData.json';
 import Hero from '../../components/Hero/Hero';
 import NewGamesSection from '../../features/NewGamesSection/NewGamesSection';
 import SignupSection from '../../features/SignupSection/SignupSection';
+import ServicesSection from '../../features/ServicesSection/ServicesSection';
 
 const cn = classNames.bind(styles);
 const gamesUrl = '...';
@@ -21,6 +22,7 @@ export default function HomePage() {
             <Hero />
             <NewGamesSection loading={loading} data={newGames} error={error} />
             <SignupSection />
+            <ServicesSection />
         </div>
     );
 }

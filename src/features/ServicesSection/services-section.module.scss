@@ -17,7 +17,7 @@
 }
 
 .text {
-    align-items: flex-start;
+    align-items: flex-end;
     display: flex;
     flex-direction: column;
     height: auto;
@@ -26,15 +26,14 @@
     gap: var(--spacer-xxxxl);
     margin-bottom: 2.3rem;
     flex: 1;
+    text-align: end;
 }
 
 .image {
-    max-width: 40rem;
+    max-width: 50rem;
     flex: 1;
 
     @include respond(phone) {
-        margin-top: -10rem;
-        max-width: 20rem;
-        place-self: flex-end;
+        display: none;
     }
 }
