@@ -3,7 +3,7 @@ import styles from './hero.module.scss';
 
 const cn = classNames.bind(styles);
 
-export default function Hero() {
+export default function HeroImage() {
     return (
         <svg className={cn('image')} data-name='Layer 1' viewBox='0 0 571.75671 700.46347'>
             <polygon

@@ -4,8 +4,6 @@
     transition: all ease-in 0.1s;
     cursor: pointer;
     place-self: center;
-    fill: var(--color-primary);
-    background-color: var(--color-gray-light);
     border-radius: 50%;
     line-height: 0;
     letter-spacing: 0;
@@ -13,10 +11,12 @@
     padding: 0;
     width: 4.8rem;
     height: 4.8rem;
+    fill: var(--color-primary);
+    border: 0.2rem solid var(--color-primary);
 
     &:hover {
-        fill: var(--color-primary);
-        background-color: #f6f5f77c;
+        fill: var(--color-purple);
+        border: 0.2rem solid var(--color-purple);
     }
 
     @include respond(tab) {

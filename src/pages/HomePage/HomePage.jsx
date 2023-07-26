@@ -6,6 +6,7 @@ import styles from './home-page.module.scss';
 import homeData from './homeData.json';
 import Hero from '../../components/Hero/Hero';
 import NewGamesSection from '../../features/NewGamesSection/NewGamesSection';
+import SignupSection from '../../features/SignupSection/SignupSection';
 
 const cn = classNames.bind(styles);
 const gamesUrl = '...';
@@ -19,6 +20,7 @@ export default function HomePage() {
         <div className={cn('wrapper')}>
             <Hero />
             <NewGamesSection loading={loading} data={newGames} error={error} />
+            <SignupSection />
         </div>
     );
 }

@@ -1,0 +1,36 @@
+@import '../../sass/respond-to-media.scss';
+
+.container {
+    position: relative;
+    display: flex;
+    gap: 13rem;
+
+    @include respond(phone) {
+        flex-direction: column;
+        width: 90%;
+        gap: 0rem;
+    }
+}
+
+.text {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    justify-content: center;
+    width: 100%;
+    gap: var(--spacer-xxxxl);
+    margin-bottom: 2.3rem;
+    flex: 1;
+}
+
+.image {
+    max-width: 40rem;
+    flex: 1;
+
+    @include respond(phone) {
+        margin-top: -10rem;
+        max-width: 20rem;
+        place-self: flex-end;
+    }
+}
