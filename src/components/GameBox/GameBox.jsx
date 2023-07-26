@@ -16,7 +16,11 @@ export default function GameBox(props) {
             <Heading tag='h3' style='small'>
                 Game
             </Heading>
-            {/* <img src={game.img} alt='board game image' className={cn('image')} /> */}
+            <img
+                src={require('../../assets/games/01-spiritisland.jpg')}
+                alt='board game image'
+                className={cn('image')}
+            />
             <div className={cn('text-container')}>
                 <Paragraph style='colored'>{game.name}</Paragraph>
             </div>

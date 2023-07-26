@@ -1,0 +1,94 @@
+{
+    "games": [
+        {
+            "name": "Spirit Island",
+            "designer": "R.Eric Reuss",
+            "description": "Island Spirits join forces using elemental powers to defend their home from invaders.",
+            "rating": 8.4,
+            "category": "STRATEGY",
+            "players": "1-4",
+            "img": "require('../../assets/games/01-spiritisland.jpg)",
+            "amount": 19
+        },
+        {
+            "name": "Mage Knight",
+            "designer": "Vlaada Chatil",
+            "description": "Command armies, gather spells and artifacts as you conquer a fantasy land.",
+            "rating": 8.9,
+            "category": "STRATEGY",
+            "players": "1-5",
+            "img": "require('../../assets/games/02-mageknight.jpg)",
+            "amount": 12
+        },
+        {
+            "name": "Keep the heroes out!",
+            "designer": "Luis Brueh",
+            "description": "As monsters, work together to defend your dungeon against so-called heroes.",
+            "rating": 8.0,
+            "category": "THEMATIC",
+            "players": "1-4",
+            "img": "require('../../assets/games/03-keeptheheroesout.jpg)",
+            "amount": 8
+        },
+        {
+            "name": "Turing Machine",
+            "designer": "Fabien Gridel",
+            "description": "Crack codes using a real analog computer.",
+            "rating": 7.9,
+            "category": "STRATEGY",
+            "players": "1-4",
+            "img": "require('../../assets/games/04-turingmachine.jpg)",
+            "amount": 20
+        },
+        {
+            "name": "Far Away",
+            "designer": "Alexander Jerabek",
+            "description": "Explore alien worlds on a limited government budget.",
+            "rating": 7.4,
+            "category": "THEMATIC",
+            "players": "2",
+            "img": "require('../../assets/games/05-faraway.jpg)",
+            "amount": 3
+        },
+        {
+            "name": "Agricola",
+            "designer": "Uwe Rosenberg",
+            "description": "Help your farm to prosper in this updated, streamlined edition of the acclaimed game. ",
+            "rating": 8.0,
+            "category": "STRATEGY",
+            "players": "1-4",
+            "img": "require('../../assets/games/06-agricola.jpg)",
+            "amount": 15
+        },
+        {
+            "name": "Cascadia",
+            "designer": "Randy Flynn",
+            "description": "Create the most harmonious ecosystem as you puzzle together habitats and wildlife.",
+            "rating": 8.0,
+            "category": "FAMILY",
+            "players": "1-4",
+            "img": "require('../../assets/games/07-cascadia.jpg)",
+            "amount": 33
+        },
+        {
+            "name": "Obsession",
+            "designer": "Dan Hallagan",
+            "description": "Renovate an estate, manage servants, and pursue romance in Victorian England. ",
+            "rating": 8.2,
+            "category": "THEMATIC",
+            "players": "1-4",
+            "img": "require('../../assets/games/08-obsession.jpg)",
+            "amount": 10
+        },
+        {
+            "name": "The LOOP",
+            "designer": "Maxime Rambourg",
+            "description": "Legendary Agents team up to fight the Evil Dr. Faux through time.",
+            "rating": 7.8,
+            "category": "STRATEGY",
+            "players": "1-4",
+            "img": "require('../../assets/games/09-theloop.jpg)",
+            "amount": 33
+        }
+    ]
+}
