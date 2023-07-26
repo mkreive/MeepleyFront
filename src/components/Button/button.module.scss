@@ -13,6 +13,19 @@
     }
 }
 
+.primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    border: none;
+
+    &:hover {
+        transition: all 0.15s ease-in;
+        background-color: var(--color-purple);
+    }
+}
+
 .secondary {
     background-color: var(--color-secondary);
     color: var(--color-white);
@@ -23,6 +36,19 @@
     &:hover {
         transition: all 0.15s ease-in;
         background-color: var(--color-green);
+    }
+}
+
+.tertiary {
+    background-color: var(--color-tertiary);
+    color: var(--color-black);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    border: none;
+
+    &:hover {
+        transition: all 0.15s ease-in;
+        background-color: #e195b5;
     }
 }
 

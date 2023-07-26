@@ -1,0 +1,40 @@
+@import '../../sass/respond-to-media.scss';
+
+.container {
+    position: relative;
+    display: flex;
+    gap: 15rem;
+    align-items: flex-start;
+
+    @include respond(tab) {
+        gap: 5rem;
+    }
+
+    @include respond(phone) {
+        flex-direction: column;
+        width: 90%;
+        gap: 0rem;
+        align-items: center;
+    }
+}
+
+.text {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    justify-content: center;
+    width: 100%;
+    gap: var(--spacer-xxxxl);
+    margin-bottom: 2.3rem;
+    flex: 1;
+}
+
+.image {
+    max-width: 50rem;
+    flex: 1;
+
+    @include respond(phone) {
+        max-width: 30rem;
+    }
+}

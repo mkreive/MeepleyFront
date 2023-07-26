@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useFetchData } from '../../hooks/useFetchData';
 import { filterNewGames } from '../../utils/filterNewGames';
 import classNames from 'classnames/bind';
@@ -8,6 +9,8 @@ import Hero from '../../components/Hero/Hero';
 import NewGamesSection from '../../features/NewGamesSection/NewGamesSection';
 import SignupSection from '../../features/SignupSection/SignupSection';
 import ServicesSection from '../../features/ServicesSection/ServicesSection';
+import ForumSection from '../../features/ForumSection/ForumSection';
+import ExploreSection from '../../features/ExploreSection/ExploreSection';
 
 const cn = classNames.bind(styles);
 const gamesUrl = '...';
@@ -23,6 +26,8 @@ export default function HomePage() {
             <NewGamesSection loading={loading} data={newGames} error={error} />
             <SignupSection />
             <ServicesSection />
+            <ForumSection />
+            <ExploreSection />
         </div>
     );
 }
