@@ -1,3 +1,5 @@
+@import '../../sass/respond-to-media.scss';
+
 .container {
     align-items: center;
     background-color: var(--color-white);
@@ -8,5 +10,13 @@
     flex: 1;
     flex-direction: column;
     height: auto;
-    padding: 3.5rem 3rem 3.8rem;
+    padding: 3.5rem 2.5rem 3.5rem 2.5rem;
+
+    @include respond(tab) {
+        padding: 2rem 1.5rem 2rem 1.5rem;
+    }
+
+    @include respond(phone) {
+        padding: 3.5rem 2.5rem 3.5rem 2.5rem;
+    }
 }

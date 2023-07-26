@@ -5,7 +5,7 @@
     color: var(--color-black);
     line-height: 1.5;
 
-    @include respond(phone) {
+    @include respond(tab) {
         font-size: var(--font-size-regular);
     }
 }
@@ -14,7 +14,7 @@
     font-size: var(--font-size-big);
     color: var(--color-gray-dark);
 
-    @include respond(phone) {
+    @include respond(tab) {
         font-size: var(--font-size-regular);
     }
 }
@@ -23,7 +23,7 @@
     font-size: var(--font-size-big);
     color: var(--color-primary);
 
-    @include respond(phone) {
+    @include respond(tab) {
         font-size: var(--font-size-regular);
     }
 }
@@ -32,7 +32,7 @@
     font-size: var(--font-size-base);
     color: var(--color-black);
 
-    @include respond(phone) {
+    @include respond(tab) {
         font-size: var(--font-size-regular);
     }
 }
@@ -41,7 +41,7 @@
     font-size: var(--font-size-base);
     color: var(--color-primary);
 
-    @include respond(phone) {
+    @include respond(tab) {
         font-size: var(--font-size-regular);
     }
 }
@@ -50,7 +50,7 @@
     font-size: var(--font-size-base);
     color: var(--color-gray-medium);
 
-    @include respond(phone) {
+    @include respond(tab) {
         font-size: var(--font-size-regular);
     }
 }
@@ -59,7 +59,16 @@
     font-size: var(--font-size-regular);
     color: var(--color-black);
 
-    @include respond(phone) {
+    @include respond(tab) {
+        font-size: var(--font-size-small);
+    }
+}
+
+.very-small--gray {
+    font-size: var(--font-size-small);
+    color: var(--color-gray-medium);
+
+    @include respond(tab) {
         font-size: var(--font-size-small);
     }
 }

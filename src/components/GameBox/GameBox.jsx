@@ -16,8 +16,8 @@ export default function GameBox(props) {
             <img src={require('../../assets/games/07-cascadia.jpg')} alt='board game cover' className={cn('image')} />
 
             <div className={cn('heading-container')}>
-                <Paragraph style='regular--gray'>{game.category}</Paragraph>
-                <Heading tag='h4' style='medium'>
+                <Paragraph style='very-small--gray'>{game.category}</Paragraph>
+                <Heading tag='h4' style='small'>
                     {game.name}
                 </Heading>
                 <Paragraph style='regular'>{game.designer}</Paragraph>
