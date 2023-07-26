@@ -1,11 +1,49 @@
+@import '../../sass/respond-to-media.scss';
+
 .container {
+    display: flex;
+    justify-content: center;
+    height: 20rem;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--color-purple-gray);
+    margin-top: 20rem;
+
+    // @include respond(phone) {
+    //     height: 33rem;
+    //     flex-direction: column;
+    //     align-items: center;
+    // }
+}
+
+.wrapper {
+    padding-top: var(--spacer-xxxxl);
+    gap: var(--spacer-xs);
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    border-top: 0.2rem solid var(--color-secondary);
+    max-width: 160rem;
+    opacity: 0.9;
+}
+
+.nav {
     display: flex;
     flex-direction: row;
-    height: 9.6rem;
-    justify-content: space-between;
-    max-width: 180rem;
-    width: 100%;
-    margin-top: auto;
+    gap: 2rem;
+}
+
+.link {
+    background: none;
+    border: 0;
+    color: var(--color-background);
+    cursor: pointer;
+    font-family: var(--font-family-regular);
+    font-size: var(--font-size-base);
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.15s ease-in;
+
+    &:hover {
+        color: var(--color-tertiary);
+    }
 }
