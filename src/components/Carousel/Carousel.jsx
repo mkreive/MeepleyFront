@@ -8,7 +8,7 @@ import RightArrow from '../Arrows/RightArrow';
 const cn = classNames.bind(styles);
 
 export default function Carousel(props) {
-    const { loading, items, error } = props;
+    const { items } = props;
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 3;
     const totalPages = Math.ceil(items.length / itemsPerPage);

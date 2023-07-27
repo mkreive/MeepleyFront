@@ -13,12 +13,20 @@ export default function GameBox(props) {
 
     return (
         <Card>
-            <img src={require('../../assets/games/07-cascadia.jpg')} alt='board game cover' className={cn('image')} />
+            {game.img ? (
+                <img src={`data:image/jpeg;base64,${game.img}`} alt='board game cover' className={cn('image')} />
+            ) : (
+                <img
+                    src={require('../../assets/games/00-noimage.jpg')}
+                    alt='board game cover'
+                    className={cn('image')}
+                />
+            )}
 
             <div className={cn('heading-container')}>
                 <Paragraph style='very-small--gray'>{game.category}</Paragraph>
                 <Heading tag='h4' style='small'>
-                    {game.name}
+                    {game.title}
                 </Heading>
                 <Paragraph style='regular'>{game.designer}</Paragraph>
             </div>

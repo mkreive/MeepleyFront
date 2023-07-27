@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './new-games-section.module.scss';
 import Loader from '../../components/Loader/Loader';
@@ -8,7 +8,7 @@ import Carousel from '../../components/Carousel/Carousel';
 const cn = classNames.bind(styles);
 
 export default function NewGamesSection(props) {
-    const { loading = false, data, error = false } = props;
+    const { loading, data, error } = props;
 
     return (
         <section className={cn(`${!error ? 'container' : 'hidden'}`)}>
@@ -18,7 +18,7 @@ export default function NewGamesSection(props) {
 
             {loading && <Loader />}
 
-            {!loading && !error && <Carousel items={data} loading={loading} error={error} />}
+            {!loading && !error && <Carousel items={data} />}
         </section>
     );
 }
