@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useFetchData } from '../../hooks/useFetchData';
 import { filterNewGames } from '../../utils/filterNewGames';
 import classNames from 'classnames/bind';
@@ -13,7 +12,7 @@ import ForumSection from '../../features/ForumSection/ForumSection';
 import ExploreSection from '../../features/ExploreSection/ExploreSection';
 
 const cn = classNames.bind(styles);
-const gamesUrl = '...';
+const gamesUrl = 'http://localhost:8088/api/games';
 
 export default function HomePage() {
     const { loading, error } = useFetchData(gamesUrl);
