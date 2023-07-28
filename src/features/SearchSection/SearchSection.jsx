@@ -43,7 +43,7 @@ export default function SearchSection(props) {
 
     const handleCategorySelection = (e) => {
         setCategorySelection(...categorySelection, e.target.value);
-        props.onCategorySelection(categorySelection);
+        props.onCategorySelection(e.target.value);
     };
 
     const handleComplexitySelection = (e) => {

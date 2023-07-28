@@ -1,5 +1,6 @@
 export async function fetchData(fetchUrl) {
     const loadedGames = [];
+    console.log(fetchUrl);
 
     try {
         const response = await fetch(fetchUrl);

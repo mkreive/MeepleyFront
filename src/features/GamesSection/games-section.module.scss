@@ -6,15 +6,6 @@
     gap: 3rem;
     flex-direction: column;
     margin-bottom: 4rem;
-
-    @include respond(tab) {
-        gap: 5rem;
-    }
-
-    @include respond(phone) {
-        width: 90%;
-        gap: 0rem;
-    }
 }
 
 .wrapper {
@@ -23,6 +14,13 @@
     gap: var(--spacer-xxxxl);
     flex-wrap: wrap;
     justify-content: space-evenly;
+
+    @include respond(tab) {
+        gap: var(--spacer-l);
+    }
+
+    @include respond(phone) {
+    }
 }
 
 .hidden {

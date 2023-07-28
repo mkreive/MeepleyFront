@@ -7,7 +7,6 @@ import SearchSection from '../../features/SearchSection/SearchSection';
 import GamesSection from '../../features/GamesSection/GamesSection';
 
 const cn = classNames.bind(styles);
-const gamesUrl = '/api/games';
 
 export default function GamesPage() {
     const [loading, setLoading] = useState(true);
@@ -19,14 +18,16 @@ export default function GamesPage() {
 
     const handleSearch = function (props) {
         const searchedTitle = props.trim().toLowerCase();
-        setSearchUrl(`/search/findByTitle?title=${searchedTitle}`);
+        setSearchUrl(`api/games/search/findByTitle?title=${searchedTitle}`);
     };
+
     const handleCategory = function (props) {
-        setSearchUrl(`/search/findByTitle?title=${props[0]}`);
+        setSelectedCategory(props);
+        setSearchUrl(`/api/games/search/findByCategory?category=${props}`);
     };
 
     const handleComplexity = function (props) {
-        setSearchUrl(`/search/findByTitle?title=${props}`);
+        setSearchUrl(`/api/games/search/findByComplexity?complexity=${medium}`);
     };
 
     useEffect(() => {
@@ -40,7 +41,6 @@ export default function GamesPage() {
             }
         };
         getGames();
-
         window.scrollTo(0, 0);
     }, [searchUrl]);
 

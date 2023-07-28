@@ -18,6 +18,10 @@
     @include respond(tab) {
         padding: 1rem;
     }
+
+    @include respond(tab) {
+        min-width: 40%;
+    }
 }
 
 .image {
