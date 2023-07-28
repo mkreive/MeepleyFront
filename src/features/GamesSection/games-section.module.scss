@@ -3,7 +3,7 @@
 .container {
     position: relative;
     display: flex;
-    gap: 15rem;
+    gap: 3rem;
     flex-direction: column;
     margin-bottom: 4rem;
 
@@ -19,10 +19,10 @@
 
 .wrapper {
     display: flex;
-    padding-left: 2.2rem;
-    width: 96%;
+    width: 100%;
     gap: var(--spacer-xxxxl);
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .hidden {

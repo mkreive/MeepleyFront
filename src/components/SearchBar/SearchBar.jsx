@@ -9,7 +9,7 @@ export default function SearchBar(props) {
     return (
         <div className={cn('wrapper')}>
             <input type='search' placeholder='Search games' onChange={props.onChange} className={cn('field')} />
-            <Button theme='primary' onClick={props.onChange}>
+            <Button theme='primary' onClick={props.onSearch}>
                 Search
             </Button>
         </div>

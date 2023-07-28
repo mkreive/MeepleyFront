@@ -27,10 +27,6 @@
     padding: var(--spacer-s);
     text-align: center;
 
-    &:has(:checked) {
-        background-color: red;
-    }
-
     &:hover,
     &:has(:checked) {
         transition: all 0.15s ease-in;
@@ -41,6 +37,7 @@
 
     @include respond(phone) {
         width: 25%;
+        font-size: var(--font-size-xsmall);
     }
 }
 

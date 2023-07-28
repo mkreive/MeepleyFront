@@ -1,0 +1,32 @@
+@import '../../sass/respond-to-media.scss';
+
+.wrapper {
+    position: relative;
+    min-width: 20%;
+    max-width: 20%;
+    align-items: center;
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-main);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: auto;
+    padding: 1.3rem;
+    overflow: hidden;
+    gap: 2rem;
+
+    @include respond(tab) {
+        padding: 1rem;
+    }
+}
+
+.image {
+    border-radius: var(--border-radius-s);
+}
+
+.heading-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}

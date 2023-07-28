@@ -7,7 +7,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import FilterBar from '../../components/FilterBar/FilterBar';
 
 const cn = classNames.bind(styles);
-const categories = [
+const gameCategories = [
     'strategy',
     'thematic',
     'wargame',
@@ -21,30 +21,34 @@ const categories = [
     'deduction',
     'party',
     'enginebuilder',
-    'memory',
-    'other',
+    'dice',
+    'solo',
 ];
+
+const complexityCategories = ['easy', 'medium', 'complex'];
 
 export default function SearchSection(props) {
     const [searchInput, setSearchInput] = useState('');
-    const [searchUrl, setSearchUrl] = useState('');
     const [categorySelection, setCategorySelection] = useState([]);
+    const [complexitySelection, setComplexitySelection] = useState('');
 
-    const handleSearch = (e) => {
+    const handleInputChange = (e) => {
         setSearchInput(e.target.value);
-        console.log(e.type === 'click');
+    };
 
-        if (e.type === 'click' && searchInput === '') {
-            setSearchUrl('');
-        } else if (e.type === 'click') {
-            setSearchUrl(`/search/findByTitle?title=${searchInput}`);
-        }
+    const handleSearch = () => {
+        props.onSearch(searchInput);
+        setSearchInput('');
     };
 
     const handleCategorySelection = (e) => {
-        console.log(e.target.value);
         setCategorySelection(...categorySelection, e.target.value);
-        setSearchUrl(`/search/findByCategory?category=${e.target.value}`);
+        props.onCategorySelection(categorySelection);
+    };
+
+    const handleComplexitySelection = (e) => {
+        setComplexitySelection(e.target.value);
+        props.onComplexitySelection(complexitySelection);
     };
 
     return (
@@ -57,10 +61,16 @@ export default function SearchSection(props) {
                     Check out our range of brand new board games, all available to rent or buy online at MEEPLEY. Order
                     today for fast home delivery internationally.
                 </Paragraph>
-                <SearchBar onChange={handleSearch} />
+                <SearchBar onChange={handleInputChange} onSearch={handleSearch} />
             </section>
 
-            <FilterBar filterName={'category'} filterCategories={categories} onChange={handleCategorySelection} />
+            <FilterBar filterName={'category'} filterCategories={gameCategories} onChange={handleCategorySelection} />
+
+            <FilterBar
+                filterName={'complexity'}
+                filterCategories={complexityCategories}
+                onChange={handleComplexitySelection}
+            />
         </div>
     );
 }
