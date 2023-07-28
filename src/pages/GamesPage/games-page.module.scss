@@ -1,0 +1,19 @@
+@import '../../sass/respond-to-media.scss';
+
+.wrapper {
+    position: relative;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10rem;
+    justify-content: flex-start;
+    max-width: 150rem;
+    margin: 5rem;
+    min-height: 100vh;
+    overflow: hidden;
+
+    @include respond(phone) {
+        margin: 0 3rem;
+    }
+}

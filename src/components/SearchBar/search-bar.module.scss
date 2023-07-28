@@ -1,0 +1,60 @@
+@import '../../sass/respond-to-media.scss';
+
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    gap: var(--spacer-xl);
+}
+
+.field {
+    display: inline-block;
+    background-color: var(--color-white);
+    border: 0.1rem solid var(--color-gray-medium-dark);
+    border-radius: var(--border-radius-l);
+    color: var(--color-gray-medium);
+    font-family: var(--font-family-regular);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+    overflow: hidden;
+    padding: var(--spacer-m);
+    position: relative;
+    width: 100%;
+
+    &:focus,
+    &:active {
+        padding: var(--spacer-m);
+        border: 0.1rem solid var(--color-primary);
+        color: var(--color-purple);
+        outline: none;
+    }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    box-shadow: 0 0 0 1000px var(--color-selection) inset;
+    -webkit-text-fill-color: var(--color-gray-dark);
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* clears the ‘X’ from Internet Explorer */
+input[type='search']::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+}
+input[type='search']::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+}
+/* clears the ‘X’ from Chrome */
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+    display: none;
+}

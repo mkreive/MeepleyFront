@@ -1,0 +1,30 @@
+@import '../../sass/respond-to-media.scss';
+
+.container {
+    position: relative;
+    display: flex;
+    gap: 15rem;
+    flex-direction: column;
+    margin-bottom: 4rem;
+
+    @include respond(tab) {
+        gap: 5rem;
+    }
+
+    @include respond(phone) {
+        width: 90%;
+        gap: 0rem;
+    }
+}
+
+.wrapper {
+    display: flex;
+    padding-left: 2.2rem;
+    width: 96%;
+    gap: var(--spacer-xxxxl);
+    flex-wrap: wrap;
+}
+
+.hidden {
+    display: none;
+}

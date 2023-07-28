@@ -4,6 +4,7 @@ import styles from './app.module.scss';
 import classNames from 'classnames/bind';
 import RootLayout from '../layouts/RootLayout/RootLayout';
 import HomePage from '../pages/HomePage/HomePage';
+import GamesPage from '../pages/GamesPage/GamesPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 
 const cn = classNames.bind(styles);
@@ -12,6 +13,7 @@ const router = createBrowserRouter(
         <Route path='/' element={<RootLayout />}>
             <Route index element={<HomePage />} />
             <Route path='/home' element={<HomePage />} />
+            <Route path='/games' element={<GamesPage />} />
             <Route path='*' element={<NotFoundPage />} />
         </Route>
     )
