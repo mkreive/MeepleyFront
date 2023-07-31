@@ -21,7 +21,7 @@ export default function GamesPage() {
 
     const handleSearch = function (props) {
         const title = props.trim().toLowerCase();
-        setSearchUrl(`api/games/search/findByTitle?title=${title}`);
+        setSearchUrl(`api/games/search/findByTitleContaining?title=${title}`);
     };
 
     const handleCategory = function (props) {
@@ -32,8 +32,12 @@ export default function GamesPage() {
             const newCategories = categories.filter((category) => category !== selected);
             setCategories(newCategories);
         }
-        console.log(categories);
-        setSearchUrl(`/api/games/search/findByCategory?category=${categories}`);
+
+        if (complexities.length === 0) {
+            setSearchUrl(`/api/games/search/findByCategory?category=${[...categories]}`);
+        } else {
+            setSearchUrl(`/api/games/search/findByCategory?category=${[...categories]}`);
+        }
     };
 
     const handleComplexity = function (props) {
@@ -41,11 +45,14 @@ export default function GamesPage() {
         if (!complexities.includes(selected)) {
             setComplexities([...complexities, selected]);
         } else {
-            const newComplexities = complexities.filter((category) => category !== selected);
-            setCategories(newCategories);
+            const newComplexities = complexities.filter((complexity) => complexity !== selected);
+            setComplexities(newComplexities);
         }
-
-        setSearchUrl(`/api/games/search/findByComplexity?complexity=${complexities}`);
+        if (categories.length === 0) {
+            setSearchUrl(`/api/games/search/findByComplexity?complexity=${[...complexities]}`);
+        } else {
+            setSearchUrl(`/api/games/search/findByCategory?category=${[...categories]}`);
+        }
     };
 
     useEffect(() => {
@@ -69,7 +76,6 @@ export default function GamesPage() {
                 onCategorySelection={handleCategory}
                 onComplexitySelection={handleComplexity}
             />
-
             <GamesSection loading={loading} error={error} games={games} />
 
             <div className={cn('text')}>
@@ -81,7 +87,6 @@ export default function GamesPage() {
                     <Button theme='secondary'>Services</Button>
                 </Link>
             </div>
-
             <div>Latest reviews about our board games</div>
         </div>
     );

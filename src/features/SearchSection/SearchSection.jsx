@@ -61,7 +61,7 @@ export default function SearchSection(props) {
             <FilterBar
                 filterName={'complexity'}
                 filterCategories={complexityCategories}
-                onChange={(e) => props.onCategorySelection(e.target.value)}
+                onChange={(e) => props.onComplexitySelection(e.target.value)}
             />
         </div>
     );
