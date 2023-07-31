@@ -74,7 +74,7 @@ export default function GamesPage() {
 
             <div className={cn('text')}>
                 <Heading tag='h2' style='medium--primary'>
-                    Havent find a game you were looking for?
+                    Haven't find a game you were looking for?
                 </Heading>
                 <Paragraph theme='regular'>Write us a letter and we will help you!</Paragraph>
                 <Link to='/services' className={cn('link')}>
@@ -83,7 +83,6 @@ export default function GamesPage() {
             </div>
 
             <div>Latest reviews about our board games</div>
-            <div>Sign up for newsleter</div>
         </div>
     );
 }
