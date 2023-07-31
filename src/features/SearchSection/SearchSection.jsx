@@ -14,7 +14,7 @@ const gameCategories = [
     'family',
     'abstract',
     'roll&write',
-    'eurogame',
+    'euro',
     'campaign',
     'deckbuilder',
     'dexterity',
@@ -29,8 +29,6 @@ const complexityCategories = ['easy', 'medium', 'complex'];
 
 export default function SearchSection(props) {
     const [searchInput, setSearchInput] = useState('');
-    const [categorySelection, setCategorySelection] = useState([]);
-    const [complexitySelection, setComplexitySelection] = useState('');
 
     const handleInputChange = (e) => {
         setSearchInput(e.target.value);
@@ -39,16 +37,6 @@ export default function SearchSection(props) {
     const handleSearch = () => {
         props.onSearch(searchInput);
         setSearchInput('');
-    };
-
-    const handleCategorySelection = (e) => {
-        setCategorySelection(...categorySelection, e.target.value);
-        props.onCategorySelection(e.target.value);
-    };
-
-    const handleComplexitySelection = (e) => {
-        setComplexitySelection(e.target.value);
-        props.onComplexitySelection(complexitySelection);
     };
 
     return (
@@ -61,15 +49,19 @@ export default function SearchSection(props) {
                     Check out our range of brand new board games, all available to rent or buy online at MEEPLEY. Order
                     today for fast home delivery internationally.
                 </Paragraph>
-                <SearchBar onChange={handleInputChange} onSearch={handleSearch} />
+                <SearchBar onChange={handleInputChange} onSearch={handleSearch} value={searchInput} />
             </section>
 
-            <FilterBar filterName={'category'} filterCategories={gameCategories} onChange={handleCategorySelection} />
+            <FilterBar
+                filterName={'category'}
+                filterCategories={gameCategories}
+                onChange={(e) => props.onCategorySelection(e.target.value)}
+            />
 
             <FilterBar
                 filterName={'complexity'}
                 filterCategories={complexityCategories}
-                onChange={handleComplexitySelection}
+                onChange={(e) => props.onCategorySelection(e.target.value)}
             />
         </div>
     );

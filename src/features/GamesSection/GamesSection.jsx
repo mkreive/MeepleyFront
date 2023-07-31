@@ -13,7 +13,7 @@ export default function GamesSection(props) {
     return (
         <div className={cn('container')}>
             <Heading tag='h4' style='medium'>
-                {category ? category + 'Board Games' : 'All Board Games'}
+                {category ? category.toUpperCase() + 'Board Games' : 'All Board Games'}
             </Heading>
 
             {loading && <Loader />}
