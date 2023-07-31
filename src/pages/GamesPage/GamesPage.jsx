@@ -16,13 +16,12 @@ export default function GamesPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [games, setGames] = useState([]);
+    const [title, setTitle] = useState('');
     const [categories, setCategories] = useState([]);
     const [complexities, setComplexities] = useState([]);
-    const [searchUrl, setSearchUrl] = useState('/api/games');
 
     const handleSearch = function (props) {
-        const title = props.trim().toLowerCase();
-        setSearchUrl(`api/games/search/findByTitleContaining?title=${title}`);
+        setTitle(props.trim().toLowerCase());
     };
 
     const handleCategory = function (props) {
@@ -49,35 +48,20 @@ export default function GamesPage() {
         const params = {
             complexity: complexities,
             category: categories,
+            title: title,
         };
 
-        if (complexities.length > 0 && categories.length > 0) {
-            setSearchUrl(
-                `/api/games/search/findByCategoryInAndComplexityIn${qs.stringify(params, {
-                    addQueryPrefix: true,
-                    arrayFormat: 'comma',
-                })}`
-            );
-        } else if (categories.length > 0) {
-            setSearchUrl(
-                `/api/games/search/findByCategoryIn${qs.stringify(params, {
-                    addQueryPrefix: true,
-                    arrayFormat: 'comma',
-                })}`
-            );
-        } else if (complexities.length > 0) {
-            setSearchUrl(
-                `/api/games/search/findByComplexityIn${qs.stringify(params, {
-                    addQueryPrefix: true,
-                    arrayFormat: 'comma',
-                })}`
-            );
-        }
-    }, [categories, complexities]);
+        let url = '/api/games';
 
-    useEffect(() => {
+        if (complexities.length > 0 || categories.length > 0 || title.length > 0) {
+            url = `/api/games/search/findGames${qs.stringify(params, {
+                addQueryPrefix: true,
+                arrayFormat: 'comma',
+            })}`;
+        }
+
         const getGames = async function () {
-            const games = await fetchData(searchUrl);
+            const games = await fetchData(url);
             if (games) {
                 setLoading(false);
                 setGames(games);
@@ -87,7 +71,9 @@ export default function GamesPage() {
         };
         getGames();
         window.scrollTo(0, 0);
-    }, [searchUrl]);
+    }, [categories, complexities, title]);
+
+    console.log(games);
 
     return (
         <div className={cn('wrapper')}>
