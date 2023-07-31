@@ -1,6 +1,5 @@
 export async function fetchData(fetchUrl) {
     const loadedGames = [];
-    console.log(fetchUrl);
 
     try {
         const response = await fetch(fetchUrl);
@@ -23,6 +22,7 @@ export async function fetchData(fetchUrl) {
                     copies: responseData[key].copies,
                     copiesAvailable: responseData[key].copiesAvailable,
                     category: responseData[key].category,
+                    complexity: responseData[key].complexity,
                     players: responseData[key].players,
                     playingTime: responseData[key].playingTime,
                     img: responseData[key].img,
