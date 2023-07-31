@@ -11,6 +11,17 @@
     }
 }
 
+.big--black {
+    color: var(--color-black);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-heading-big);
+    font-weight: var(--font-weight-bold);
+
+    @include respond(phone) {
+        font-size: var(--font-size-heading-medium);
+    }
+}
+
 .medium {
     letter-spacing: -0.06rem;
     color: var(--color-black);
@@ -62,6 +73,13 @@
 
 .very-small {
     color: var(--color-gray-medium);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-base);
+    font-weight: 700;
+}
+
+.very-small--black {
+    color: var(--color-black);
     font-family: var(--font-family-heading);
     font-size: var(--font-size-base);
     font-weight: 700;
