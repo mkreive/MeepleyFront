@@ -1,0 +1,33 @@
+@import '../../sass/respond-to-media.scss';
+
+.container {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius-s);
+    border: 0.2rem solid var(--color-primary);
+    max-width: 35rem;
+    padding: 2rem;
+    height: max-content;
+    gap: 3rem;
+
+    @include respond(tab) {
+        max-width: 45rem;
+    }
+}
+
+.upper_block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-xxs);
+    padding-bottom: var(--spacer-l);
+    border-bottom: 0.1rem solid var(--color-primary);
+}
+
+.bottom_block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-l);
+    padding-bottom: var(--spacer-l);
+}
