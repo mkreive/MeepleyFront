@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './game.module.scss';
 import Heading from '../Heading/Heading';
 import Paragraph from '../Paragraph/Paragraph';
-import Card from '../Card/Card';
 import Button from '../Button/Button';
 
 const cn = classNames.bind(styles);
@@ -30,7 +30,9 @@ export default function GameBox(props) {
                 </Heading>
             </div>
 
-            <Button theme='black'>Details</Button>
+            <Link to={`/checkout/${game.id}`} className={cn('link')}>
+                <Button theme='black'>Details</Button>
+            </Link>
         </div>
     );
 }
