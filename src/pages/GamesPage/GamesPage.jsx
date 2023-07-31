@@ -8,6 +8,7 @@ import GamesSection from '../../features/GamesSection/GamesSection';
 import Heading from '../../components/Heading/Heading';
 import Paragraph from '../../components/Paragraph/Paragraph';
 import Button from '../../components/Button/Button';
+import qs from 'qs';
 
 const cn = classNames.bind(styles);
 
@@ -32,12 +33,6 @@ export default function GamesPage() {
             const newCategories = categories.filter((category) => category !== selected);
             setCategories(newCategories);
         }
-
-        if (complexities.length === 0) {
-            setSearchUrl(`/api/games/search/findByCategory?category=${[...categories]}`);
-        } else {
-            setSearchUrl(`/api/games/search/findByCategory?category=${[...categories]}`);
-        }
     };
 
     const handleComplexity = function (props) {
@@ -48,12 +43,37 @@ export default function GamesPage() {
             const newComplexities = complexities.filter((complexity) => complexity !== selected);
             setComplexities(newComplexities);
         }
-        if (categories.length === 0) {
-            setSearchUrl(`/api/games/search/findByComplexity?complexity=${[...complexities]}`);
-        } else {
-            setSearchUrl(`/api/games/search/findByCategory?category=${[...categories]}`);
-        }
     };
+
+    useEffect(() => {
+        const params = {
+            complexity: complexities,
+            category: categories,
+        };
+
+        if (complexities.length > 0 && categories.length > 0) {
+            setSearchUrl(
+                `/api/games/search/findByCategoryInAndComplexityIn${qs.stringify(params, {
+                    addQueryPrefix: true,
+                    arrayFormat: 'comma',
+                })}`
+            );
+        } else if (categories.length > 0) {
+            setSearchUrl(
+                `/api/games/search/findByCategoryIn${qs.stringify(params, {
+                    addQueryPrefix: true,
+                    arrayFormat: 'comma',
+                })}`
+            );
+        } else if (complexities.length > 0) {
+            setSearchUrl(
+                `/api/games/search/findByComplexityIn${qs.stringify(params, {
+                    addQueryPrefix: true,
+                    arrayFormat: 'comma',
+                })}`
+            );
+        }
+    }, [categories, complexities]);
 
     useEffect(() => {
         const getGames = async function () {
