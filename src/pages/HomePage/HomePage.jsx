@@ -18,7 +18,7 @@ export default function HomePage() {
     return (
         <div className={cn('wrapper')}>
             <Hero />
-            <NewGamesSection loading={loading} data={games} error={error} />
+            <NewGamesSection loading={loading} games={games} error={error} />
             <SignupSection />
             <ServicesSection />
             <ForumSection />
