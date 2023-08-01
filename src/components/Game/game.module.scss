@@ -3,7 +3,6 @@
 .wrapper {
     position: relative;
     min-width: 20%;
-    max-width: 20%;
     align-items: center;
     background-color: var(--color-white);
     border-radius: var(--border-radius-main);
@@ -16,11 +15,8 @@
     gap: 2rem;
 
     @include respond(tab) {
+        min-width: 30%;
         padding: 1rem;
-    }
-
-    @include respond(tab) {
-        min-width: 40%;
     }
 }
 

@@ -8,7 +8,7 @@ import Carousel from '../../components/Carousel/Carousel';
 const cn = classNames.bind(styles);
 
 export default function NewGamesSection(props) {
-    const { loading, data, error } = props;
+    const { loading, games, error } = props;
 
     return (
         <section className={cn(`${!error ? 'container' : 'hidden'}`)}>
@@ -18,7 +18,7 @@ export default function NewGamesSection(props) {
 
             {loading && <Loader />}
 
-            {!loading && !error && <Carousel items={data} />}
+            {!loading && !error && <Carousel items={games} />}
         </section>
     );
 }

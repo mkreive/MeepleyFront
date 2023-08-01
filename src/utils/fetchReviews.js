@@ -16,6 +16,7 @@ export async function fetchReviews(fetchUrl) {
                     id: responseData[key].id,
                     date: responseData[key].date,
                     userEmail: responseData[key].userEmail,
+                    userName: responseData[key].userName,
                     gameId: responseData[key].gameId,
                     gameReview: responseData[key].gameReview,
                 });
@@ -24,7 +25,6 @@ export async function fetchReviews(fetchUrl) {
     } catch (err) {
         return err;
     }
-    console.log(loadedReviews);
 
     return loadedReviews;
 }

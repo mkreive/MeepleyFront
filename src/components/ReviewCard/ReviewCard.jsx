@@ -7,18 +7,17 @@ import Paragraph from '../Paragraph/Paragraph';
 const cn = classNames.bind(styles);
 
 export default function ReviewCard({ review }) {
-    console.log(review);
     return (
         <div className={cn('container')}>
             <div className={cn('upper_block')}>
-                <Paragraph style='medium'>{review.date}</Paragraph>
-                <Heading tag='h3' style='small--primary'>
-                    {review.userEmail}
+                <Paragraph style='regular--gray'>{review.date}</Paragraph>
+                <Heading tag='h3' style='small--'>
+                    {review.userName}
                 </Heading>
             </div>
 
             <div className={cn('bottom_block')}>
-                <Paragraph style='regular--gray'>{review.gameReview}</Paragraph>
+                <Paragraph style='regular'>{review.gameReview}</Paragraph>
             </div>
         </div>
     );

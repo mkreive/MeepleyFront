@@ -36,8 +36,10 @@ export default function GameCard(props) {
                 </div>
 
                 <div className={cn('headings__container')}>
-                    <Paragraph style='small--gray'>{game.category}</Paragraph>
-                    <Paragraph style='small--gray'>{game.complexity}</Paragraph>
+                    <Paragraph style='small--gray'>CATEGORY: {game.category.toLowerCase()}</Paragraph>
+                    <Paragraph style='small--gray'>COMPLEXITY: {game.complexity}</Paragraph>
+                    <Paragraph style='small--gray'>PLAYERS: {game.players}</Paragraph>
+                    <Paragraph style='small--gray'>PLAY TIME: {game.playingTime} min</Paragraph>
                 </div>
 
                 <Paragraph style='regular'>{game.description}</Paragraph>

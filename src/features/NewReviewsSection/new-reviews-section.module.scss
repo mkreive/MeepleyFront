@@ -1,0 +1,35 @@
+@import '../../sass/respond-to-media.scss';
+
+.container {
+    margin-top: 10rem;
+    position: relative;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    justify-content: flex-start;
+    width: 100%;
+    gap: var(--spacer-xxxxl);
+    margin-bottom: 4rem;
+
+    @include respond(phone) {
+        width: 90%;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacer-xxxxxl);
+    padding-left: var(--spacer-xxxxl);
+
+    @include respond(phone) {
+        flex-direction: column;
+    }
+}

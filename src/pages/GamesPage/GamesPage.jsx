@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { fetchData } from '../../utils/fetchData';
+import { fetchGames } from '../../utils/fetchGames';
+import { useFetchReviews } from '../../hooks/useFetchReviews';
 import classNames from 'classnames/bind';
 import styles from './games-page.module.scss';
 import SearchSection from '../../features/SearchSection/SearchSection';
 import GamesSection from '../../features/GamesSection/GamesSection';
-import Heading from '../../components/Heading/Heading';
-import Paragraph from '../../components/Paragraph/Paragraph';
-import Button from '../../components/Button/Button';
+import SectionWithButton from '../../components/SectionWithButton/SectionWithButton';
+import NewReviewsSection from '../../features/NewReviewsSection/NewReviewsSection';
 import qs from 'qs';
+import Button from '../../components/Button/Button';
 
 const cn = classNames.bind(styles);
 
 export default function GamesPage() {
+    const { loadingReviews, reviews, errorReviews } = useFetchReviews('/api/reviews');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [games, setGames] = useState([]);
     const [title, setTitle] = useState('');
     const [categories, setCategories] = useState([]);
     const [complexities, setComplexities] = useState([]);
+
+    // TODO pagination sutvarkyti
 
     const handleSearch = function (props) {
         setTitle(props.trim().toLowerCase());
@@ -44,6 +47,13 @@ export default function GamesPage() {
         }
     };
 
+    const handleClearFilters = function () {
+        // TODO checkboxus panaikinti isclearinus filtrus
+        setCategories([]);
+        setComplexities([]);
+        setTitle('');
+    };
+
     useEffect(() => {
         const params = {
             complexity: complexities,
@@ -61,7 +71,7 @@ export default function GamesPage() {
         }
 
         const getGames = async function () {
-            const games = await fetchData(url);
+            const games = await fetchGames(url);
             if (games) {
                 setLoading(false);
                 setGames(games);
@@ -70,10 +80,7 @@ export default function GamesPage() {
             }
         };
         getGames();
-        window.scrollTo(0, 0);
     }, [categories, complexities, title]);
-
-    console.log(games);
 
     return (
         <div className={cn('wrapper')}>
@@ -82,18 +89,25 @@ export default function GamesPage() {
                 onCategorySelection={handleCategory}
                 onComplexitySelection={handleComplexity}
             />
+
             <GamesSection loading={loading} error={error} games={games} />
 
-            <div className={cn('text')}>
-                <Heading tag='h2' style='medium--primary'>
-                    Haven't find a game you were looking for?
-                </Heading>
-                <Paragraph theme='regular'>Write us a letter and we will help you!</Paragraph>
-                <Link to='/services' className={cn('link')}>
-                    <Button theme='secondary'>Services</Button>
-                </Link>
-            </div>
-            <div>Latest reviews about our board games</div>
+            {(categories.length > 0 || complexities.length > 0 || title) && (
+                <Button theme='black' onClick={handleClearFilters}>
+                    Clear all filters
+                </Button>
+            )}
+
+            <SectionWithButton
+                title="Haven't find what you were looking for?"
+                text='Write us a letter and we will help you!'
+                button='Services'
+                link='/services'
+            />
+
+            {reviews.length > 0 && (
+                <NewReviewsSection error={errorReviews} loading={loadingReviews} reviews={reviews} />
+            )}
         </div>
     );
 }

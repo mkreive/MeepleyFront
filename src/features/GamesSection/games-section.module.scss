@@ -14,13 +14,14 @@
     width: 100%;
     gap: var(--spacer-xxxxl);
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
 
     @include respond(tab) {
-        gap: var(--spacer-l);
+        gap: var(--spacer-xxl);
     }
 
     @include respond(phone) {
+        gap: var(--spacer-l);
     }
 }
 

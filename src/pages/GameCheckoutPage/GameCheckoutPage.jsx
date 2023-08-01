@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { fetchGame } from '../../utils/fetchGame';
 import { fetchReviews } from '../../utils/fetchReviews';
+import { useFetchGames } from '../../hooks/useFetchGames';
 import classNames from 'classnames/bind';
 import styles from './game-checkout-page.module.scss';
 import Loader from '../../components/Loader/Loader';
+import Heading from '../../components/Heading/Heading';
 import GameCard from '../../components/GameCard/GameCard';
 import ReviewCard from '../../components/ReviewCard/ReviewCard';
+import SectionWithButton from '../../components/SectionWithButton/SectionWithButton';
+import NewGamesSection from '../../features/NewGamesSection/NewGamesSection';
 
 const cn = classNames.bind(styles);
 
-export default function GameCheckoutPage() {
+export default function HomePage() {
+    const { loading, games, error } = useFetchGames('/api/games');
     const [game, setGame] = useState({});
     const [reviews, setReviews] = useState([]);
     const [loadingGame, setLoadingGame] = useState(true);
     const [loadingReviews, setLoadingReviews] = useState(true);
-    const [error, setError] = useState(false);
+    const [gameError, setGameError] = useState(false);
+    const [reviewsError, setReviewsError] = useState(false);
 
     const gameId = window.location.pathname.split('/')[2];
 
@@ -25,7 +31,7 @@ export default function GameCheckoutPage() {
                 setLoadingGame(false);
                 setGame(fetchedGame);
             } else {
-                setError(fetchGame);
+                setGameError(fetchedGame);
             }
         };
         getGame();
@@ -38,29 +44,35 @@ export default function GameCheckoutPage() {
                 setLoadingReviews(false);
                 setReviews(fetchedReviews);
             } else {
-                setError(fetchedReviews);
+                setReviewsError(fetchedReviews);
             }
         };
         getReviews();
     }, []);
 
-    console.log(reviews);
-
     return (
         <div className={cn('container')}>
-            <section className={cn(`${!error ? 'wrapper__game' : 'hidden'}`)}>
+            <section className={cn(`${!gameError ? 'wrapper__game' : 'hidden'}`)}>
                 {loadingGame && <Loader />}
-                <GameCard key={game.id} game={game} />
+                {!loadingGame && <GameCard key={game.id} game={game} />}
             </section>
-
-            <section className={cn(`${!error ? 'wrapper__reviews' : 'hidden'}`)}>
+            <section className={cn(`${!reviewsError ? 'wrapper__reviews' : 'hidden'}`)}>
+                <Heading tag='h2' style='big--black'>
+                    Reviews
+                </Heading>
                 {loadingReviews && <Loader />}
-                {reviews.map((review) => {
-                    <ReviewCard key={review.id} review={review} />;
-                })}
+
+                {reviews.length > 0 && !loadingReviews && reviews.map((r) => <ReviewCard key={r.id} review={r} />)}
+
+                <SectionWithButton
+                    title='Want to leave your review?'
+                    text='Sign in to be able to leave a review and use our services :)'
+                    button='Sign up'
+                    link='/login'
+                />
             </section>
 
-            <div>Service section</div>
+            <NewGamesSection loading={loading} error={error} games={games} />
         </div>
     );
 }
