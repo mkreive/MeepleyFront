@@ -10,7 +10,13 @@ export default function Burger(props) {
 
     return (
         <nav className={cn('container')}>
-            <input id='menu-toggle' type='checkbox' onChange={handleMenuClick} checked={props.checked} />
+            <input
+                className={cn('input')}
+                id='menu-toggle'
+                type='checkbox'
+                onChange={handleMenuClick}
+                checked={props.checked}
+            />
             <label htmlFor='menu-toggle' className={cn('menu-button-container')}>
                 <div className={cn('menu-button')}></div>
             </label>

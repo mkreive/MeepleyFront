@@ -11,13 +11,13 @@ import Header from '../layouts/Header/Header';
 const cn = classNames.bind(styles);
 
 export default function AuthLayout() {
-    const history = useNavigate();
+    const navigate = useNavigate();
     const oktaAuth = new OktaAuth(oktaConfig);
     const customAuthHandler = () => {
-        history.push('/login');
+        navigate.push('/login');
     };
     const restoreOriginalUri = async () => {
-        history.replace(toRelativeUrl(originalUri || '/', window.location.origin));
+        navigate.replace(toRelativeUrl(originalUri || '/', window.location.origin));
     };
 
     return (

@@ -1,11 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import classNames from 'classnames/bind';
-import styles from './okta-signin-widget.module.scss';
+import { useEffect, useRef } from 'react';
 import OktaSignIn from '@okta/okta-signin-widget';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 import { oktaConfig } from '../lib/oktaConfig';
-
-const cn = classNames.bind(styles);
 
 const OktaSignInWidget = ({ onSuccess, onError }) => {
     const widgetRef = useRef();
@@ -24,14 +20,12 @@ const OktaSignInWidget = ({ onSuccess, onError }) => {
             .then(onSuccess)
             .catch(onError);
 
+        console.log(widget);
+
         return () => widget.remove();
     }, [onSuccess, onError]);
 
-    return (
-        <div className={cn('container')}>
-            <div className={cn('widget')} ref={widgetRef}></div>
-        </div>
-    );
+    return <div ref={widgetRef} />;
 };
 
 export default OktaSignInWidget;

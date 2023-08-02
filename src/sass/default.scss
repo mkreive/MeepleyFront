@@ -67,9 +67,12 @@ table {
 }
 
 #okta-sign-in.auth-container.main-container[data-se='auth-container'] {
+    font-family: 'Montserrat', sans-serif;
+    color: black;
     border-color: #000000;
     background: white;
     border-radius: 20px;
+    box-shadow: none;
 }
 
 #okta-sign-in.auth-container .o-form-head {
@@ -88,3 +91,6 @@ table {
     background: #9856f4 !important;
     border-color: #9856f4 !important;
 }
+// #okta-sign-in input[]{
+//     box-shadow: none;
+// }
