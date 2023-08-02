@@ -4,7 +4,7 @@ import Loader from '../components/Loader/Loader';
 import OktaSignInWidget from './OktaSignInWidget';
 
 const LoginWidget = ({ config }) => {
-    const { oktaAuth, authState } = useOktaAuth;
+    const { oktaAuth, authState } = useOktaAuth();
     const onSuccess = (tokens) => {
         oktaAuth.handleLoginRedirect(tokens);
     };
@@ -13,15 +13,19 @@ const LoginWidget = ({ config }) => {
         console.log('Sign in error: ', err);
     };
 
+    console.log(authState);
+
     if (!authState) {
         return <Loader />;
     }
 
-    return authState.isAuthenticated ? (
-        <Navigate to={{ pathname: '/' }} />
-    ) : (
-        <OktaSignInWidget config={config} onSuccess={onSuccess} onError={onError} />
-    );
+    return <OktaSignInWidget config={config} onSuccess={onSuccess} onError={onError} />;
+
+    // return authState.isAuthenticated ? (
+    //     <Navigate to={{ pathname: '/' }} />
+    // ) : (
+    //     <OktaSignInWidget config={config} onSuccess={onSuccess} onError={onError} />
+    // );
 };
 
 export default LoginWidget;

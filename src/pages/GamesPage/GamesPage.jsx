@@ -17,7 +17,7 @@ export default function GamesPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [games, setGames] = useState([]);
-    const [title, setTitle] = useState('');
+    const [title, setTitle] = useState(null);
     const [categories, setCategories] = useState([]);
     const [complexities, setComplexities] = useState([]);
 
@@ -61,14 +61,11 @@ export default function GamesPage() {
             title: title,
         };
 
-        let url = '/api/games';
-
-        if (complexities.length > 0 || categories.length > 0 || title.length > 0) {
-            url = `/api/games/search/findGames${qs.stringify(params, {
-                addQueryPrefix: true,
-                arrayFormat: 'comma',
-            })}`;
-        }
+        const url = `/api/games/search/findGames${qs.stringify(params, {
+            addQueryPrefix: true,
+            arrayFormat: 'comma',
+            skipNulls: true,
+        })}`;
 
         const getGames = async function () {
             const games = await fetchGames(url);

@@ -29,7 +29,7 @@ const OktaSignInWidget = ({ onSuccess, onError }) => {
 
     return (
         <div className={cn('container')}>
-            <div ref={widgetRef}></div>
+            <div className={cn('widget')} ref={widgetRef}></div>
         </div>
     );
 };

@@ -8,12 +8,12 @@ import Game from '../../components/Game/Game';
 const cn = classNames.bind(styles);
 
 export default function GamesSection(props) {
-    const { loading, error, games, category } = props;
+    const { loading, error, games } = props;
 
     return (
         <div className={cn('container')}>
             <Heading tag='h4' style='medium'>
-                {category ? category.toUpperCase() + 'Board Games' : 'All Board Games'}
+                Board Games
             </Heading>
 
             {loading && <Loader />}

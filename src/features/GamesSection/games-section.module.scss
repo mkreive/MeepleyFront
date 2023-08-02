@@ -11,8 +11,9 @@
 
 .wrapper {
     display: flex;
+    flex-direction: row;
     width: 100%;
-    gap: var(--spacer-xxxxl);
+    gap: var(--spacer-xxxl);
     flex-wrap: wrap;
     justify-content: center;
 

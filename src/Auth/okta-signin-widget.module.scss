@@ -1,5 +1,25 @@
+#okta-sign-in.auth-container.main-container {
+    background-color: red;
+}
+
+#okta-sign-in .beacon-blank {
+    background-color: red;
+}
+#okta-sign-in.auth-container.main-container {
+    border-color: red;
+}
+
+#okta-sign-in.auth-container .okta-sign-in-header {
+    border-bottom-color: red;
+}
+
+#okta-sign-in * {
+    color: red;
+}
+
 .container {
-    background-color: var(--color-tertiary);
-    border-radius: 2rem;
-    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
