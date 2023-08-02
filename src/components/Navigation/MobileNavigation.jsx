@@ -4,9 +4,9 @@ import styles from './navigation.module.scss';
 
 const cn = classNames.bind(styles);
 
-export default function MobileNavigation(props) {
+export default function MobileNavigation({ onClick, loggedIn }) {
     return (
-        <nav onClick={props.onClick} className={cn('nav--mobile')}>
+        <nav onClick={onClick} className={cn('nav--mobile')}>
             <Link className={cn('link')} to='/home'>
                 Home
             </Link>

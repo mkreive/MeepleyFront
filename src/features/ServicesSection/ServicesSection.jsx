@@ -30,7 +30,7 @@ export default function ServicesSection() {
                 </Paragraph>
 
                 <Link to='/services' className={cn('link')}>
-                    <Button theme='secondary'>Services</Button>
+                    <Button theme='primary'>Services</Button>
                 </Link>
             </section>
         </div>

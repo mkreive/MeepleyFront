@@ -19,13 +19,11 @@ const LoginWidget = ({ config }) => {
         return <Loader />;
     }
 
-    return <OktaSignInWidget config={config} onSuccess={onSuccess} onError={onError} />;
-
-    // return authState.isAuthenticated ? (
-    //     <Navigate to={{ pathname: '/' }} />
-    // ) : (
-    //     <OktaSignInWidget config={config} onSuccess={onSuccess} onError={onError} />
-    // );
+    return authState.isAuthenticated ? (
+        <Navigate to={{ pathname: '/' }} />
+    ) : (
+        <OktaSignInWidget config={config} onSuccess={onSuccess} onError={onError} />
+    );
 };
 
 export default LoginWidget;

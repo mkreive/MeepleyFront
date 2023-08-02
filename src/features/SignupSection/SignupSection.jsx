@@ -26,9 +26,8 @@ export default function SignupSection() {
                     website. Once you're in, you'll have access to all our fantastic features and be able to engage with
                     fellow gamers who share the same love for tabletop gaming.
                 </Paragraph>
-
-                <Link to='/signup' className={cn('link')}>
-                    <Button theme='secondary'>Sign up</Button>
+                <Link to='/login' className={cn('link')}>
+                    <Button theme='secondary'>Sign In</Button>
                 </Link>
             </section>
             <SignupImage />

@@ -61,3 +61,30 @@ table {
     table-layout: fixed;
     width: 100%;
 }
+
+#okta-sign-in > div.okta-sign-in-header.auth-header {
+    display: none;
+}
+
+#okta-sign-in.auth-container.main-container[data-se='auth-container'] {
+    border-color: #000000;
+    background: white;
+    border-radius: 20px;
+}
+
+#okta-sign-in.auth-container .o-form-head {
+    color: #9856f4;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+#okta-sign-in.auth-container .button-primary {
+    background: #111 !important;
+    border-color: #111 !important;
+    color: white !important;
+}
+
+#okta-sign-in.auth-container .button-primary:hover {
+    background: #9856f4 !important;
+    border-color: #9856f4 !important;
+}

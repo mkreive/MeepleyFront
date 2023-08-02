@@ -4,7 +4,6 @@ import styles from './app.module.scss';
 import classNames from 'classnames/bind';
 import { oktaConfig } from '../lib/oktaConfig';
 import { LoginCallback } from '@okta/okta-react';
-import RootLayout from '../layouts/RootLayout/RootLayout';
 import AuthLayout from '../Auth/AuthLayout';
 import HomePage from '../pages/HomePage/HomePage';
 import GamesPage from '../pages/GamesPage/GamesPage';
