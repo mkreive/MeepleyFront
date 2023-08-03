@@ -20,8 +20,6 @@ const OktaSignInWidget = ({ onSuccess, onError }) => {
             .then(onSuccess)
             .catch(onError);
 
-        console.log(widget);
-
         return () => widget.remove();
     }, [onSuccess, onError]);
 

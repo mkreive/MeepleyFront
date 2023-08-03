@@ -91,6 +91,18 @@ table {
     background: #9856f4 !important;
     border-color: #9856f4 !important;
 }
-// #okta-sign-in input[]{
-//     box-shadow: none;
-// }
+
+#okta-sign-in.auth-container .okta-form-input-field.focused-input,
+#okta-sign-in.auth-container .okta-form-input-field.focused-input:hover,
+#okta-sign-in.auth-container .okta-form-input-field.focused-input:active,
+#okta-sign-in.auth-container .okta-form-input-field.focused-input:focus {
+    border-color: #47a351 !important;
+}
+
+#okta-sign-in .focused-input,
+#okta-sign-in .link.help:focus,
+#okta-sign-in input[type='radio']:focus + label,
+#okta-sign-in input[type='text'] {
+    box-shadow: none !important;
+    color: #47a351 !important;
+}
