@@ -10,10 +10,12 @@ import GameCard from '../../components/GameCard/GameCard';
 import ReviewCard from '../../components/ReviewCard/ReviewCard';
 import SectionWithButton from '../../components/SectionWithButton/SectionWithButton';
 import NewGamesSection from '../../features/NewGamesSection/NewGamesSection';
+import { useOktaAuth } from '@okta/okta-react';
 
 const cn = classNames.bind(styles);
 
 export default function HomePage() {
+    const { authState } = useOktaAuth();
     const { loading, games, error } = useFetchGames('/api/games');
     const [game, setGame] = useState({});
     const [reviews, setReviews] = useState([]);
@@ -64,12 +66,16 @@ export default function HomePage() {
 
                 {reviews.length > 0 && !loadingReviews && reviews.map((r) => <ReviewCard key={r.id} review={r} />)}
 
-                <SectionWithButton
-                    title='Want to leave your review?'
-                    text='Sign in to be able to leave a review and use our services :)'
-                    button='Sign up'
-                    link='/login'
-                />
+                {!authState?.isAuthenticated && (
+                    <SectionWithButton
+                        title='Want to leave your review?'
+                        text='Sign in to be able to leave a review and use our services :)'
+                        button='Sign up'
+                        link='/login'
+                    />
+                )}
+
+                {/* {authState?.isAuthenticated && <ReviewField />} */}
             </section>
 
             <NewGamesSection loading={loading} error={error} games={games} />

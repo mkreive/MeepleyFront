@@ -8,19 +8,22 @@ import SignupSection from '../../features/SignupSection/SignupSection';
 import ServicesSection from '../../features/ServicesSection/ServicesSection';
 import ForumSection from '../../features/ForumSection/ForumSection';
 import ExploreSection from '../../features/ExploreSection/ExploreSection';
+import { useOktaAuth } from '@okta/okta-react';
 
 const cn = classNames.bind(styles);
 const gamesUrl = '/api/games';
 
 export default function HomePage() {
+    const { authState } = useOktaAuth();
     const { loading, games, error } = useFetchGames(gamesUrl);
+    console.log(authState);
 
     return (
         <div className={cn('wrapper')}>
             <Hero />
             <NewGamesSection loading={loading} games={games} error={error} />
-            <SignupSection />
-            <ServicesSection />
+            <SignupSection isAuthenticated={authState?.isAuthenticated} />
+            <ServicesSection isAuthenticated={authState?.isAuthenticated} />
             <ForumSection />
             <ExploreSection />
         </div>

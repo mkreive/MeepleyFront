@@ -9,10 +9,12 @@ import SectionWithButton from '../../components/SectionWithButton/SectionWithBut
 import NewReviewsSection from '../../features/NewReviewsSection/NewReviewsSection';
 import qs from 'qs';
 import Button from '../../components/Button/Button';
+import { useOktaAuth } from '@okta/okta-react';
 
 const cn = classNames.bind(styles);
 
 export default function GamesPage() {
+    const { authState } = useOktaAuth();
     const { loadingReviews, reviews, errorReviews } = useFetchReviews('/api/reviews');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -95,12 +97,21 @@ export default function GamesPage() {
                 </Button>
             )}
 
-            <SectionWithButton
-                title="Haven't find what you were looking for?"
-                text='Write us a letter and we will help you!'
-                button='Services'
-                link='/services'
-            />
+            {authState?.isAuthenticated ? (
+                <SectionWithButton
+                    title="Haven't find what you were looking for?"
+                    text='Write us a letter and we will help you!'
+                    button='Services'
+                    link='/services'
+                />
+            ) : (
+                <SectionWithButton
+                    title="Haven't find what you were looking for?"
+                    text='Sign in to use our services'
+                    button='Sign in'
+                    link='/login'
+                />
+            )}
 
             {reviews.length > 0 && (
                 <NewReviewsSection error={errorReviews} loading={loadingReviews} reviews={reviews} />

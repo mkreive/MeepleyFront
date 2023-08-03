@@ -16,7 +16,7 @@ export default function AuthLayout() {
     const customAuthHandler = () => {
         navigate.push('/login');
     };
-    const restoreOriginalUri = async () => {
+    const restoreOriginalUri = async (_oktaAuth, originalUri) => {
         navigate.replace(toRelativeUrl(originalUri || '/', window.location.origin));
     };
 

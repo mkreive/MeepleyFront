@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './navigation.module.scss';
-import Button from '../Button/Button';
 
 const cn = classNames.bind(styles);
 
@@ -35,9 +34,9 @@ export default function DesktopNavigation({ loggedIn, onLogout }) {
                     Login
                 </Link>
             ) : (
-                <Button className={cn('link')} onClick={onLogout}>
+                <Link className={cn('link')} onClick={onLogout}>
                     Logout
-                </Button>
+                </Link>
             )}
         </nav>
     );

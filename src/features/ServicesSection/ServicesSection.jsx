@@ -9,7 +9,7 @@ import ServicesImage from './ServicesImage';
 
 const cn = classNames.bind(styles);
 
-export default function ServicesSection() {
+export default function ServicesSection(props) {
     return (
         <div className={cn('container')}>
             <ServicesImage />
@@ -29,9 +29,15 @@ export default function ServicesSection() {
                     destination for all your board game needs. Let's roll the dice and have some fun!
                 </Paragraph>
 
-                <Link to='/services' className={cn('link')}>
-                    <Button theme='primary'>Services</Button>
-                </Link>
+                {props.isAuthenticated ? (
+                    <Link to='/services' className={cn('link')}>
+                        <Button theme='primary'>Services</Button>
+                    </Link>
+                ) : (
+                    <Link to='/login' className={cn('link')}>
+                        <Button theme='primary'>Sign in</Button>
+                    </Link>
+                )}
             </section>
         </div>
     );
