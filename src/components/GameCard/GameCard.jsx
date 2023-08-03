@@ -4,11 +4,12 @@ import styles from './game-card.module.scss';
 import Heading from '../Heading/Heading';
 import Paragraph from '../Paragraph/Paragraph';
 import CheckoutBox from '../CheckoutBox/CheckoutBox';
+import Loader from '../Loader/Loader';
 
 const cn = classNames.bind(styles);
 
 export default function GameCard(props) {
-    const { game, loadingGame, loans, loadingLoans } = props;
+    const { game, loadingGame, loans, loadingLoans, checkout, loadingCheckout, isAuthenticated } = props;
 
     return (
         <div className={cn('container')}>
@@ -49,12 +50,17 @@ export default function GameCard(props) {
                 </div>
             )}
 
-            <CheckoutBox
-                copies={game.copies}
-                copiesAvailable={game.copiesAvailable}
-                loans={loans}
-                loading={loadingLoans}
-            />
+            {loans && checkout && (
+                <CheckoutBox
+                    copies={game.copies}
+                    copiesAvailable={game.copiesAvailable}
+                    loans={loans}
+                    loadingLoans={loadingLoans}
+                    checkout={checkout}
+                    loadingCheckout={loadingCheckout}
+                    isAuthenticated={isAuthenticated}
+                />
+            )}
         </div>
     );
 }

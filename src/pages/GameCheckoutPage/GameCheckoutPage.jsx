@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchGame } from '../../utils/fetchGame';
 import { fetchReviews } from '../../utils/fetchReviews';
 import { fetchLoans } from '../../utils/fetchLoans';
+import { fetchCheckout } from '../../utils/fetchCheckout';
 import { useFetchGames } from '../../hooks/useFetchGames';
 import classNames from 'classnames/bind';
 import styles from './game-checkout-page.module.scss';
@@ -31,6 +32,12 @@ export default function HomePage() {
     const [loans, setLoans] = useState(0);
     const [loadingLoans, setLoadingLoans] = useState(true);
     const [loansError, setLoansError] = useState(false);
+
+    const [checkout, setCheckout] = useState(false);
+    const [loadingCheckout, setLoadingCheckout] = useState(true);
+    const [checkoutError, setCheckoutError] = useState(false);
+
+    // console.log(authState);
 
     // GAME
     useEffect(() => {
@@ -83,18 +90,45 @@ export default function HomePage() {
         getLoans();
     }, []);
 
+    // CHECKOUT
+    useEffect(() => {
+        const getCheckout = async function () {
+            if (authState && authState.isAuthenticated) {
+                const requestOptions = {
+                    method: 'GET',
+                    headers: {
+                        Authorization: `Bearer ${authState.accessToken?.accessToken}`,
+                        'Content-Type': 'application/json',
+                    },
+                };
+                const fetchedCheckout = await fetchCheckout(
+                    `/api/games/secure/ischeckedout/byuser/?gameId=${gameId}`,
+                    requestOptions
+                );
+                if (fetchedCheckout) {
+                    setLoadingCheckout(false);
+                    setCheckout(fetchedCheckout);
+                } else {
+                    setCheckoutError(fetchedCheckout);
+                }
+            }
+        };
+        getCheckout();
+    }, []);
+
     return (
         <div className={cn('container')}>
             <section className={cn(`${!gameError ? 'wrapper__game' : 'hidden'}`)}>
-                {!loadingGame && (
-                    <GameCard
-                        key={game.id}
-                        game={game}
-                        loadingGame={loadingGame}
-                        loans={loans}
-                        loadingLoans={loadingLoans}
-                    />
-                )}
+                <GameCard
+                    key={game.id}
+                    game={game}
+                    loadingGame={loadingGame}
+                    loans={loans}
+                    loadingLoans={loadingLoans}
+                    checkout={checkout}
+                    loadingCheckout={loadingCheckout}
+                    isAuthenticated={authState?.isAuthenticated}
+                />
             </section>
 
             <section className={cn(`${!reviewsError ? 'wrapper__reviews' : 'hidden'}`)}>
