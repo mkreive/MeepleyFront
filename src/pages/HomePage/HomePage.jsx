@@ -16,7 +16,6 @@ const gamesUrl = '/api/games';
 export default function HomePage() {
     const { authState } = useOktaAuth();
     const { loading, games, error } = useFetchGames(gamesUrl);
-    console.log(authState);
 
     return (
         <div className={cn('wrapper')}>

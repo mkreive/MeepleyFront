@@ -9,18 +9,18 @@ import Button from '../Button/Button';
 const cn = classNames.bind(styles);
 
 export default function CheckoutBox(props) {
-    const { copies, copiesAvailable } = props;
+    const { copies, copiesAvailable, loans, loading } = props;
 
     return (
         <div className={cn('checkout__box')}>
             <div className={cn('upper_block')}>
-                <Paragraph style='medium'>0/5 games reserved</Paragraph>
+                {!loading && <Paragraph style='medium'>{`${loans}/5 games reserved`}</Paragraph>}
                 <Heading tag='h3' style='small--secondary'>
                     Available
                 </Heading>
 
                 <Paragraph style='small'>
-                    {copies} copies / {copiesAvailable} available{' '}
+                    {copiesAvailable} copies / {copies} available
                 </Paragraph>
             </div>
 
