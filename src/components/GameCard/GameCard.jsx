@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './game-card.module.scss';
+import { fetchGame } from '../../utils/fetchGame';
 import Heading from '../Heading/Heading';
 import Paragraph from '../Paragraph/Paragraph';
 import CheckoutBox from '../CheckoutBox/CheckoutBox';
@@ -8,59 +9,76 @@ import Loader from '../Loader/Loader';
 
 const cn = classNames.bind(styles);
 
-export default function GameCard(props) {
-    const { game, loadingGame, loans, loadingLoans, checkout, loadingCheckout, isAuthenticated } = props;
+export default function GameCard({ gameId, authState }) {
+    const [game, setGame] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [bookReserved, setBookReserved] = useState(false);
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+        const getGame = async function () {
+            const fetchedGame = await fetchGame(`/api/games/${gameId}`);
+            if (fetchedGame) {
+                setLoading(false);
+                setGame(fetchedGame);
+            } else {
+                setError(fetchedGame);
+            }
+        };
+        getGame();
+    }, [bookReserved]);
 
     return (
         <div className={cn('container')}>
-            {loadingGame && <Loader />}
+            {loading && <Loader />}
 
-            {!loadingGame && game.img ? (
-                <img src={`data:image/jpeg;base64,${game.img}`} alt='board game cover' className={cn('image')} />
-            ) : (
-                <img
-                    src={require('../../assets/games/00-noimage.jpg')}
-                    alt='board game cover'
-                    className={cn('image')}
-                />
-            )}
+            {!error && !loading && (
+                <div className={cn('game__wrapper')}>
+                    {game.img ? (
+                        <img
+                            src={`data:image/jpeg;base64,${game.img}`}
+                            alt='board game cover'
+                            className={cn('image')}
+                        />
+                    ) : (
+                        <img
+                            src={require('../../assets/games/00-noimage.jpg')}
+                            alt='board game cover'
+                            className={cn('image')}
+                        />
+                    )}
+                    <div className={cn('text-container')}>
+                        <div className={cn('headings__container')}>
+                            <Heading tag='h1' style='big--black'>
+                                {game.title}
+                            </Heading>
+                            <Heading tag='h2' style='very-small--black'>
+                                {game.designer}
+                            </Heading>
+                            <Heading tag='h2' style='very-small--black'>
+                                {game.publisher}
+                            </Heading>
+                        </div>
 
-            {!loadingGame && (
-                <div className={cn('text-container')}>
-                    <div className={cn('headings__container')}>
-                        <Heading tag='h1' style='big--black'>
-                            {game.title}
-                        </Heading>
-                        <Heading tag='h2' style='very-small--black'>
-                            {game.designer}
-                        </Heading>
-                        <Heading tag='h2' style='very-small--black'>
-                            {game.publisher}
-                        </Heading>
+                        <div className={cn('headings__container')}>
+                            <Paragraph style='small--gray'>CATEGORY: {game.category.toLowerCase()}</Paragraph>
+                            <Paragraph style='small--gray'>COMPLEXITY: {game.complexity}</Paragraph>
+                            <Paragraph style='small--gray'>PLAYERS: {game.players}</Paragraph>
+                            <Paragraph style='small--gray'>PLAY TIME: {game.playingTime} min</Paragraph>
+                        </div>
+
+                        <Paragraph style='regular'>{game.description}</Paragraph>
                     </div>
-
-                    <div className={cn('headings__container')}>
-                        <Paragraph style='small--gray'>CATEGORY: {game.category.toLowerCase()}</Paragraph>
-                        <Paragraph style='small--gray'>COMPLEXITY: {game.complexity}</Paragraph>
-                        <Paragraph style='small--gray'>PLAYERS: {game.players}</Paragraph>
-                        <Paragraph style='small--gray'>PLAY TIME: {game.playingTime} min</Paragraph>
-                    </div>
-
-                    <Paragraph style='regular'>{game.description}</Paragraph>
                 </div>
             )}
 
-            {loans && checkout && (
-                <CheckoutBox
-                    copies={game.copies}
-                    copiesAvailable={game.copiesAvailable}
-                    loans={loans}
-                    loadingLoans={loadingLoans}
-                    checkout={checkout}
-                    loadingCheckout={loadingCheckout}
-                    isAuthenticated={isAuthenticated}
-                />
-            )}
+            <CheckoutBox
+                copies={game.copies}
+                copiesAvailable={game.copiesAvailable}
+                authState={authState}
+                gameId={gameId}
+                onCheckout={() => setBookReserved(true)}
+            />
         </div>
     );
 }

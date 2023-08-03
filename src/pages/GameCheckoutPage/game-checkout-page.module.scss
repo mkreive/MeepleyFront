@@ -18,20 +18,3 @@
         padding: 0 3rem;
     }
 }
-
-.wrapper__game {
-    width: 100%;
-    height: auto;
-    padding-bottom: 8rem;
-}
-
-.wrapper__reviews {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--spacer-xxxxl);
-    align-items: center;
-    width: 100%;
-    height: auto;
-    margin-bottom: 10rem;
-}

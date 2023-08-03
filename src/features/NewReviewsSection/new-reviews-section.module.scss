@@ -29,6 +29,11 @@
     gap: var(--spacer-xxxxxl);
     padding-left: var(--spacer-xxxxl);
 
+    @include respond(tab) {
+        gap: var(--spacer-xxxl);
+        padding-left: var(--spacer-xl);
+    }
+
     @include respond(phone) {
         flex-direction: column;
     }
