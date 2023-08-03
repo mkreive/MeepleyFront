@@ -56,6 +56,16 @@
     }
 }
 
+.regular--tertiary {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-tertiary);
+
+    @include respond(tab) {
+        font-size: var(--font-size-regular);
+    }
+}
+
 .regular--gray {
     font-size: var(--font-size-base);
     color: var(--color-gray-medium);
