@@ -14,7 +14,7 @@ export async function fetchReviews(fetchUrl) {
             for (const key in responseData) {
                 loadedReviews.push({
                     id: responseData[key].id,
-                    date: responseData[key].date,
+                    date: responseData[key].date.substring(0, responseData[key].date.indexOf('T')),
                     userEmail: responseData[key].userEmail,
                     userName: responseData[key].userEmail.substring(0, responseData[key].userEmail.indexOf('@')),
                     gameId: responseData[key].gameId,
