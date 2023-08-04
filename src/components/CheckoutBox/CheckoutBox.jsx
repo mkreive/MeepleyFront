@@ -75,7 +75,7 @@ export default function CheckoutBox({ copies, copiesAvailable, authState, gameId
                     </Button>
                 );
             } else if (checkout) {
-                return <Paragraph style='regular--bold'>You already reserved this game. Enjoy!</Paragraph>;
+                return <Paragraph style='regular--bold'>You reserved this game. Enjoy!</Paragraph>;
             } else if (!checkout) {
                 return <Paragraph style='regular--tertiary'>Too many games reserved..</Paragraph>;
             }

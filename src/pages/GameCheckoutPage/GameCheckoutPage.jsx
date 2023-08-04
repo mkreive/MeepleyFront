@@ -14,6 +14,8 @@ export default function GameCheckoutPage() {
     const { loading, games, error } = useFetchGames('/api/games');
     const gameId = window.location.pathname.split('/')[2];
 
+    useEffect(() => window.scrollTo(0, 0), []);
+
     return (
         <div className={cn('container')}>
             <GameCard gameId={gameId} authState={authState} />

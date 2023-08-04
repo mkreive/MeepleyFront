@@ -16,9 +16,10 @@ export async function fetchReviews(fetchUrl) {
                     id: responseData[key].id,
                     date: responseData[key].date,
                     userEmail: responseData[key].userEmail,
-                    userName: responseData[key].userName,
+                    userName: responseData[key].userEmail.substring(0, responseData[key].userEmail.indexOf('@')),
                     gameId: responseData[key].gameId,
                     gameReview: responseData[key].gameReview,
+                    rating: responseData[key].rating,
                 });
             }
         }
