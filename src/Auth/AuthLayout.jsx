@@ -17,8 +17,6 @@ export default function AuthLayout() {
         navigate.push('/login');
     };
     const restoreOriginalUri = async (_oktaAuth, originalUri) => {
-        // navigate.replace(toRelativeUrl(originalUri || '/', window.location.origin));
-
         navigate(toRelativeUrl(originalUri || '/', window.location.origin), { replace: true });
     };
 
