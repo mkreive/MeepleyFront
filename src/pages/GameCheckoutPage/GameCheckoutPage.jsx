@@ -14,7 +14,9 @@ export default function GameCheckoutPage() {
     const { authState } = useOktaAuth();
     const { loading, games, error } = useFetchGames('/api/games');
     const [reviewLeft, setReviewLeft] = useState(false);
+    const [reviewSubmitted, setReviewSubmitted] = useState(false);
     const [loadingUserReview, setLoadingUserReview] = useState(true);
+    const [reviewError, setReviewError] = useState(false);
     const gameId = window.location.pathname.split('/')[2];
 
     useEffect(() => window.scrollTo(0, 0), []);
@@ -38,16 +40,21 @@ export default function GameCheckoutPage() {
                     setLoadingUserReview(false);
                     setReviewLeft(fetchedUserReview);
                 } else {
-                    setError(fetchedUserReview);
+                    setReviewError(fetchedUserReview);
                 }
             }
         };
         getUserReview();
-    }, []);
+    }, [reviewSubmitted]);
 
     return (
         <div className={cn('container')}>
-            <GameCard gameId={gameId} authState={authState} isReviewLeft={reviewLeft} />
+            <GameCard
+                gameId={gameId}
+                authState={authState}
+                isReviewLeft={reviewLeft}
+                onReviewSubmit={() => setReviewSubmitted(true)}
+            />
 
             <ReviewsSection gameId={gameId} authState={authState} isReviewLeft={reviewLeft} />
 

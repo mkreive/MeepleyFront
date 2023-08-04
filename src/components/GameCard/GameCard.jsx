@@ -9,10 +9,10 @@ import Loader from '../Loader/Loader';
 
 const cn = classNames.bind(styles);
 
-export default function GameCard({ gameId, authState, isReviewLeft }) {
+export default function GameCard({ gameId, authState, isReviewLeft, onReviewSubmit }) {
     const [game, setGame] = useState({});
     const [loading, setLoading] = useState(true);
-    const [bookReserved, setBookReserved] = useState(false);
+    const [gameReserved, setGameReserved] = useState(false);
     const [error, setError] = useState(false);
 
     useEffect(() => {
@@ -26,7 +26,7 @@ export default function GameCard({ gameId, authState, isReviewLeft }) {
             }
         };
         getGame();
-    }, [bookReserved]);
+    }, [gameReserved]);
 
     return (
         <div className={cn('container')}>
@@ -77,8 +77,9 @@ export default function GameCard({ gameId, authState, isReviewLeft }) {
                 copiesAvailable={game.copiesAvailable}
                 authState={authState}
                 gameId={gameId}
-                onCheckout={() => setBookReserved(true)}
+                onCheckout={() => setGameReserved(true)}
                 isReviewLeft={isReviewLeft}
+                onReviewSubmit={onReviewSubmit}
             />
         </div>
     );

@@ -7,7 +7,6 @@ import Heading from '../../components/Heading/Heading';
 import ReviewCard from '../../components/ReviewCard/ReviewCard';
 import SectionWithButton from '../../components/SectionWithButton/SectionWithButton';
 import Paragraph from '../../components/Paragraph/Paragraph';
-import ReviewField from '../../components/ReviewField/ReviewField';
 
 const cn = classNames.bind(styles);
 
@@ -29,10 +28,6 @@ export default function ReviewsSection({ gameId, authState, isReviewLeft }) {
         getReviews();
     }, [isReviewLeft]);
 
-    const handleReviewSubmit = () => {
-        console.log('review left');
-    };
-
     return (
         <section className={cn(`${!error ? 'wrapper__reviews' : 'hidden'}`)}>
             <Heading tag='h2' style='big--black'>
@@ -43,7 +38,9 @@ export default function ReviewsSection({ gameId, authState, isReviewLeft }) {
 
             {reviews.length > 0 && !loading && reviews.map((r) => <ReviewCard key={r.id} review={r} />)}
 
-            {reviews.length === 0 && !loading && <Paragraph style='regular'>No reviews yet..</Paragraph>}
+            {reviews.length === 0 && !loading && (
+                <Paragraph style='regular'>Currently there is no reviews for this game</Paragraph>
+            )}
 
             {!authState?.isAuthenticated && (
                 <SectionWithButton
@@ -53,17 +50,6 @@ export default function ReviewsSection({ gameId, authState, isReviewLeft }) {
                     link='/login'
                 />
             )}
-
-            {authState?.isAuthenticated && isReviewLeft && (
-                <SectionWithButton
-                    title='Thank you!'
-                    text='Thank you for your review, check out your other orders.'
-                    button='Orders'
-                    link='/account'
-                />
-            )}
-
-            {authState?.isAuthenticated && !isReviewLeft && <ReviewField onReviewSubmit={handleReviewSubmit} />}
         </section>
     );
 }

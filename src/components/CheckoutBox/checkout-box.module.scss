@@ -38,6 +38,36 @@
 .bottom_block {
     display: flex;
     flex-direction: column;
-    gap: var(--spacer-s);
+    gap: var(--spacer-xl);
     padding-bottom: var(--spacer-l);
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--spacer-m);
+
+    &__input {
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        background-color: transparent;
+        font-size: var(--font-size-small);
+        line-height: 1.8rem;
+        resize: none;
+        font-family: inherit;
+        outline: none;
+        border-radius: var(--border-radius-s);
+        border: 0.2rem solid var(--color-white);
+        padding: var(--spacer-m) var(--spacer-m);
+
+        &:focus {
+            border: 0.2rem solid var(--color-primary);
+        }
+
+        &::placeholder {
+            color: black;
+        }
+    }
 }

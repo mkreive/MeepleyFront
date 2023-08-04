@@ -10,7 +10,15 @@ import Button from '../Button/Button';
 
 const cn = classNames.bind(styles);
 
-export default function CheckoutBox({ copies, copiesAvailable, authState, gameId, onCheckout, isReviewLeft }) {
+export default function CheckoutBox({
+    copies,
+    copiesAvailable,
+    authState,
+    gameId,
+    onCheckout,
+    isReviewLeft,
+    onReviewSubmit,
+}) {
     const [loans, setLoans] = useState(0);
     const [loadingLoans, setLoadingLoans] = useState(true);
     const [loansError, setLoansError] = useState(false);
@@ -18,6 +26,10 @@ export default function CheckoutBox({ copies, copiesAvailable, authState, gameId
     const [checkout, setCheckout] = useState(false);
     const [loadingCheckout, setLoadingCheckout] = useState(true);
     const [checkoutError, setCheckoutError] = useState(false);
+
+    const [gameReview, setGameReview] = useState('');
+    const [gameRating, setGameRating] = useState(5);
+    const [reviewSubmited, setReviewSubmited] = useState(false);
 
     useEffect(() => {
         const getLoans = async function () {
@@ -67,7 +79,7 @@ export default function CheckoutBox({ copies, copiesAvailable, authState, gameId
     }, [authState]);
 
     function buttonRender() {
-        if (authState && authState.isAuthenticated) {
+        if (authState && authState?.isAuthenticated) {
             if (!checkout && loans < 5 && copiesAvailable > 0) {
                 return (
                     <Button theme='secondary' onClick={reserveGame}>
@@ -87,13 +99,35 @@ export default function CheckoutBox({ copies, copiesAvailable, authState, gameId
             }
         } else {
             return (
-                <div className={cn('button_block')}>
-                    <Link to='/login'>
-                        <Button theme='secondary'>Sign in</Button>
-                    </Link>
-                </div>
+                <Link to='/login'>
+                    <Button theme='secondary'>Sign in</Button>
+                </Link>
             );
         }
+    }
+
+    function reviewRender() {
+        if (authState?.isAuthenticated && !isReviewLeft) {
+            return (
+                <form action='POST' className={cn('review')}>
+                    <label className={cn('review__label')}>
+                        <textarea
+                            id='gameReview'
+                            className={cn('review__input')}
+                            placeholder='Leave your review here...'
+                            rows={6}
+                            onChange={(e) => setGameReview(e.target.value)}
+                        ></textarea>
+                    </label>
+                    <Button theme='primary' onClick={submitReview}>
+                        Submit
+                    </Button>
+                </form>
+            );
+        } else if (authState?.isAuthenticated && isReviewLeft) {
+            return <Paragraph style='regular'>Thank you for your review!</Paragraph>;
+        }
+        return <Paragraph style='regular--gray'>Sign in to reserve games and leave reviews</Paragraph>;
     }
 
     async function reserveGame() {
@@ -111,6 +145,25 @@ export default function CheckoutBox({ copies, copiesAvailable, authState, gameId
         }
         setCheckout(true);
         onCheckout(true);
+    }
+
+    async function submitReview() {
+        const url = `/api/reviews/secure`;
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ gameRating, gameReview, gameId }),
+        };
+
+        const returnResponse = await fetch(url, requestOptions);
+        if (!returnResponse.ok) {
+            throw new Error('Something went wrong!');
+        }
+        setReviewSubmited(true);
+        onReviewSubmit(true);
     }
 
     return (
@@ -142,19 +195,9 @@ export default function CheckoutBox({ copies, copiesAvailable, authState, gameId
             <span className={cn('line')}></span>
 
             <div className={cn('bottom_block')}>
-                {authState && authState.isAuthenticated && isReviewLeft && (
-                    <Paragraph style='regular'>Thank you for your review!</Paragraph>
-                )}
-
-                {authState && authState.isAuthenticated && !isReviewLeft && (
-                    <Paragraph style='regular'>Leave a review</Paragraph>
-                )}
-
-                {!authState.isAuthenticated && (
-                    <Paragraph style='regular--gray'>Sign in to reserve games and leave reviews</Paragraph>
-                )}
-
                 <Paragraph style='regular'>This number can change until placing order has been complete.</Paragraph>
+
+                {reviewRender()}
             </div>
         </div>
     );
