@@ -66,3 +66,12 @@
         border: 0.2rem solid var(--color-primary);
     }
 }
+
+.disabled {
+    font-family: var(--font-family-regular);
+    background-color: transparent;
+    color: var(--color-gray-medium);
+    border: 0.2rem solid var(--color-gray-medium);
+    font-size: var(--font-size-base);
+    cursor: not-allowed;
+}

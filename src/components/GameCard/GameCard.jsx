@@ -9,7 +9,7 @@ import Loader from '../Loader/Loader';
 
 const cn = classNames.bind(styles);
 
-export default function GameCard({ gameId, authState }) {
+export default function GameCard({ gameId, authState, isReviewLeft }) {
     const [game, setGame] = useState({});
     const [loading, setLoading] = useState(true);
     const [bookReserved, setBookReserved] = useState(false);
@@ -78,6 +78,7 @@ export default function GameCard({ gameId, authState }) {
                 authState={authState}
                 gameId={gameId}
                 onCheckout={() => setBookReserved(true)}
+                isReviewLeft={isReviewLeft}
             />
         </div>
     );

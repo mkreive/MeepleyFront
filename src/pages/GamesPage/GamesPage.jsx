@@ -23,8 +23,6 @@ export default function GamesPage() {
     const [categories, setCategories] = useState([]);
     const [complexities, setComplexities] = useState([]);
 
-    // TODO pagination sutvarkyti
-
     const handleSearch = function (props) {
         setTitle(props.trim().toLowerCase());
     };
@@ -66,6 +64,7 @@ export default function GamesPage() {
         const url = `/api/games/search/findGames${qs.stringify(params, {
             addQueryPrefix: true,
             arrayFormat: 'comma',
+            encode: false,
             skipNulls: true,
         })}`;
 

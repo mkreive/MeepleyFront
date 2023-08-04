@@ -35,6 +35,15 @@
     font-family: var(--font-family-heading);
     font-size: var(--font-size-heading-medium);
     font-weight: var(--font-weight-bold);
+    letter-spacing: 0.01rem;
+}
+
+.medium--tertiary {
+    color: var(--color-tertiary);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-heading-medium);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.01rem;
 }
 
 .medium--primary {
@@ -42,6 +51,7 @@
     font-family: var(--font-family-heading);
     font-size: var(--font-size-heading-medium);
     font-weight: var(--font-weight-bold);
+    letter-spacing: 0.01rem;
 }
 
 .small {

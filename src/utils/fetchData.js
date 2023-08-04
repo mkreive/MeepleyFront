@@ -1,7 +1,7 @@
-export async function fetchData(fetchUrl) {
+export async function fetchData(fetchUrl, options = '') {
     let loadedData = {};
     try {
-        const response = await fetch(fetchUrl);
+        const response = await fetch(fetchUrl, options);
         if (!response.ok) {
             throw new Error('Failed to fetch');
         }

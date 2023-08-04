@@ -47,12 +47,12 @@ export default function Header() {
     return (
         <header className={cn('container')}>
             <Logo />
-            {!isMobile && <DesktopNavigation loggedIn={authState.isAuthenticated} onLogout={handleLogout} />}
+            {!isMobile && <DesktopNavigation loggedIn={authState?.isAuthenticated} onLogout={handleLogout} />}
             {isMobile && <Burger onChange={handleMenuClick} checked={dropMenuShown} />}
             {dropMenuShown && (
                 <MobileNavigation
                     onClick={handleMenuClick}
-                    loggedIn={authState.isAuthenticated}
+                    loggedIn={authState?.isAuthenticated}
                     onLogout={handleLogout}
                 />
             )}

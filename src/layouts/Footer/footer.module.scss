@@ -9,11 +9,9 @@
     background-color: var(--color-purple-gray);
     margin-top: 20rem;
 
-    // @include respond(phone) {
-    //     height: 33rem;
-    //     flex-direction: column;
-    //     align-items: center;
-    // }
+    @include respond(phone) {
+        height: auto;
+    }
 }
 
 .wrapper {
@@ -24,12 +22,22 @@
     align-items: center;
     max-width: 160rem;
     opacity: 0.9;
+
+    @include respond(phone) {
+        padding-bottom: var(--spacer-xxxxl);
+    }
 }
 
 .nav {
     display: flex;
     flex-direction: row;
     gap: 2rem;
+
+    @include respond(phone) {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacer-xs);
+    }
 }
 
 .link {

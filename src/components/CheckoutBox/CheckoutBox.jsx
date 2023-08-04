@@ -10,7 +10,7 @@ import Button from '../Button/Button';
 
 const cn = classNames.bind(styles);
 
-export default function CheckoutBox({ copies, copiesAvailable, authState, gameId, onCheckout }) {
+export default function CheckoutBox({ copies, copiesAvailable, authState, gameId, onCheckout, isReviewLeft }) {
     const [loans, setLoans] = useState(0);
     const [loadingLoans, setLoadingLoans] = useState(true);
     const [loansError, setLoansError] = useState(false);
@@ -68,7 +68,7 @@ export default function CheckoutBox({ copies, copiesAvailable, authState, gameId
 
     function buttonRender() {
         if (authState && authState.isAuthenticated) {
-            if (!checkout && loans < 5) {
+            if (!checkout && loans < 5 && copiesAvailable > 0) {
                 return (
                     <Button theme='secondary' onClick={reserveGame}>
                         Reserve
@@ -76,13 +76,18 @@ export default function CheckoutBox({ copies, copiesAvailable, authState, gameId
                 );
             } else if (checkout) {
                 return <Paragraph style='regular--bold'>You reserved this game. Enjoy!</Paragraph>;
-            } else if (!checkout) {
+            } else if (!checkout && loans === 5) {
                 return <Paragraph style='regular--tertiary'>Too many games reserved..</Paragraph>;
+            } else if (!checkout && copiesAvailable === 0) {
+                return (
+                    <Button theme='disabled' disabled={true}>
+                        Reserve
+                    </Button>
+                );
             }
         } else {
             return (
                 <div className={cn('button_block')}>
-                    <Paragraph style='regular--gray'>Sign in to reserve games and leave reviews</Paragraph>
                     <Link to='/login'>
                         <Button theme='secondary'>Sign in</Button>
                     </Link>
@@ -111,21 +116,44 @@ export default function CheckoutBox({ copies, copiesAvailable, authState, gameId
     return (
         <div className={cn('checkout__box')}>
             <div className={cn('upper_block')}>
-                <Paragraph style='medium'>{`${loans}/5 games reserved`}</Paragraph>
-                <span className={cn('line')}></span>
+                {!loadingLoans && (
+                    <>
+                        <Paragraph style='medium'>{`${loans}/5 games reserved`}</Paragraph>
+                        <span className={cn('line')}></span>
+                    </>
+                )}
 
-                <Heading tag='h3' style='medium--secondary'>
-                    Available
-                </Heading>
+                {copiesAvailable > 0 ? (
+                    <Heading tag='h3' style='medium--secondary'>
+                        Available
+                    </Heading>
+                ) : (
+                    <Heading tag='h3' style='medium--tertiary'>
+                        Not available
+                    </Heading>
+                )}
 
                 <Paragraph style='small'>
                     {copies} copies / {copiesAvailable} available
                 </Paragraph>
+
                 {buttonRender()}
             </div>
             <span className={cn('line')}></span>
 
             <div className={cn('bottom_block')}>
+                {authState && authState.isAuthenticated && isReviewLeft && (
+                    <Paragraph style='regular'>Thank you for your review!</Paragraph>
+                )}
+
+                {authState && authState.isAuthenticated && !isReviewLeft && (
+                    <Paragraph style='regular'>Leave a review</Paragraph>
+                )}
+
+                {!authState.isAuthenticated && (
+                    <Paragraph style='regular--gray'>Sign in to reserve games and leave reviews</Paragraph>
+                )}
+
                 <Paragraph style='regular'>This number can change until placing order has been complete.</Paragraph>
             </div>
         </div>

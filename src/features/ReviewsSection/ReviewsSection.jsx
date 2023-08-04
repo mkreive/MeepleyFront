@@ -7,10 +7,11 @@ import Heading from '../../components/Heading/Heading';
 import ReviewCard from '../../components/ReviewCard/ReviewCard';
 import SectionWithButton from '../../components/SectionWithButton/SectionWithButton';
 import Paragraph from '../../components/Paragraph/Paragraph';
+import ReviewField from '../../components/ReviewField/ReviewField';
 
 const cn = classNames.bind(styles);
 
-export default function ReviewsSection({ gameId, isAuthenticated }) {
+export default function ReviewsSection({ gameId, authState, isReviewLeft }) {
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -26,9 +27,11 @@ export default function ReviewsSection({ gameId, isAuthenticated }) {
             }
         };
         getReviews();
-    }, []);
+    }, [isReviewLeft]);
 
-    // TODO Review rasymui bloka padaryti
+    const handleReviewSubmit = () => {
+        console.log('review left');
+    };
 
     return (
         <section className={cn(`${!error ? 'wrapper__reviews' : 'hidden'}`)}>
@@ -42,7 +45,7 @@ export default function ReviewsSection({ gameId, isAuthenticated }) {
 
             {reviews.length === 0 && !loading && <Paragraph style='regular'>No reviews yet..</Paragraph>}
 
-            {!isAuthenticated && (
+            {!authState?.isAuthenticated && (
                 <SectionWithButton
                     title='Want to leave your review?'
                     text='Sign in to be able to leave a review and use our services :)'
@@ -51,7 +54,16 @@ export default function ReviewsSection({ gameId, isAuthenticated }) {
                 />
             )}
 
-            {/* {authState?.isAuthenticated && <ReviewField />} */}
+            {authState?.isAuthenticated && isReviewLeft && (
+                <SectionWithButton
+                    title='Thank you!'
+                    text='Thank you for your review, check out your other orders.'
+                    button='Orders'
+                    link='/account'
+                />
+            )}
+
+            {authState?.isAuthenticated && !isReviewLeft && <ReviewField onReviewSubmit={handleReviewSubmit} />}
         </section>
     );
 }
