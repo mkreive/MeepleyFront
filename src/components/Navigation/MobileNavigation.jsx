@@ -22,11 +22,6 @@ export default function MobileNavigation({ onClick, loggedIn, onLogout }) {
                 </Link>
             )}
 
-            {loggedIn && (
-                <Link className={cn('link')} to='/services'>
-                    Services
-                </Link>
-            )}
             {!loggedIn ? (
                 <Link className={cn('link')} to='/login'>
                     Login

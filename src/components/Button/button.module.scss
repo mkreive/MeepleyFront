@@ -41,14 +41,14 @@
 
 .tertiary {
     background-color: var(--color-tertiary);
-    color: var(--color-black);
+    color: var(--color-white);
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-bold);
     border: none;
 
     &:hover {
         transition: all 0.15s ease-in;
-        background-color: #e195b5;
+        background-color: var(--color-tertiary);
     }
 }
 

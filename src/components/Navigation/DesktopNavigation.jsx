@@ -24,11 +24,6 @@ export default function DesktopNavigation({ loggedIn, onLogout }) {
                 </Link>
             )}
 
-            {loggedIn && (
-                <Link className={cn('link')} to='/services'>
-                    Services
-                </Link>
-            )}
             {!loggedIn ? (
                 <Link className={cn('link')} to='/login'>
                     Login

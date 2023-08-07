@@ -32,12 +32,6 @@ export default function Header() {
                             Account
                         </Link>
                     )}
-
-                    {authState?.isAuthenticated && (
-                        <Link className={cn('link')} to='/services'>
-                            Services
-                        </Link>
-                    )}
                 </nav>
             </div>
         </header>
