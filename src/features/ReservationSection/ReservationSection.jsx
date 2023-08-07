@@ -36,6 +36,23 @@ export default function ReviewsSection() {
         setReturnGame(!returnGame);
     }
 
+    async function handleRenewLoan(props) {
+        const url = `/api/games/secure/renew/loan?gameId=${props}`;
+        const requestOptions = {
+            method: 'PUT',
+            headers: {
+                Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
+                'Content-Type': 'application/json',
+            },
+        };
+
+        const returnResponse = await fetch(url, requestOptions);
+        if (!returnResponse.ok) {
+            throw new Error('Something went wrong!');
+        }
+        setReturnGame(!returnGame);
+    }
+
     useEffect(() => {
         const getUserLoans = async function () {
             if (authState && authState?.isAuthenticated) {
@@ -75,6 +92,7 @@ export default function ReviewsSection() {
                         game={loan.game}
                         daysLeft={loan.daysLeft}
                         onReturnGame={handleReturnGame}
+                        onRenewLoan={handleRenewLoan}
                     />
                 ))}
 
