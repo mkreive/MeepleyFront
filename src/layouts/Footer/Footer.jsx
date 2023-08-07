@@ -13,7 +13,7 @@ export default function Header() {
     const { authState } = useOktaAuth();
 
     return (
-        <header className={cn('container')}>
+        <footer className={cn('container')}>
             <div className={cn('wrapper')}>
                 <Paragraph style='regular--white'>Copyright © 2023 MEEPLEY</Paragraph>
                 <nav className={cn('nav')}>
@@ -34,6 +34,6 @@ export default function Header() {
                     )}
                 </nav>
             </div>
-        </header>
+        </footer>
     );
 }

@@ -1,6 +1,6 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
-import { Security } from '@okta/okta-react';
+import { Security, useOktaAuth } from '@okta/okta-react';
 import { oktaConfig } from '../lib/oktaConfig';
 import React from 'react';
 import classNames from 'classnames/bind';

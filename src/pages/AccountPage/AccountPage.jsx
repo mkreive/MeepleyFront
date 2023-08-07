@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './account-page.module.scss';
-import FilterBar from '../../components/FilterBar/FilterBar';
 import Heading from '../../components/Heading/Heading';
+import RadioBar from '../../components/RadioBar/RadioBar';
+import ReservationsSection from '../../features/ReservationSection/ReservationSection';
 
 const cn = classNames.bind(styles);
 
 export default function AccountPage() {
-    const [option, setOption] = useState('reservation');
+    const [page, setPage] = useState('reservation');
 
     return (
         <div className={cn('container')}>
@@ -15,50 +16,14 @@ export default function AccountPage() {
                 <Heading tag='h1' style='big--black'>
                     Your Account
                 </Heading>
-                <div className={cn('wrapper')}>
-                    <form className={cn('inner-wrapper')}>
-                        <input
-                            onClick={(e) => setOption(e.target.value.toLowerCase())}
-                            className={cn('radio-button')}
-                            type='radio'
-                            name='radio-group'
-                            value='reservation'
-                            checked={option === 'reservation'}
-                            id='1'
-                            defaultChecked
-                        />
-                        <label htmlFor='1' className={cn('radio-label')}>
-                            RESERVATION
-                        </label>
-
-                        <input
-                            onClick={(e) => setOption(e.target.value.toLowerCase())}
-                            className={cn('radio-button')}
-                            type='radio'
-                            name='radio-group'
-                            value='history'
-                            id='2'
-                            checked={option === 'history'}
-                        />
-                        <label htmlFor='2' className={cn('radio-label')}>
-                            HISTORY
-                        </label>
-
-                        <input
-                            onClick={(e) => setOption(e.target.value.toLowerCase())}
-                            className={cn('radio-button')}
-                            type='radio'
-                            name='radio-group'
-                            value='service'
-                            id='3'
-                            checked={option === 'service'}
-                        />
-                        <label htmlFor='3' className={cn('radio-label')}>
-                            SERVICE
-                        </label>
-                    </form>
-                </div>
+                <RadioBar onRadioChange={(props) => setPage(props)} />
             </div>
+
+            {page === 'reservation' && <ReservationsSection />}
+
+            {/* {page === 'history' && <HistorySection />} */}
+
+            {/* {page === 'message' && <MessageSection />} */}
         </div>
     );
 }

@@ -2,6 +2,7 @@ import { Navigate } from 'react-router-dom';
 import { useOktaAuth } from '@okta/okta-react';
 import Loader from '../components/Loader/Loader';
 import OktaSignInWidget from './OktaSignInWidget';
+import LoginPage from '../pages/LoginPage/LoginPage';
 
 const LoginWidget = ({ config }) => {
     const { oktaAuth, authState } = useOktaAuth();
@@ -21,7 +22,9 @@ const LoginWidget = ({ config }) => {
     return authState.isAuthenticated ? (
         <Navigate to={{ pathname: '/' }} />
     ) : (
-        <OktaSignInWidget config={config} onSuccess={onSuccess} onError={onError} />
+        <LoginPage>
+            <OktaSignInWidget config={config} onSuccess={onSuccess} onError={onError} />
+        </LoginPage>
     );
 };
 

@@ -1,0 +1,10 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-xxl);
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
