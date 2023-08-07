@@ -9,10 +9,7 @@ import Button from '../Button/Button';
 const cn = classNames.bind(styles);
 
 export default function ReservationCard(props) {
-    const { game, daysLeft } = props;
-
-    console.log(game);
-    console.log(daysLeft);
+    const { game, daysLeft, onReturnGame } = props;
 
     return (
         <div className={cn('container')}>
@@ -35,7 +32,9 @@ export default function ReservationCard(props) {
 
                 <Paragraph style='regular'>{`DAYS LEFT: ${daysLeft} days`}</Paragraph>
                 <div className={cn('buttons__group')}>
-                    <Button theme='black'>Return Game</Button>
+                    <Button theme='black' onClick={() => onReturnGame(game.id)}>
+                        Return Game
+                    </Button>
                     <Button theme='black'>Renew loan for 7 days</Button>
                 </div>
                 <span className={cn('line')}></span>

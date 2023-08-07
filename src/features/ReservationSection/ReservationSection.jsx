@@ -8,6 +8,7 @@ import Heading from '../../components/Heading/Heading';
 import SectionWithButton from '../../components/SectionWithButton/SectionWithButton';
 import Paragraph from '../../components/Paragraph/Paragraph';
 import ReservationCard from '../../components/ReservationCard/ReservationCard';
+import { useSearchParams } from 'react-router-dom';
 
 const cn = classNames.bind(styles);
 
@@ -16,6 +17,24 @@ export default function ReviewsSection() {
     const [loans, setLoans] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const [returnGame, setReturnGame] = useState(false);
+
+    async function handleReturnGame(props) {
+        console.log(props);
+        const url = `/api/games/secure/return?gameId=${props}`;
+        const requestOptions = {
+            method: 'PUT',
+            headers: {
+                Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
+                'Content-Type': 'application/json',
+            },
+        };
+        const returnResponse = await fetch(url, requestOptions);
+        if (!returnResponse.ok) {
+            throw new Error('Something went wrong!');
+        }
+        setReturnGame(!returnGame);
+    }
 
     useEffect(() => {
         const getUserLoans = async function () {
@@ -38,7 +57,7 @@ export default function ReviewsSection() {
             }
         };
         getUserLoans();
-    }, [authState]);
+    }, [authState, returnGame]);
 
     return (
         <section className={cn(`${!error ? 'wrapper' : 'hidden'}`)}>
@@ -50,7 +69,14 @@ export default function ReviewsSection() {
 
             {loans.length > 0 &&
                 !loading &&
-                loans.map((loan, i) => <ReservationCard key={i} game={loan.game} daysLeft={loan.daysLeft} />)}
+                loans.map((loan, i) => (
+                    <ReservationCard
+                        key={i}
+                        game={loan.game}
+                        daysLeft={loan.daysLeft}
+                        onReturnGame={handleReturnGame}
+                    />
+                ))}
 
             {loans.length === 0 && !loading && (
                 <Paragraph style='regular'>Currently there is no reservations.</Paragraph>
