@@ -23,27 +23,40 @@ export default function ReservationCard(props) {
                 />
             )}
 
-            <div className={cn('loans__container')}>
+            <div className={cn('game__container')}>
                 <Heading tag='h3' style='medium'>
                     {game.title}
                 </Heading>
-                <Paragraph style='regular'>{game.intro}</Paragraph>
-                <span className={cn('line')}></span>
-
-                <Paragraph style='regular'>{`DAYS LEFT: ${daysLeft} days`}</Paragraph>
-                <div className={cn('buttons__group')}>
-                    <Button theme='black' onClick={() => onReturnGame(game.id)}>
-                        Return Game
-                    </Button>
-                    <Button theme='black' onClick={() => onRenewLoan(game.id)}>
-                        Renew loan for 7 days
-                    </Button>
+                <div className={cn('info__container')}>
+                    <Paragraph style='small'>{game.designer}</Paragraph>
+                    <Paragraph style='small'>{game.publisher}</Paragraph>
+                    <Paragraph style='small'>{game.players}</Paragraph>
+                    <Paragraph style='small'>{game.playingTime}</Paragraph>
                 </div>
+                <Paragraph style='regular'>{game.intro}</Paragraph>
+                <Link to={`/checkout/${game.id}`} className={cn('link')}>
+                    <Button theme='black'>Details</Button>
+                </Link>
+            </div>
+
+            <div className={cn('loans__container')}>
+                <Paragraph style='small'>{`Due in ${daysLeft} days`}</Paragraph>
+                <Button theme='black--small' onClick={() => onReturnGame(game.id)}>
+                    Return game
+                </Button>
                 <span className={cn('line')}></span>
 
-                <Paragraph style='regular'>Help others by reviewing your recent loan.</Paragraph>
+                <Paragraph style='small'>
+                    {daysLeft < 0 ? 'Late dues cannot be renewed' : 'Renew your loan for 7 days'}
+                </Paragraph>
+                <Button theme={daysLeft < 0 ? 'disabled' : 'black--small'} onClick={() => onRenewLoan(game.id)}>
+                    Renew loan
+                </Button>
+                <span className={cn('line')}></span>
+
+                <Paragraph style='small'>Help others by reviewing your recent loan.</Paragraph>
                 <Link className={cn('link')} to={`/checkout/${game.id}`}>
-                    <Button theme='black'>Leave a review</Button>
+                    <Button theme='black--small'>Leave a review</Button>
                 </Link>
             </div>
         </div>

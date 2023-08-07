@@ -4,6 +4,7 @@ import styles from './account-page.module.scss';
 import Heading from '../../components/Heading/Heading';
 import RadioBar from '../../components/RadioBar/RadioBar';
 import ReservationsSection from '../../features/ReservationSection/ReservationSection';
+import HistorySection from '../../features/HistorySection/HistorySection';
 
 const cn = classNames.bind(styles);
 
@@ -21,7 +22,7 @@ export default function AccountPage() {
 
             {page === 'reservation' && <ReservationsSection />}
 
-            {/* {page === 'history' && <HistorySection />} */}
+            {page === 'history' && <HistorySection />}
 
             {/* {page === 'message' && <MessageSection />} */}
         </div>
