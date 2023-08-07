@@ -7,7 +7,7 @@
     display: flex;
     overflow: hidden;
     position: relative;
-    width: auto;
+    width: max-content;
 }
 
 .inner-wrapper {
@@ -15,7 +15,6 @@
     flex-direction: row;
     position: relative;
     transition: all 250ms linear;
-    width: auto;
 }
 
 .radio-label {

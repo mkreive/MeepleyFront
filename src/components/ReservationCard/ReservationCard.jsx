@@ -40,11 +40,9 @@ export default function ReservationCard(props) {
                 </div>
                 <span className={cn('line')}></span>
 
+                <Paragraph style='regular'>Help others by reviewing your recent loan.</Paragraph>
                 <Link className={cn('link')} to={`/checkout/${game.id}`}>
                     <Button theme='black'>Leave a review</Button>
-                </Link>
-                <Link className={cn('link')} to={`/games`}>
-                    <Button theme='black'>Search more games</Button>
                 </Link>
             </div>
         </div>
