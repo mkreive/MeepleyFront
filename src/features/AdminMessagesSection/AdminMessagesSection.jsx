@@ -5,10 +5,8 @@ import classNames from 'classnames/bind';
 import styles from './admin-messages-section.module.scss';
 import Loader from '../../components/Loader/Loader';
 import Heading from '../../components/Heading/Heading';
-import SectionWithButton from '../../components/SectionWithButton/SectionWithButton';
 import Paragraph from '../../components/Paragraph/Paragraph';
-import NewMessageField from '../../components/NewMessageField/NewMessageField';
-import MessageCard from '../../components/MessageCard/MessageCard';
+import AdminMessageCard from '../../components/AdminMessageCard/AdminMessageCard';
 
 const cn = classNames.bind(styles);
 
@@ -29,7 +27,10 @@ export default function AdminMessagesSection() {
                         'Content-Type': 'application/json',
                     },
                 };
-                const fetchedMessages = await fetchMessages(`/api/messages/search/findByClosed`, requestOptions);
+                const fetchedMessages = await fetchMessages(
+                    `/api/messages/search/findByClosed?closed=false`,
+                    requestOptions
+                );
 
                 if (fetchedMessages) {
                     setLoading(false);
@@ -46,29 +47,18 @@ export default function AdminMessagesSection() {
     return (
         <section className={cn(`${!error ? 'wrapper' : 'hidden'}`)}>
             <Heading tag='h2' style='medium'>
-                New Message
-            </Heading>
-            <NewMessageField onMessageSend={(props) => setSendMessage(props)} />
-            <span className={cn('line')}></span>
-
-            <Heading tag='h2' style='medium'>
-                Messages History
+                Pending Questions
             </Heading>
 
             {loading && <Loader />}
 
-            {messages.length > 0 && !loading && messages.map((msg, i) => <MessageCard key={i} message={msg} />)}
+            {messages.length > 0 &&
+                !loading &&
+                messages.map((msg, i) => (
+                    <AdminMessageCard key={i} message={msg} onMessageSend={(props) => setSendMessage(props)} />
+                ))}
 
-            {messages.length === 0 && !loading && (
-                <Paragraph style='regular'>Currently there is no messages.</Paragraph>
-            )}
-
-            {messages.length === 0 && !loading && (
-                <SectionWithButton
-                    title='Have any questions?'
-                    text='Write us a message and we will respond as soon as we can!'
-                />
-            )}
+            {messages.length === 0 && !loading && <Paragraph style='regular'>No pending questions.</Paragraph>}
         </section>
     );
 }

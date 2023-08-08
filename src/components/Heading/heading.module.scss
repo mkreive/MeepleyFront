@@ -109,6 +109,13 @@
     font-weight: var(--font-weight-regular);
 }
 
+.very-very-small--bold {
+    color: var(--color-white);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-regular);
+    font-weight: 700;
+}
+
 .very-small--gray {
     color: var(--color-gray-medium);
     font-family: var(--font-family-heading);
