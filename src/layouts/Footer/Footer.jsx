@@ -23,13 +23,14 @@ export default function Header() {
                     <Link className={cn('link')} to='/games'>
                         Games
                     </Link>
-                    <Link className={cn('link')} to='/forums'>
-                        Forums
-                    </Link>
 
-                    {authState?.isAuthenticated && (
+                    {authState?.isAuthenticated ? (
                         <Link className={cn('link')} to='/account'>
                             Account
+                        </Link>
+                    ) : (
+                        <Link className={cn('link')} to='/login'>
+                            Login
                         </Link>
                     )}
                 </nav>

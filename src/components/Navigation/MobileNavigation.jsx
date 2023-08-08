@@ -13,9 +13,7 @@ export default function MobileNavigation({ onClick, loggedIn, onLogout }) {
             <Link className={cn('link')} to='/games'>
                 Games
             </Link>
-            <Link className={cn('link')} to='/forums'>
-                Forums
-            </Link>
+
             {loggedIn && (
                 <Link className={cn('link')} to='/account'>
                     Account
