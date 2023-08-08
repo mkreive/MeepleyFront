@@ -13,6 +13,4 @@ export async function fetchHistory(fetchUrl, options = {}) {
     } catch (err) {
         return err;
     }
-
-    return loadedReviews;
 }

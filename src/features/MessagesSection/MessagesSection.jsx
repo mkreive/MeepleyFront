@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
-import { fetchData } from '../../utils/fetchData';
+import { fetchMessages } from '../../utils/fetchMessages';
 import classNames from 'classnames/bind';
 import styles from './messages-section.module.scss';
 import Loader from '../../components/Loader/Loader';
@@ -20,19 +20,7 @@ export default function MessagesSection() {
     const [sendMessage, setSendMessage] = useState(false);
 
     async function handleSendMessage(props) {
-        const url = `/api/games/secure/return?gameId=${props}`;
-        const requestOptions = {
-            method: 'PUT',
-            headers: {
-                Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
-                'Content-Type': 'application/json',
-            },
-        };
-        const returnResponse = await fetch(url, requestOptions);
-        if (!returnResponse.ok) {
-            throw new Error('Something went wrong!');
-        }
-        setReturnGame(!returnGame);
+        setSendMessage(props);
     }
 
     useEffect(() => {
@@ -45,11 +33,12 @@ export default function MessagesSection() {
                         'Content-Type': 'application/json',
                     },
                 };
-                const fetchedMessages = await fetchData(`/api/messages/secure`, requestOptions);
+                const fetchedMessages = await fetchMessages(`/api/messages`, requestOptions);
 
                 if (fetchedMessages) {
                     setLoading(false);
                     setMessages(fetchedMessages);
+                    setSendMessage(false);
                 } else {
                     setError(fetchedMessages);
                 }
@@ -63,7 +52,7 @@ export default function MessagesSection() {
             <Heading tag='h2' style='medium'>
                 New Message
             </Heading>
-            <NewMessageField />
+            <NewMessageField onMessageSend={handleSendMessage} />
             <span className={cn('line')}></span>
 
             <Heading tag='h2' style='medium'>
@@ -80,10 +69,8 @@ export default function MessagesSection() {
 
             {messages.length === 0 && !loading && (
                 <SectionWithButton
-                    title='Could not find a game you were looking for? Have any questions?'
+                    title='Have any questions?'
                     text='Write us a message and we will respond as soon as we can!'
-                    button='Write a message'
-                    link='/messages'
                 />
             )}
         </section>

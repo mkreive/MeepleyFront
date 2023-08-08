@@ -15,9 +15,11 @@ export default function SectionWithButton({ title, text, button, link }) {
                 {title}
             </Heading>
             <Paragraph theme='regular'>{text}</Paragraph>
-            <Link to={link} className={cn('link')}>
-                <Button theme='secondary'>{button}</Button>
-            </Link>
+            {button && link && (
+                <Link to={link} className={cn('link')}>
+                    <Button theme='secondary'>{button}</Button>
+                </Link>
+            )}
         </div>
     );
 }

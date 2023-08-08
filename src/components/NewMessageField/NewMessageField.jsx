@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { fetchData } from '../../utils/fetchData';
+import React, { useState } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
 import classNames from 'classnames/bind';
 import styles from './new-message-field.module.scss';
@@ -8,7 +7,7 @@ import Button from '../Button/Button';
 
 const cn = classNames.bind(styles);
 
-export default function NewMessageField() {
+export default function NewMessageField(props) {
     const { authState } = useOktaAuth();
     const [title, setTitle] = useState('');
     const [question, setQuestion] = useState('');
@@ -24,10 +23,11 @@ export default function NewMessageField() {
                     Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(title, question),
+                body: JSON.stringify({ title: title, question: question }),
             };
 
-            const submitNewQuestionResponse = await fetchData(url, requestOptions);
+            const submitNewQuestionResponse = await fetch(url, requestOptions);
+
             if (!submitNewQuestionResponse.ok) {
                 throw new Error('Something went wrong!');
             }
@@ -36,6 +36,7 @@ export default function NewMessageField() {
             setQuestion('');
             setDisplayWarning(false);
             setDisplaySuccess(true);
+            props.onMessageSend(true);
         } else {
             setDisplayWarning(true);
             setDisplaySuccess(false);
@@ -44,15 +45,10 @@ export default function NewMessageField() {
 
     return (
         <div className={cn('container')}>
-            <Paragraph style='small'>Ask a question:</Paragraph>
+            <Paragraph style='regular--bold'>Ask a question:</Paragraph>
 
-            <form method='POST'>
-                {displayWarning && <Paragraph style='small--alert'>All fields must be filled out</Paragraph>}
-
-                {displaySuccess && <Paragraph style='small-secondary'>Question added successfully</Paragraph>}
-
+            <form method='POST' className={cn('form')}>
                 <label className={cn('label')}>
-                    Title
                     <input
                         type='text'
                         className={cn('input')}
@@ -63,7 +59,6 @@ export default function NewMessageField() {
                 </label>
 
                 <label className={cn('label')}>
-                    Question
                     <textarea
                         rows={5}
                         className={cn('input--textarea')}
@@ -73,8 +68,12 @@ export default function NewMessageField() {
                     />
                 </label>
 
-                <Button theme='black' onClick={submitNewQuestion}>
-                    Submit
+                {displayWarning && <Paragraph style='regular--alert_bold'>All fields must be filled out</Paragraph>}
+
+                {displaySuccess && <Paragraph style='regular--secondary_bold'>Question added successfully!</Paragraph>}
+
+                <Button theme='black--small' onClick={submitNewQuestion}>
+                    Submit Question
                 </Button>
             </form>
         </div>

@@ -2,15 +2,14 @@
 
 .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     border-radius: var(--border-radius-s);
     border: 0.1rem solid var(--color-secondary);
     padding: var(--spacer-xxl);
-    gap: var(--spacer-xxxxl);
+    gap: var(--spacer-l);
 
     @include respond(tab) {
         padding: var(--spacer-l);
-        gap: var(--spacer-xl);
     }
 
     @include respond(phone) {
@@ -21,10 +20,10 @@
     }
 }
 
-.label {
-    margin-top: -1rem;
-    color: var(--color-black);
-    font-size: var(--font-size-small);
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-m);
 }
 
 .line {
@@ -50,10 +49,10 @@
     padding: var(--spacer-m) var(--spacer-m);
 
     &:focus {
-        border: 0.2rem solid var(--color-primary);
+        border: 0.2rem solid var(--color-secondary);
     }
 
     &::placeholder {
-        color: black;
+        color: var(--color-black);
     }
 }

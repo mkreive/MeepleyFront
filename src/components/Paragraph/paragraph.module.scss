@@ -47,6 +47,26 @@
     }
 }
 
+.regular--secondary_bold {
+    font-size: var(--font-size-base);
+    color: var(--color-secondary);
+    font-weight: var(--font-weight-bold);
+
+    @include respond(tab) {
+        font-size: var(--font-size-regular);
+    }
+}
+
+.regular--alert_bold {
+    font-size: var(--font-size-base);
+    color: var(--color-tertiary);
+    font-weight: var(--font-weight-bold);
+
+    @include respond(tab) {
+        font-size: var(--font-size-regular);
+    }
+}
+
 .regular--primary {
     font-size: var(--font-size-base);
     color: var(--color-primary);

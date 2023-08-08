@@ -1,19 +1,16 @@
-export async function fetchData(fetchUrl, options = {}) {
-    let loadedData = {};
+export async function fetchMessages(fetchUrl, options = {}) {
     try {
         const response = await fetch(fetchUrl, options);
-
         if (!response.ok) {
             throw new Error('Failed to fetch');
         }
 
         if (response.ok) {
             const responseJson = await response.json();
-            loadedData = responseJson;
+            const responseData = responseJson._embedded.messages;
+            return responseData;
         }
     } catch (err) {
         return err;
     }
-
-    return loadedData;
 }
