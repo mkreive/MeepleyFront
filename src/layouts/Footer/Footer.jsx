@@ -24,6 +24,12 @@ export default function Header() {
                         Games
                     </Link>
 
+                    {authState?.accessToken?.claims.userType === 'admin' && (
+                        <Link className={cn('link')} to='/admin'>
+                            Admin
+                        </Link>
+                    )}
+
                     {authState?.isAuthenticated ? (
                         <Link className={cn('link')} to='/account'>
                             Account

@@ -20,6 +20,12 @@ export default function MobileNavigation({ onClick, loggedIn, onLogout }) {
                 </Link>
             )}
 
+            {isAdmin && (
+                <Link className={cn('link')} to='/admin'>
+                    Admin
+                </Link>
+            )}
+
             {!loggedIn ? (
                 <Link className={cn('link')} to='/login'>
                     Login

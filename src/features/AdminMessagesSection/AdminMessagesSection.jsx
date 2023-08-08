@@ -29,10 +29,7 @@ export default function AdminMessagesSection() {
                         'Content-Type': 'application/json',
                     },
                 };
-                const fetchedMessages = await fetchMessages(
-                    `/api/messages/search/findByUserEmail?userEmail=${authState?.accessToken?.claims.sub}`,
-                    requestOptions
-                );
+                const fetchedMessages = await fetchMessages(`/api/messages/search/findByClosed`, requestOptions);
 
                 if (fetchedMessages) {
                     setLoading(false);

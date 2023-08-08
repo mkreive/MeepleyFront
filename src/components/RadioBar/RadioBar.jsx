@@ -16,9 +16,8 @@ export default function RadioBar({ onRadioChange, pages }) {
         <div className={cn('wrapper')}>
             <form className={cn('inner-wrapper')}>
                 {pages.map((page, i) => (
-                    <>
+                    <span key={i}>
                         <input
-                            key={i}
                             onChange={handleSelection}
                             className={cn('radio-button')}
                             type='radio'
@@ -30,7 +29,7 @@ export default function RadioBar({ onRadioChange, pages }) {
                         <label htmlFor={i} className={cn('radio-label')}>
                             {page.toUpperCase()}
                         </label>
-                    </>
+                    </span>
                 ))}
             </form>
         </div>

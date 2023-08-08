@@ -28,7 +28,7 @@ export default function HistorySection() {
                     },
                 };
                 const fetchedUserHistory = await fetchHistory(
-                    `/api/histories/search/findGamesByUserEmail?${authState.accessToken.claims.sub}`,
+                    `/api/histories/search/findGamesByUserEmail?userEmail=${authState.accessToken.claims.sub}`,
                     requestOptions
                 );
 
