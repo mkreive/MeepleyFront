@@ -1,4 +1,5 @@
 export async function fetchMessages(fetchUrl, options = {}) {
+    console.log(fetchUrl);
     try {
         const response = await fetch(fetchUrl, options);
         if (!response.ok) {

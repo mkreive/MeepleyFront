@@ -71,6 +71,7 @@ export default function ReviewsSection() {
                 }
             }
         };
+        window.scrollTo(0, 0);
         getUserLoans();
     }, [authState, returnGame]);
 

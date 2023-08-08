@@ -40,6 +40,7 @@ export default function HistorySection() {
                 }
             }
         };
+        window.scrollTo(0, 0);
         getUserHistory();
     }, [authState]);
 

@@ -8,7 +8,7 @@ import Heading from '../../components/Heading/Heading';
 import SectionWithButton from '../../components/SectionWithButton/SectionWithButton';
 import Paragraph from '../../components/Paragraph/Paragraph';
 import NewMessageField from '../../components/NewMessageField/NewMessageField';
-// import MessageCard from '../../components/MessageCard/MessageCard';
+import MessageCard from '../../components/MessageCard/MessageCard';
 
 const cn = classNames.bind(styles);
 
@@ -18,10 +18,6 @@ export default function MessagesSection() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [sendMessage, setSendMessage] = useState(false);
-
-    async function handleSendMessage(props) {
-        setSendMessage(props);
-    }
 
     useEffect(() => {
         const getMessages = async function () {
@@ -33,18 +29,21 @@ export default function MessagesSection() {
                         'Content-Type': 'application/json',
                     },
                 };
-                const fetchedMessages = await fetchMessages(`/api/messages`, requestOptions);
+                const fetchedMessages = await fetchMessages(
+                    `/api/messages/search/findByUserEmail?userEmail=${authState?.accessToken?.claims.sub}`,
+                    requestOptions
+                );
 
                 if (fetchedMessages) {
                     setLoading(false);
                     setMessages(fetchedMessages);
-                    setSendMessage(false);
                 } else {
                     setError(fetchedMessages);
                 }
             }
         };
         getMessages();
+        window.scrollTo(0, 0);
     }, [authState, sendMessage]);
 
     return (
@@ -52,7 +51,7 @@ export default function MessagesSection() {
             <Heading tag='h2' style='medium'>
                 New Message
             </Heading>
-            <NewMessageField onMessageSend={handleSendMessage} />
+            <NewMessageField onMessageSend={(props) => setSendMessage(props)} />
             <span className={cn('line')}></span>
 
             <Heading tag='h2' style='medium'>
@@ -61,7 +60,7 @@ export default function MessagesSection() {
 
             {loading && <Loader />}
 
-            {/* {messages.length > 0 && !loading && messages.map((msg, i) => <MessageCard key={i} message={msg} />)} */}
+            {messages.length > 0 && !loading && messages.map((msg, i) => <MessageCard key={i} message={msg} />)}
 
             {messages.length === 0 && !loading && (
                 <Paragraph style='regular'>Currently there is no messages.</Paragraph>
