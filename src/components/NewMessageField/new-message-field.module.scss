@@ -1,0 +1,59 @@
+@import '../../sass/respond-to-media.scss';
+
+.container {
+    display: flex;
+    flex-direction: row;
+    border-radius: var(--border-radius-s);
+    border: 0.1rem solid var(--color-secondary);
+    padding: var(--spacer-xxl);
+    gap: var(--spacer-xxxxl);
+
+    @include respond(tab) {
+        padding: var(--spacer-l);
+        gap: var(--spacer-xl);
+    }
+
+    @include respond(phone) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: var(--spacer-xxxl);
+    }
+}
+
+.label {
+    margin-top: -1rem;
+    color: var(--color-black);
+    font-size: var(--font-size-small);
+}
+
+.line {
+    margin-top: var(--spacer-s);
+    margin-bottom: var(--spacer-m);
+    width: 100%;
+    border-bottom: 0.1rem solid var(--color-gray);
+}
+
+.input,
+.input--textarea {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    background-color: transparent;
+    font-size: var(--font-size-small);
+    line-height: 1.8rem;
+    resize: none;
+    font-family: inherit;
+    outline: none;
+    border-radius: var(--border-radius-s);
+    border: 0.2rem solid var(--color-white);
+    padding: var(--spacer-m) var(--spacer-m);
+
+    &:focus {
+        border: 0.2rem solid var(--color-primary);
+    }
+
+    &::placeholder {
+        color: black;
+    }
+}

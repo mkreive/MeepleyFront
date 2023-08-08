@@ -5,11 +5,12 @@ import Heading from '../../components/Heading/Heading';
 import RadioBar from '../../components/RadioBar/RadioBar';
 import ReservationsSection from '../../features/ReservationSection/ReservationSection';
 import HistorySection from '../../features/HistorySection/HistorySection';
+import MessagesSection from '../../features/MessagesSection/MessagesSection';
 
 const cn = classNames.bind(styles);
 
 export default function AccountPage() {
-    const [page, setPage] = useState('reservation');
+    const [page, setPage] = useState('reservations');
 
     return (
         <div className={cn('container')}>
@@ -20,11 +21,11 @@ export default function AccountPage() {
                 <RadioBar onRadioChange={(props) => setPage(props)} />
             </div>
 
-            {page === 'reservation' && <ReservationsSection />}
+            {page === 'reservations' && <ReservationsSection />}
 
             {page === 'history' && <HistorySection />}
 
-            {/* {page === 'message' && <MessageSection />} */}
+            {page === 'messages' && <MessagesSection />}
         </div>
     );
 }

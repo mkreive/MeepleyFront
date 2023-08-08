@@ -5,7 +5,7 @@ import styles from './radio-bar.module.scss';
 const cn = classNames.bind(styles);
 
 export default function RadioBar({ onRadioChange }) {
-    const [selected, setSelected] = useState('reservation');
+    const [selected, setSelected] = useState('reservations');
 
     const handleSelection = (e) => {
         onRadioChange(e.target.value);
@@ -20,12 +20,12 @@ export default function RadioBar({ onRadioChange }) {
                     className={cn('radio-button')}
                     type='radio'
                     name='radio-group'
-                    value='reservation'
-                    checked={selected === 'reservation'}
+                    value='reservations'
+                    checked={selected === 'reservations'}
                     id='1'
                 />
                 <label htmlFor='1' className={cn('radio-label')}>
-                    RESERVATION
+                    RESERVATIONS
                 </label>
 
                 <input
@@ -46,12 +46,12 @@ export default function RadioBar({ onRadioChange }) {
                     className={cn('radio-button')}
                     type='radio'
                     name='radio-group'
-                    value='service'
+                    value='messages'
                     id='3'
-                    checked={selected === 'service'}
+                    checked={selected === 'messages'}
                 />
                 <label htmlFor='3' className={cn('radio-label')}>
-                    SERVICE
+                    MESSAGES
                 </label>
             </form>
         </div>

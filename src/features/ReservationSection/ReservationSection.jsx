@@ -8,7 +8,6 @@ import Heading from '../../components/Heading/Heading';
 import SectionWithButton from '../../components/SectionWithButton/SectionWithButton';
 import Paragraph from '../../components/Paragraph/Paragraph';
 import ReservationCard from '../../components/ReservationCard/ReservationCard';
-import { useSearchParams } from 'react-router-dom';
 
 const cn = classNames.bind(styles);
 
@@ -20,7 +19,6 @@ export default function ReviewsSection() {
     const [returnGame, setReturnGame] = useState(false);
 
     async function handleReturnGame(props) {
-        console.log(props);
         const url = `/api/games/secure/return?gameId=${props}`;
         const requestOptions = {
             method: 'PUT',

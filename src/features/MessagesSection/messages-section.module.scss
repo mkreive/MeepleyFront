@@ -1,0 +1,21 @@
+@import '../../sass/respond-to-media.scss';
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-xxxxl);
+    height: auto;
+    width: auto;
+    margin-left: 5rem;
+    margin-right: 5rem;
+
+    @include respond(phone) {
+    }
+}
+
+.line {
+    margin-top: var(--spacer-s);
+    margin-bottom: var(--spacer-m);
+    width: 100%;
+    border-bottom: 0.1rem solid var(--color-gray);
+}

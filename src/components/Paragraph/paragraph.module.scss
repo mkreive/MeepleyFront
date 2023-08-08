@@ -93,6 +93,24 @@
     }
 }
 
+.small--secondary {
+    font-size: var(--font-size-regular);
+    color: var(--color-secondary);
+
+    @include respond(tab) {
+        font-size: var(--font-size-small);
+    }
+}
+
+.small--alert {
+    font-size: var(--font-size-regular);
+    color: var(--color-tertiary);
+
+    @include respond(tab) {
+        font-size: var(--font-size-small);
+    }
+}
+
 .small--gray {
     font-size: var(--font-size-regular);
     color: var(--color-gray-medium);
