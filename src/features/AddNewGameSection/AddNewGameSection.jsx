@@ -5,6 +5,7 @@ import styles from './add-new-game.module.scss';
 import Heading from '../../components/Heading/Heading';
 import Card from '../../components/Card/Card';
 import Button from '../../components/Button/Button';
+import Paragraph from '../../components/Paragraph/Paragraph';
 
 const cn = classNames.bind(styles);
 
@@ -25,7 +26,7 @@ export default function AddNewGameSection() {
     const [displayWarning, setDisplayWarning] = useState(false);
     const [displaySuccess, setDisplaySuccess] = useState(false);
 
-    async function base64ConversionForImages() {
+    async function base64ConversionForImages(e) {
         if (e.target.files[0]) {
             getBase64(e.target.files[0]);
         }
@@ -35,6 +36,7 @@ export default function AddNewGameSection() {
         let reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function () {
+            console.log(reader.result);
             setSelectedImage(reader.result);
         };
         reader.onerror = function (error) {
@@ -45,6 +47,7 @@ export default function AddNewGameSection() {
     async function submitNewGame() {
         const url = `/api/admin/secure/add/game`;
         if (
+            authState &&
             authState?.isAuthenticated &&
             title !== '' &&
             designer !== '' &&
@@ -68,9 +71,9 @@ export default function AddNewGameSection() {
                 copies,
                 players,
                 playingTime,
-                img: selectedImage,
+                img: '',
             };
-            // game.img = selectedImage;
+
             const requestOptions = {
                 method: 'POST',
                 headers: {
@@ -101,6 +104,7 @@ export default function AddNewGameSection() {
             setDisplayWarning(true);
             setDisplaySuccess(false);
         }
+        window.scrollTo(0, 0);
     }
 
     return (
@@ -115,86 +119,94 @@ export default function AddNewGameSection() {
 
             <Card>
                 <form method='POST' className={cn('form')}>
-                    <label className={cn('label')}>
-                        Title
-                        <input
-                            type='text'
-                            className={cn('input')}
-                            onChange={(e) => setTitle(e.target.value)}
-                            value={title}
-                            required
-                        />
-                    </label>
-                    <label className={cn('label')}>
-                        Designer
-                        <input
-                            type='text'
-                            className={cn('input')}
-                            onChange={(e) => setDesigner(e.target.value)}
-                            value={designer}
-                            required
-                        />
-                    </label>
-                    <label className={cn('label')}>
-                        Publisher
-                        <input
-                            type='text'
-                            className={cn('input')}
-                            onChange={(e) => setPublisher(e.target.value)}
-                            value={publisher}
-                            required
-                        />
-                    </label>
-                    <label className={cn('label')}>
-                        Category
-                        <input
-                            type='text'
-                            className={cn('input')}
-                            onChange={(e) => setCategory(e.target.value.toUpperCase())}
-                            value={category}
-                            required
-                        />
-                    </label>
-                    <label className={cn('label')}>
-                        Complexity
-                        <input
-                            type='text'
-                            className={cn('input')}
-                            onChange={(e) => setComplexity(e.target.value)}
-                            value={complexity}
-                            required
-                        />
-                    </label>
-                    <label className={cn('label')}>
-                        Number of Players
-                        <input
-                            type='text'
-                            className={cn('input')}
-                            onChange={(e) => setPlayers(e.target.value)}
-                            value={players}
-                            required
-                        />
-                    </label>
-                    <label className={cn('label')}>
-                        Playing Time
-                        <input
-                            type='text'
-                            className={cn('input')}
-                            onChange={(e) => setPlayingTime(e.target.value)}
-                            value={playingTime}
-                            required
-                        />
-                    </label>
-                    <label className={cn('label')}>
-                        Copies
-                        <input
-                            type='number'
-                            className={cn('input')}
-                            onChange={(e) => setCopies(e.target.value)}
-                            value={copies}
-                            required
-                        />
-                    </label>
+                    <div className={cn('group')}>
+                        <label className={cn('label')}>
+                            Title
+                            <input
+                                type='text'
+                                className={cn('input')}
+                                onChange={(e) => setTitle(e.target.value)}
+                                value={title}
+                                required
+                            />
+                        </label>
+                        <label className={cn('label')}>
+                            Designer
+                            <input
+                                type='text'
+                                className={cn('input')}
+                                onChange={(e) => setDesigner(e.target.value)}
+                                value={designer}
+                                required
+                            />
+                        </label>
+                    </div>
+
+                    <div className={cn('group')}>
+                        <label className={cn('label')}>
+                            Publisher
+                            <input
+                                type='text'
+                                className={cn('input')}
+                                onChange={(e) => setPublisher(e.target.value)}
+                                value={publisher}
+                                required
+                            />
+                        </label>
+                        <label className={cn('label')}>
+                            Category
+                            <input
+                                type='text'
+                                className={cn('input')}
+                                onChange={(e) => setCategory(e.target.value.toUpperCase())}
+                                value={category}
+                                required
+                            />
+                        </label>
+                    </div>
+
+                    <div className={cn('group')}>
+                        <label className={cn('label')}>
+                            Complexity
+                            <input
+                                type='text'
+                                className={cn('input')}
+                                onChange={(e) => setComplexity(e.target.value)}
+                                value={complexity}
+                                required
+                            />
+                        </label>
+                        <label className={cn('label')}>
+                            Playing Time
+                            <input
+                                type='text'
+                                className={cn('input')}
+                                onChange={(e) => setPlayingTime(e.target.value)}
+                                value={playingTime}
+                                required
+                            />
+                        </label>
+                        <label className={cn('label')}>
+                            Number of Players
+                            <input
+                                type='text'
+                                className={cn('input')}
+                                onChange={(e) => setPlayers(e.target.value)}
+                                value={players}
+                                required
+                            />
+                        </label>
+                        <label className={cn('label')}>
+                            Copies
+                            <input
+                                type='number'
+                                className={cn('input')}
+                                onChange={(e) => setCopies(e.target.value)}
+                                value={copies}
+                                required
+                            />
+                        </label>
+                    </div>
 
                     <label className={cn('label')}>
                         Intro
@@ -219,12 +231,7 @@ export default function AddNewGameSection() {
 
                     <label className={cn('label')}>
                         Image
-                        <input
-                            type='file'
-                            className={cn('input')}
-                            onChange={(e) => base64ConversionForImages(e)}
-                            required
-                        />
+                        <input type='file' className={cn('input')} onChange={(e) => base64ConversionForImages(e)} />
                     </label>
 
                     <Button theme='black--small' onClick={submitNewGame}>
