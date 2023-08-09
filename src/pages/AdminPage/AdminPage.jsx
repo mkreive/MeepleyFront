@@ -6,6 +6,7 @@ import RadioBar from '../../components/RadioBar/RadioBar';
 import AdminMessagesSection from '../../features/AdminMessagesSection/AdminMessagesSection';
 import { useOktaAuth } from '@okta/okta-react';
 import { Navigate } from 'react-router-dom';
+import AddNewGameSection from '../../features/AddNewGameSection/AddNewGameSection';
 
 const cn = classNames.bind(styles);
 
@@ -28,7 +29,7 @@ export default function AdminPage() {
 
             {page === 'messages' && <AdminMessagesSection />}
 
-            {/* {page === 'add game' && <AddNewGameSection />} */}
+            {page === 'add game' && <AddNewGameSection />}
 
             {/* {page === 'edit game' && <EditGameSection />} */}
         </div>

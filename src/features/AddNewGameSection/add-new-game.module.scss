@@ -1,0 +1,53 @@
+@import '../../sass/respond-to-media.scss';
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-xxxxl);
+    height: auto;
+    width: auto;
+    margin-left: 7rem;
+    margin-right: 5rem;
+    margin-bottom: 3rem;
+
+    @include respond(phone) {
+        margin-left: 4rem;
+        margin-right: 2rem;
+    }
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-l);
+    padding-bottom: 2rem;
+}
+
+.label {
+    color: var(--color-primary);
+    font-size: var(--font-size-regular);
+}
+
+.input,
+.input--textarea {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    background-color: transparent;
+    font-size: var(--font-size-regular);
+    resize: none;
+    font-family: inherit;
+    outline: none;
+    border-radius: var(--border-radius-s);
+    border: 0.1rem solid var(--color-black);
+    padding: var(--spacer-m) var(--spacer-m);
+
+    &:focus {
+        border: 0.1rem solid var(--color-primary);
+    }
+
+    &::placeholder {
+        color: var(--color-gray-medium);
+    }
+}
