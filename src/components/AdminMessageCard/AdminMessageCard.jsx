@@ -4,24 +4,25 @@ import styles from './admin-message-card.module.scss';
 import Paragraph from '../Paragraph/Paragraph';
 import Heading from '../Heading/Heading';
 import Button from '../Button/Button';
+import { useOktaAuth } from '@okta/okta-react';
 
 const cn = classNames.bind(styles);
 
 export default function AdminMessageCard({ message, onMessageSend }) {
-    const [answer, setAnswer] = useState('');
+    const { authState } = useOktaAuth();
+    const [response, setResponse] = useState('');
     const [displayWarning, setDisplayWarning] = useState(false);
-    const [displaySuccess, setDisplaySuccess] = useState(false);
 
     async function submitAnswer() {
-        const url = `/api/messages/secure/add/message`;
-        if (authState?.isAuthenticated && title !== '' && question !== '') {
+        const url = `/api/messages/secure/admin/message`;
+        if (authState && authState?.isAuthenticated && response !== '' && message.id != null) {
             const requestOptions = {
                 method: 'PUT',
                 headers: {
                     Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ title: title, question: question }),
+                body: JSON.stringify({ id: message.id, response: response }),
             };
 
             const submitNewQuestionResponse = await fetch(url, requestOptions);
@@ -30,13 +31,11 @@ export default function AdminMessageCard({ message, onMessageSend }) {
                 throw new Error('Something went wrong!');
             }
 
-            setAnswer('');
+            setResponse('');
             setDisplayWarning(false);
-            setDisplaySuccess(true);
             onMessageSend(true);
         } else {
             setDisplayWarning(true);
-            setDisplaySuccess(false);
         }
     }
 
@@ -56,17 +55,15 @@ export default function AdminMessageCard({ message, onMessageSend }) {
                         rows={5}
                         className={cn('input--textarea')}
                         placeholder='Answer'
-                        onChange={(e) => setAnswer(e.target.value)}
-                        value={answer}
+                        onChange={(e) => setResponse(e.target.value)}
+                        value={response}
                     />
                 </label>
 
                 {displayWarning && <Paragraph style='regular--alert_bold'>All fields must be filled out</Paragraph>}
 
-                {displaySuccess && <Paragraph style='regular--secondary_bold'>Question added successfully!</Paragraph>}
-
                 <Button theme='black--small' onClick={submitAnswer}>
-                    Submit Answer
+                    Submit Response
                 </Button>
             </form>
         </div>

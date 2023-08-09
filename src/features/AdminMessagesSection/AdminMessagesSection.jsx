@@ -35,6 +35,7 @@ export default function AdminMessagesSection() {
                 if (fetchedMessages) {
                     setLoading(false);
                     setMessages(fetchedMessages);
+                    setSendMessage(false);
                 } else {
                     setError(fetchedMessages);
                 }
