@@ -36,8 +36,8 @@ export default function AddNewGameSection() {
         let reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function () {
-            console.log(reader.result);
-            setSelectedImage(reader.result);
+            const base64result = reader.result.split(',')[1];
+            setSelectedImage(base64result);
         };
         reader.onerror = function (error) {
             console.log('Error', error);
@@ -71,7 +71,7 @@ export default function AddNewGameSection() {
                 copies,
                 players,
                 playingTime,
-                img: '',
+                img: selectedImage,
             };
 
             const requestOptions = {

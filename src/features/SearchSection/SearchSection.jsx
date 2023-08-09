@@ -13,7 +13,7 @@ const gameCategories = [
     'wargame',
     'family',
     'abstract',
-    'roll&write',
+    'rollwrite',
     'euro',
     'campaign',
     'deckbuilder',
