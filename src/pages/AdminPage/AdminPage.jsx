@@ -7,6 +7,7 @@ import AdminMessagesSection from '../../features/AdminMessagesSection/AdminMessa
 import { useOktaAuth } from '@okta/okta-react';
 import { Navigate } from 'react-router-dom';
 import AddNewGameSection from '../../features/AddNewGameSection/AddNewGameSection';
+import EditGameSection from '../../features/EditGameSection/EditGameSecton';
 
 const cn = classNames.bind(styles);
 
@@ -31,7 +32,7 @@ export default function AdminPage() {
 
             {page === 'add game' && <AddNewGameSection />}
 
-            {/* {page === 'edit game' && <EditGameSection />} */}
+            {page === 'edit game' && <EditGameSection />}
         </div>
     );
 }

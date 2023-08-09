@@ -1,0 +1,64 @@
+@import '../../sass/respond-to-media.scss';
+
+.card {
+    position: relative;
+    min-width: 30rem;
+    align-items: center;
+    background-color: var(--color-white);
+    border: 0.2rem solid var(--color-black);
+    border-radius: var(--border-radius-main);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: auto;
+    padding: 3rem 2.5rem 0 2.5rem;
+    overflow: hidden;
+
+    @include respond(tab) {
+        padding: 2rem 1.5rem 0 1.5rem;
+    }
+
+    @include respond(phone) {
+        padding: 3rem 2.5rem 0 2.5rem;
+    }
+}
+
+.image {
+    border-radius: var(--border-radius-s);
+}
+
+.heading-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: var(--spacer-xl);
+    margin-bottom: var(--spacer-xxl);
+}
+
+.btn {
+    width: 115%;
+    padding-top: var(--spacer-l);
+    padding-bottom: var(--spacer-l);
+    font-size: var(--font-size-regular);
+    font-family: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 0.2rem solid var(--color-black);
+    background-color: white;
+    margin-bottom: -2px;
+
+    &:hover {
+        color: white;
+    }
+
+    &--delete:hover {
+        background-color: var(--color-tertiary);
+    }
+    &--add:hover {
+        background-color: var(--color-secondary);
+    }
+    &--minus:hover {
+        background-color: var(--color-primary);
+    }
+}
