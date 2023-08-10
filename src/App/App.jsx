@@ -3,7 +3,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import styles from './app.module.scss';
 import classNames from 'classnames/bind';
 import { oktaConfig } from '../lib/oktaConfig';
-import { LoginCallback, useOktaAuth } from '@okta/okta-react';
+import { LoginCallback } from '@okta/okta-react';
 import AuthLayout from '../Auth/AuthLayout';
 import HomePage from '../pages/HomePage/HomePage';
 import GamesPage from '../pages/GamesPage/GamesPage';

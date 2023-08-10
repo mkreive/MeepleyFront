@@ -159,3 +159,12 @@
         font-size: var(--font-size-small);
     }
 }
+
+.very-very-small {
+    font-size: var(--font-size-small);
+    color: var(--color-black);
+
+    @include respond(tab) {
+        font-size: var(--font-size-small);
+    }
+}
