@@ -15,7 +15,7 @@ export default function EditGameSection() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [gameDelete, setGameDelete] = useState(false);
-    const [title, setTitle] = useState(null);
+    const [title, setTitle] = useState('');
 
     const handleSearch = function (props) {
         setTitle(props.trim().toLowerCase());

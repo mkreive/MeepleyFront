@@ -2,17 +2,15 @@
 
 .card {
     position: relative;
-    min-width: 30rem;
     align-items: center;
     background-color: var(--color-white);
     border: 0.2rem solid var(--color-black);
     border-radius: var(--border-radius-main);
     display: flex;
-    flex: 1;
     flex-direction: column;
-    height: auto;
     padding: 3rem 2.5rem 0 2.5rem;
     overflow: hidden;
+    width: max-content;
 
     @include respond(tab) {
         padding: 2rem 1.5rem 0 1.5rem;
@@ -25,6 +23,7 @@
 
 .image {
     border-radius: var(--border-radius-s);
+    max-width: 25rem;
 }
 
 .heading-container {
@@ -37,7 +36,7 @@
 }
 
 .btn {
-    width: 115%;
+    width: 130%;
     padding-top: var(--spacer-l);
     padding-bottom: var(--spacer-l);
     font-size: var(--font-size-regular);
