@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import styles from './forum-section.module.scss';
 import Heading from '../../components/Heading/Heading';
@@ -10,20 +11,16 @@ import ForumImage from './ForumImage';
 const cn = classNames.bind(styles);
 
 export default function ForumSection() {
+    const { t } = useTranslation();
     return (
         <div className={cn('container')}>
             <section className={cn('text')}>
                 <Heading tag='h3' style='medium'>
-                    Friendly Community
+                    {t('home_forum_heading')}
                 </Heading>
-                <Paragraph style='big--gray'>
-                    Connect with fellow board game enthusiasts in our lively forums. Share your experiences, strategies,
-                    and thoughts on different games, or seek recommendations and advice from seasoned players. Our
-                    forums are the heart of our community, fostering engaging discussions and lasting friendships.
-                </Paragraph>
-
+                <Paragraph style='big--gray'>{t('home_forum_paragraph')}</Paragraph>
                 <Link to='/forums' className={cn('link')}>
-                    <Button theme='primary'>Forums</Button>
+                    <Button theme='primary'>{t('home_forum_button')}</Button>
                 </Link>
             </section>
             <ForumImage />

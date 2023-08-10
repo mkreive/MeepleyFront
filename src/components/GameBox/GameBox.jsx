@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import styles from './game-box.module.scss';
 import Heading from '../Heading/Heading';
@@ -11,6 +12,7 @@ const cn = classNames.bind(styles);
 
 export default function GameBox(props) {
     const { game } = props;
+    const { t } = useTranslation();
 
     return (
         <Card>
@@ -33,7 +35,7 @@ export default function GameBox(props) {
             </div>
 
             <Link to={`/checkout/${game.id}`} className={cn('link')}>
-                <Button theme='black'>Reserve</Button>
+                <Button theme='black'> {t('home_newgames_button')}</Button>
             </Link>
         </Card>
     );

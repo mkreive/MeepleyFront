@@ -15,16 +15,11 @@ export default function ExploreSection() {
         <div className={cn('container')}>
             <section className={cn('text')}>
                 <Heading tag='h3' style='medium'>
-                    Explore Our Collection
+                    {t('home_explore_heading')}
                 </Heading>
-                <Paragraph style='big--gray'>
-                    Dive into our extensive collection of board games from various genres, eras, and complexities. From
-                    classic strategy games to modern cooperative adventures, we've curated a diverse assortment to cater
-                    to all tastes. Discover new games or revisit old favorites – the choice is yours!
-                </Paragraph>
-
+                <Paragraph style='big--gray'>{t('home_explore_paragraph')}</Paragraph>
                 <Link to='/games' className={cn('link')}>
-                    <Button theme='tertiary'>Explore all games</Button>
+                    <Button theme='tertiary'>{t('home_explore_button')}</Button>
                 </Link>
             </section>
         </div>
