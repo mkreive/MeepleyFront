@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import styles from './hero.module.scss';
 import HeroImage from './HeroImage';
@@ -9,6 +10,7 @@ import Button from '../Button/Button';
 const cn = classNames.bind(styles);
 
 export default function Hero() {
+    const { t } = useTranslation();
     return (
         <div className={cn('container')}>
             <article className={cn('article')}>
@@ -16,15 +18,11 @@ export default function Hero() {
                     meepley
                 </Heading>
                 <Heading tag='h2' style='medium'>
-                    Board game renting platform
+                    {t('home_hero_heading')}
                 </Heading>
-                <Paragraph style='big--gray'>
-                    Welcome to MEEPLEY, a delightful online platform dedicated to all things board games! If you're a
-                    passionate board game enthusiast like us, this is the perfect place for you to indulge in your hobby
-                    and connect with a vibrant community of like-minded gamers.
-                </Paragraph>
+                <Paragraph style='big--gray'>{t('home_hero_paragraph')}</Paragraph>
                 <Link to='/games' className={cn('link')}>
-                    <Button theme='secondary'>See top games</Button>
+                    <Button theme='secondary'>{t('home_hero_button')}</Button>
                 </Link>
             </article>
             <HeroImage />

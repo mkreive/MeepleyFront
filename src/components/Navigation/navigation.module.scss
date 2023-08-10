@@ -3,7 +3,7 @@
 .nav--desktop {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
+    gap: var(--spacer-xl);
     margin-right: 5rem;
 
     @include respond(phone) {
@@ -19,7 +19,7 @@
         position: absolute;
         width: 100%;
         display: flex;
-        gap: 2rem;
+        gap: var(--spacer-xl);
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -40,4 +40,19 @@
     &:hover {
         color: var(--color-primary);
     }
+}
+
+.select {
+    margin-left: var(--spacer-xl);
+    position: relative;
+    display: flex;
+    gap: var(--spacer-m);
+}
+
+.input {
+    display: none;
+}
+.link:has(:checked) {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
 }
