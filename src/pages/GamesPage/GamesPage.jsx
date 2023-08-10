@@ -1,27 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { fetchData } from '../../utils/fetchData';
+import { fetchGames } from '../../utils/fetchGames';
+import { useFetchReviews } from '../../hooks/useFetchReviews';
 import classNames from 'classnames/bind';
 import styles from './games-page.module.scss';
 import SearchSection from '../../features/SearchSection/SearchSection';
 import GamesSection from '../../features/GamesSection/GamesSection';
-import Heading from '../../components/Heading/Heading';
-import Paragraph from '../../components/Paragraph/Paragraph';
+import SectionWithButton from '../../components/SectionWithButton/SectionWithButton';
+import NewReviewsSection from '../../features/NewReviewsSection/NewReviewsSection';
+import qs from 'qs';
 import Button from '../../components/Button/Button';
+import { useOktaAuth } from '@okta/okta-react';
 
 const cn = classNames.bind(styles);
 
 export default function GamesPage() {
+    const { authState } = useOktaAuth();
+    const { loadingReviews, reviews, errorReviews } = useFetchReviews('/api/reviews');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [games, setGames] = useState([]);
+    const [title, setTitle] = useState(null);
     const [categories, setCategories] = useState([]);
     const [complexities, setComplexities] = useState([]);
-    const [searchUrl, setSearchUrl] = useState('/api/games');
 
     const handleSearch = function (props) {
-        const title = props.trim().toLowerCase();
-        setSearchUrl(`api/games/search/findByTitleContaining?title=${title}`);
+        setTitle(props.trim().toLowerCase());
     };
 
     const handleCategory = function (props) {
@@ -31,12 +34,6 @@ export default function GamesPage() {
         } else {
             const newCategories = categories.filter((category) => category !== selected);
             setCategories(newCategories);
-        }
-
-        if (complexities.length === 0) {
-            setSearchUrl(`/api/games/search/findByCategory?category=${[...categories]}`);
-        } else {
-            setSearchUrl(`/api/games/search/findByCategory?category=${[...categories]}`);
         }
     };
 
@@ -48,16 +45,31 @@ export default function GamesPage() {
             const newComplexities = complexities.filter((complexity) => complexity !== selected);
             setComplexities(newComplexities);
         }
-        if (categories.length === 0) {
-            setSearchUrl(`/api/games/search/findByComplexity?complexity=${[...complexities]}`);
-        } else {
-            setSearchUrl(`/api/games/search/findByCategory?category=${[...categories]}`);
-        }
+    };
+
+    const handleClearFilters = function () {
+        // TODO checkboxus panaikinti isclearinus filtrus
+        setCategories([]);
+        setComplexities([]);
+        setTitle('');
     };
 
     useEffect(() => {
+        const params = {
+            complexity: complexities,
+            category: categories,
+            title: title,
+        };
+
+        const url = `/api/games/search/findGames${qs.stringify(params, {
+            addQueryPrefix: true,
+            arrayFormat: 'comma',
+            encode: false,
+            skipNulls: true,
+        })}`;
+
         const getGames = async function () {
-            const games = await fetchData(searchUrl);
+            const games = await fetchGames(url);
             if (games) {
                 setLoading(false);
                 setGames(games);
@@ -66,8 +78,7 @@ export default function GamesPage() {
             }
         };
         getGames();
-        window.scrollTo(0, 0);
-    }, [searchUrl]);
+    }, [categories, complexities, title]);
 
     return (
         <div className={cn('wrapper')}>
@@ -76,18 +87,34 @@ export default function GamesPage() {
                 onCategorySelection={handleCategory}
                 onComplexitySelection={handleComplexity}
             />
+
             <GamesSection loading={loading} error={error} games={games} />
 
-            <div className={cn('text')}>
-                <Heading tag='h2' style='medium--primary'>
-                    Haven't find a game you were looking for?
-                </Heading>
-                <Paragraph theme='regular'>Write us a letter and we will help you!</Paragraph>
-                <Link to='/services' className={cn('link')}>
-                    <Button theme='secondary'>Services</Button>
-                </Link>
-            </div>
-            <div>Latest reviews about our board games</div>
+            {(categories.length > 0 || complexities.length > 0 || title) && (
+                <Button theme='black' onClick={handleClearFilters}>
+                    Clear all filters
+                </Button>
+            )}
+
+            {authState?.isAuthenticated ? (
+                <SectionWithButton
+                    title="Haven't find what you were looking for?"
+                    text='Write us a letter and we will help you!'
+                    button='Services'
+                    link='/services'
+                />
+            ) : (
+                <SectionWithButton
+                    title="Haven't find what you were looking for?"
+                    text='Sign in to use our services'
+                    button='Sign in'
+                    link='/login'
+                />
+            )}
+
+            {reviews.length > 0 && (
+                <NewReviewsSection error={errorReviews} loading={loadingReviews} reviews={reviews} />
+            )}
         </div>
     );
 }

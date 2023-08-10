@@ -1,0 +1,33 @@
+@import '../../sass/respond-to-media.scss';
+
+.container {
+    padding-top: 7rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 7rem;
+    max-width: 150rem;
+    min-height: 100vh;
+    overflow: hidden;
+    width: 100%;
+
+    @include respond(phone) {
+        padding-top: 3rem;
+    }
+}
+
+.container__header {
+    width: auto;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include respond(phone) {
+        gap: 1rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}

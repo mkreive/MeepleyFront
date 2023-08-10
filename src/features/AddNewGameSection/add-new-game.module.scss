@@ -1,0 +1,79 @@
+@import '../../sass/respond-to-media.scss';
+
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-xxxxl);
+    height: auto;
+    width: auto;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-bottom: 3rem;
+
+    @include respond(phone) {
+        margin-left: 4rem;
+        margin-right: 2rem;
+    }
+}
+
+.group {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacer-l);
+    justify-content: space-between;
+
+    @include respond(tab) {
+        gap: var(--spacer-s);
+    }
+    @include respond(phone) {
+        flex-direction: column;
+        gap: var(--spacer-l);
+    }
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-xxl);
+
+    @include respond(tab) {
+        gap: var(--spacer-l);
+    }
+    @include respond(phone) {
+        gap: var(--spacer-l);
+    }
+}
+
+.label {
+    flex: 1;
+    width: 100%;
+    color: var(--color-primary);
+    font-size: var(--font-size-regular);
+}
+
+.input,
+.input--textarea {
+    flex: 1;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    background-color: transparent;
+    font-size: var(--font-size-regular);
+    resize: none;
+    font-family: inherit;
+    outline: none;
+    border-radius: var(--border-radius-s);
+    border: 0.1rem solid var(--color-black);
+    padding: var(--spacer-m) var(--spacer-m);
+    margin-top: var(--spacer-xxs);
+
+    &:focus {
+        border: 0.1rem solid var(--color-primary);
+    }
+
+    &::placeholder {
+        color: var(--color-gray-medium);
+    }
+}

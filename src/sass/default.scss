@@ -61,3 +61,48 @@ table {
     table-layout: fixed;
     width: 100%;
 }
+
+#okta-sign-in > div.okta-sign-in-header.auth-header {
+    display: none;
+}
+
+#okta-sign-in.auth-container.main-container[data-se='auth-container'] {
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    border-color: #000000;
+    background: white;
+    border-radius: 20px;
+    box-shadow: none;
+}
+
+#okta-sign-in.auth-container .o-form-head {
+    color: #9856f4;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+#okta-sign-in.auth-container .button-primary {
+    background: #111 !important;
+    border-color: #111 !important;
+    color: white !important;
+}
+
+#okta-sign-in.auth-container .button-primary:hover {
+    background: #9856f4 !important;
+    border-color: #9856f4 !important;
+}
+
+#okta-sign-in.auth-container .okta-form-input-field.focused-input,
+#okta-sign-in.auth-container .okta-form-input-field.focused-input:hover,
+#okta-sign-in.auth-container .okta-form-input-field.focused-input:active,
+#okta-sign-in.auth-container .okta-form-input-field.focused-input:focus {
+    border-color: #47a351 !important;
+}
+
+#okta-sign-in .focused-input,
+#okta-sign-in .link.help:focus,
+#okta-sign-in input[type='radio']:focus + label,
+#okta-sign-in input[type='text'] {
+    box-shadow: none !important;
+    color: #47a351 !important;
+}

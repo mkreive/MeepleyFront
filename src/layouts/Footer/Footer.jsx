@@ -3,16 +3,17 @@ import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import classNames from 'classnames/bind';
 import styles from './footer.module.scss';
-import Logo from '../../components/Logo/Logo';
 import Paragraph from '../../components/Paragraph/Paragraph';
+import { useOktaAuth } from '@okta/okta-react';
 
 const cn = classNames.bind(styles);
 
 export default function Header() {
     const isMobile = useMediaQuery({ query: '(max-width: 700px)' });
+    const { authState } = useOktaAuth();
 
     return (
-        <header className={cn('container')}>
+        <footer className={cn('container')}>
             <div className={cn('wrapper')}>
                 <Paragraph style='regular--white'>Copyright © 2023 MEEPLEY</Paragraph>
                 <nav className={cn('nav')}>
@@ -22,20 +23,24 @@ export default function Header() {
                     <Link className={cn('link')} to='/games'>
                         Games
                     </Link>
-                    <Link className={cn('link')} to='/forums'>
-                        Forums
-                    </Link>
-                    {/* <Link className={cn('link')} to='/account'>
+
+                    {authState?.accessToken?.claims.userType === 'admin' && (
+                        <Link className={cn('link')} to='/admin'>
+                            Admin
+                        </Link>
+                    )}
+
+                    {authState?.isAuthenticated ? (
+                        <Link className={cn('link')} to='/account'>
                             Account
                         </Link>
-                        <Link className={cn('link')} to='/services'>
-                            Services
-                        </Link> */}
-                    <Link className={cn('link')} to='/login'>
-                        Login
-                    </Link>
+                    ) : (
+                        <Link className={cn('link')} to='/login'>
+                            Login
+                        </Link>
+                    )}
                 </nav>
             </div>
-        </header>
+        </footer>
     );
 }

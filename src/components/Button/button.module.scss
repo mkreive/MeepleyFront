@@ -41,14 +41,14 @@
 
 .tertiary {
     background-color: var(--color-tertiary);
-    color: var(--color-black);
+    color: var(--color-white);
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-bold);
     border: none;
 
     &:hover {
         transition: all 0.15s ease-in;
-        background-color: #e195b5;
+        background-color: var(--color-tertiary);
     }
 }
 
@@ -65,4 +65,29 @@
         color: var(--color-white);
         border: 0.2rem solid var(--color-primary);
     }
+}
+
+.black--small {
+    font-family: var(--font-family-regular);
+    background-color: var(--color-white);
+    color: var(--color-black);
+    border: 0.2rem solid var(--color-black);
+    font-size: var(--font-size-regular);
+    padding: 1.2rem 2rem;
+
+    &:hover {
+        transition: all 0.15s ease-in;
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        border: 0.2rem solid var(--color-primary);
+    }
+}
+
+.disabled {
+    font-family: var(--font-family-regular);
+    background-color: transparent;
+    color: var(--color-gray-medium);
+    border: 0.2rem solid var(--color-gray-medium);
+    font-size: var(--font-size-base);
+    cursor: not-allowed;
 }

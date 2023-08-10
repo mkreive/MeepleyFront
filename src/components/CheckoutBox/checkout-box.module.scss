@@ -1,17 +1,17 @@
 @import '../../sass/respond-to-media.scss';
 
 .checkout__box {
-    flex: 1;
+    width: 20%;
     display: flex;
     flex-direction: column;
     border-radius: var(--border-radius-s);
     border: 0.2rem solid var(--color-secondary);
-    max-width: 35rem;
-    padding: 2rem;
+    padding: var(--spacer-l) var(--spacer-l);
     height: max-content;
-    gap: 3rem;
+    gap: var(--spacer-xxl);
 
     @include respond(tab) {
+        width: 100%;
         max-width: 45rem;
     }
 }
@@ -19,14 +19,55 @@
 .upper_block {
     display: flex;
     flex-direction: column;
-    gap: var(--spacer-xxs);
-    padding-bottom: var(--spacer-l);
+    gap: var(--spacer-s);
+}
+
+.line {
+    margin-top: var(--spacer-xs);
+    margin-bottom: var(--spacer-xs);
+    width: 100%;
     border-bottom: 0.1rem solid var(--color-secondary);
+}
+
+.button_block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-s);
 }
 
 .bottom_block {
     display: flex;
     flex-direction: column;
-    gap: var(--spacer-l);
+    gap: var(--spacer-xl);
     padding-bottom: var(--spacer-l);
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--spacer-m);
+
+    &__input {
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        background-color: transparent;
+        font-size: var(--font-size-small);
+        line-height: 1.8rem;
+        resize: none;
+        font-family: inherit;
+        outline: none;
+        border-radius: var(--border-radius-s);
+        border: 0.2rem solid var(--color-white);
+        padding: var(--spacer-m) var(--spacer-m);
+
+        &:focus {
+            border: 0.2rem solid var(--color-primary);
+        }
+
+        &::placeholder {
+            color: black;
+        }
+    }
 }

@@ -2,11 +2,10 @@
 
 .container {
     position: relative;
-    align-items: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15rem;
+    gap: 10rem;
     justify-content: flex-start;
     max-width: 150rem;
     margin-top: 7rem;
@@ -18,9 +17,4 @@
         margin: 5rem 0;
         padding: 0 3rem;
     }
-}
-
-.wrapper {
-    width: 100%;
-    position: relative;
 }

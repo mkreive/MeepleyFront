@@ -35,6 +35,15 @@
     font-family: var(--font-family-heading);
     font-size: var(--font-size-heading-medium);
     font-weight: var(--font-weight-bold);
+    letter-spacing: 0.01rem;
+}
+
+.medium--tertiary {
+    color: var(--color-tertiary);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-heading-medium);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.01rem;
 }
 
 .medium--primary {
@@ -42,6 +51,7 @@
     font-family: var(--font-family-heading);
     font-size: var(--font-size-heading-medium);
     font-weight: var(--font-weight-bold);
+    letter-spacing: 0.01rem;
 }
 
 .small {
@@ -53,6 +63,13 @@
 
 .small--secondary {
     color: var(--color-secondary);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-heading-small);
+    font-weight: var(--font-weight-bold);
+}
+
+.small--primary {
+    color: var(--color-primary);
     font-family: var(--font-family-heading);
     font-size: var(--font-size-heading-small);
     font-weight: var(--font-weight-bold);
@@ -80,6 +97,27 @@
 
 .very-small--black {
     color: var(--color-black);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-base);
+    font-weight: 700;
+}
+
+.very-very-small {
+    color: var(--color-black);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-regular);
+    font-weight: var(--font-weight-regular);
+}
+
+.very-very-small--bold {
+    color: var(--color-white);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-regular);
+    font-weight: 700;
+}
+
+.very-small--gray {
+    color: var(--color-gray-medium);
     font-family: var(--font-family-heading);
     font-size: var(--font-size-base);
     font-weight: 700;

@@ -21,6 +21,7 @@ export default function ForumSection() {
                     and thoughts on different games, or seek recommendations and advice from seasoned players. Our
                     forums are the heart of our community, fostering engaging discussions and lasting friendships.
                 </Paragraph>
+
                 <Link to='/forums' className={cn('link')}>
                     <Button theme='primary'>Forums</Button>
                 </Link>

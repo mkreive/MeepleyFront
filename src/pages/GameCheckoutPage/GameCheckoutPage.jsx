@@ -1,42 +1,64 @@
 import React, { useState, useEffect } from 'react';
-import { fetchGame } from '../../utils/fetchGame';
+import { useFetchGames } from '../../hooks/useFetchGames';
+import { fetchData } from '../../utils/fetchData';
 import classNames from 'classnames/bind';
 import styles from './game-checkout-page.module.scss';
-import Loader from '../../components/Loader/Loader';
 import GameCard from '../../components/GameCard/GameCard';
+import NewGamesSection from '../../features/NewGamesSection/NewGamesSection';
+import { useOktaAuth } from '@okta/okta-react';
+import ReviewsSection from '../../features/ReviewsSection/ReviewsSection';
 
 const cn = classNames.bind(styles);
 
 export default function GameCheckoutPage() {
-    const [game, setGame] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-
+    const { authState } = useOktaAuth();
+    const { loading, games, error } = useFetchGames('/api/games');
+    const [reviewLeft, setReviewLeft] = useState(false);
+    const [reviewSubmitted, setReviewSubmitted] = useState(false);
+    const [loadingUserReview, setLoadingUserReview] = useState(true);
+    const [reviewError, setReviewError] = useState(false);
     const gameId = window.location.pathname.split('/')[2];
 
+    useEffect(() => window.scrollTo(0, 0), []);
+
     useEffect(() => {
-        const getGame = async function () {
-            const fetchedGame = await fetchGame(`/api/games/${gameId}`);
-            if (fetchedGame) {
-                setLoading(false);
-                setGame(fetchedGame);
-            } else {
-                setError(fetchGame);
+        const getUserReview = async function () {
+            if (authState && authState?.isAuthenticated) {
+                const requestOptions = {
+                    method: 'GET',
+                    headers: {
+                        Authorization: `Bearer ${authState.accessToken?.accessToken}`,
+                        'Content-Type': 'application/json',
+                    },
+                };
+                const fetchedUserReview = await fetchData(
+                    `/api/reviews/secure/user/game?gameId=${gameId}`,
+                    requestOptions
+                );
+
+                if (fetchedUserReview) {
+                    setLoadingUserReview(false);
+                    setReviewLeft(fetchedUserReview);
+                } else {
+                    setReviewError(fetchedUserReview);
+                }
             }
         };
-        getGame();
-    }, []);
+        getUserReview();
+    }, [reviewSubmitted]);
 
     return (
         <div className={cn('container')}>
-            {loading && <Loader />}
+            <GameCard
+                gameId={gameId}
+                authState={authState}
+                isReviewLeft={reviewLeft}
+                onReviewSubmit={() => setReviewSubmitted(true)}
+            />
 
-            <section className={cn(`${!error ? 'wrapper' : 'hidden'}`)}>
-                <GameCard key={game.id} game={game} />
-            </section>
+            <ReviewsSection gameId={gameId} authState={authState} isReviewLeft={reviewLeft} />
 
-            <div> Reviews section</div>
-            <div>Service section</div>
+            <NewGamesSection loading={loading} error={error} games={games} />
         </div>
     );
 }

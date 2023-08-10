@@ -6,20 +6,23 @@
     gap: 3rem;
     flex-direction: column;
     margin-bottom: 4rem;
+    width: 100%;
 }
 
 .wrapper {
     display: flex;
+    flex-direction: row;
     width: 100%;
-    gap: var(--spacer-xxxxl);
+    gap: var(--spacer-xxxl);
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
 
     @include respond(tab) {
-        gap: var(--spacer-l);
+        gap: var(--spacer-xxl);
     }
 
     @include respond(phone) {
+        gap: var(--spacer-l);
     }
 }
 

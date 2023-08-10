@@ -9,7 +9,7 @@ import SignupImage from './SignupImage';
 
 const cn = classNames.bind(styles);
 
-export default function SignupSection() {
+export default function SignupSection(props) {
     return (
         <div className={cn('container')}>
             <section className={cn('text')}>
@@ -27,9 +27,11 @@ export default function SignupSection() {
                     fellow gamers who share the same love for tabletop gaming.
                 </Paragraph>
 
-                <Link to='/signup' className={cn('link')}>
-                    <Button theme='secondary'>Sign up</Button>
-                </Link>
+                {!props.isAuthenticated && (
+                    <Link to='/login' className={cn('link')}>
+                        <Button theme='secondary'>Sign in</Button>
+                    </Link>
+                )}
             </section>
             <SignupImage />
         </div>

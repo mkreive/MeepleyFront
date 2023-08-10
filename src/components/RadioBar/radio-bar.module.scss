@@ -1,0 +1,57 @@
+@import '../../sass/respond-to-media.scss';
+
+.wrapper {
+    letter-spacing: 1px;
+    border: 0.2rem solid var(--color-black);
+    border-radius: 5rem;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    width: max-content;
+}
+
+.inner-wrapper {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    transition: all 250ms linear;
+}
+
+.radio-label {
+    background-color: transparent;
+    border: 0.2rem solid transparent;
+    border-radius: 5rem;
+    color: var(--color-primary);
+    cursor: pointer;
+    display: inline-block;
+    margin: 0.4rem;
+    width: 14rem;
+    font-weight: bolder;
+    padding: 1rem 2rem;
+    position: relative;
+    text-align: center;
+    transition: all 250ms ease-in-out;
+
+    @include respond(tab) {
+        width: 11rem;
+        font-size: var(--font-size-small);
+    }
+
+    @include respond(phone) {
+        width: 8rem;
+        font-size: var(--font-size-xxsmall);
+        padding: 0.8rem 1.8rem;
+    }
+}
+
+.radio-label:hover {
+    border: 0.2rem solid var(--color-primary);
+}
+
+.radio-button {
+    display: none;
+}
+.radio-button:checked + label {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}

@@ -1,0 +1,56 @@
+@import '../../sass/respond-to-media.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius-s);
+    border: 0.1rem solid var(--color-secondary);
+    padding: var(--spacer-xxl);
+    gap: var(--spacer-l);
+
+    @include respond(tab) {
+        padding: var(--spacer-m);
+    }
+
+    @include respond(phone) {
+        flex-direction: column;
+        gap: var(--spacer-l);
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-m);
+}
+
+.line {
+    margin-top: var(--spacer-s);
+    margin-bottom: var(--spacer-m);
+    width: 100%;
+    border-bottom: 0.1rem solid var(--color-gray);
+}
+
+.input,
+.input--textarea {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    background-color: transparent;
+    font-size: var(--font-size-small);
+    line-height: 1.8rem;
+    resize: none;
+    font-family: inherit;
+    outline: none;
+    border-radius: var(--border-radius-s);
+    border: 0.2rem solid var(--color-white);
+    padding: var(--spacer-m) var(--spacer-m);
+
+    &:focus {
+        border: 0.2rem solid var(--color-secondary);
+    }
+
+    &::placeholder {
+        color: var(--color-black);
+    }
+}

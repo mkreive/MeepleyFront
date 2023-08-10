@@ -5,7 +5,7 @@ import styles from './navigation.module.scss';
 
 const cn = classNames.bind(styles);
 
-export default function DesktopNavigation() {
+export default function DesktopNavigation({ loggedIn, onLogout, isAdmin }) {
     return (
         <nav className={cn('nav--desktop')}>
             <Link className={cn('link')} to='/home'>
@@ -14,18 +14,28 @@ export default function DesktopNavigation() {
             <Link className={cn('link')} to='/games'>
                 Games
             </Link>
-            <Link className={cn('link')} to='/forums'>
-                Forums
-            </Link>
-            {/* <Link className={cn('link')} to='/account'>
-                Account
-            </Link>
-            <Link className={cn('link')} to='/services'>
-                Services
-            </Link> */}
-            <Link className={cn('link')} to='/login'>
-                Login
-            </Link>
+
+            {loggedIn && (
+                <Link className={cn('link')} to='/account'>
+                    Account
+                </Link>
+            )}
+
+            {isAdmin && (
+                <Link className={cn('link')} to='/admin'>
+                    Admin
+                </Link>
+            )}
+
+            {!loggedIn ? (
+                <Link className={cn('link')} to='/login'>
+                    Login
+                </Link>
+            ) : (
+                <Link className={cn('link')} onClick={onLogout}>
+                    Logout
+                </Link>
+            )}
         </nav>
     );
 }
