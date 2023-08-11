@@ -41,7 +41,7 @@ export default function ReviewsSection({ gameId, authState, isReviewLeft }) {
             {reviews.length > 0 && !loading && reviews.map((r) => <ReviewCard key={r.id} review={r} />)}
 
             {reviews.length === 0 && !loading && (
-                <Paragraph style='regular'>{t('checkout_reviews_signinad_title')}</Paragraph>
+                <Paragraph style='regular'>{t('checkout_reviews_noreviews')}</Paragraph>
             )}
 
             {!authState?.isAuthenticated && (

@@ -19,6 +19,7 @@
     "home_services_paragraph": "Gaukite išsamių įžvalgų ir patarimų iš mūsų profesionalių žaidėjų komandos. Padėsime priimti pagrįstus sprendimus, kurie stalo žaidimai yra verti jūsų laiko ir pinigų. Be to, siūlome išsamius vadovus pradedantiesiems, užtikrinančius, kad kiekvienas galėtų drąsiai žengti į nepakartojamą hobį.",
     "home_services_paragraph_bottom": "Ateik ir leiskis į įdomią kelionę po stalo žaidimų pasaulį su mumis. Nesvarbu, ar esate čia norėdami rasti kitą mėgstamą žaidimą, aptarti taktiką ar susirasti naujų draugų, MEEPLEY yra puiki vieta visiems jūsų hobio poreikiams. Meskime kauliukus ir linksminkimės!",
     "home_services_button": "Prisijungti",
+    "home_services_button2": "Paslaugos",
     "home_forum_heading": "Draugiška Bendruomenė",
     "home_forum_paragraph": "Susisiekite su bendraminčiais stalo žaidimų entuziastais mūsų gyvuose forumuose. Pasidalinkite savo patirtimi, strategijomis ir mintimis apie skirtingus žaidimus arba klauskite patyrusių žaidėjų rekomendacijų ir patarimų. Mūsų forumai yra mūsų bendruomenės širdis, skatinanti įdomias diskusijas ir ilgalaikes draugystes.",
     "home_forum_button": "Forumas",
@@ -60,14 +61,14 @@
     "checkout_box_signin_button": "Prisijungti",
     "checkout_box_review_button": "Pateikti",
     "checkout_box_review_thankyou": "Dėkojame už atsiliepimą!",
-    "checkout_box_review_signin": "Prisijunkite norėdami rezervuoti žaidimus ir paliktumėti atsiliepimus",
+    "checkout_box_review_signin": "Prisijunkite norėdami rezervuoti žaidimus ir palikti atsiliepimą",
     "checkout_box_game_reserved_one": "{{count}}/5 žaidimas rezervuotas",
     "checkout_box_game_reserved_few": "{{count}}/5 žaidimai rezervuoti",
     "checkout_box_available": "Yra",
     "checkout_box_notavailable": "Nėra",
     "checkout_box_copyavailable": " kopija prieinama",
     "checkout_box_copiesavailable": " kopijos prieinamos",
-    "checkout_box_paragraph": "Šis numeris gali keistis, kol užsakymas nebus atliktas.",
+    "checkout_box_paragraph": "Šis numeris gali keistis, kol užsakymas nebus pateiktas.",
     "checkout_box_error": "Kažkas ne taip!",
     "checkout_box_textarea_placeholder": "Palikite savo atsiliepimą čia",
 
@@ -111,8 +112,8 @@
 
     "admin_heading": "Tvarkyti parduotuvę",
     "admin_page_messages": "žinutės",
-    "admin_page_addgame": "pridėti žaidimą",
-    "admin_page_editgame": "redaguoti žaidimą",
+    "admin_page_addgame": "pridėti",
+    "admin_page_editgame": "redaguoti",
     "admin_messages_heading": "Laukiantys klausimai",
     "admin_messages_nomsg": "Nėra laukiančių klausimų",
     "admin_messages_msgcard_case": "Klausimas #:",
@@ -124,6 +125,7 @@
     "admin_editgame_remaining": "Likutis: ",
     "admin_editgame_increasebtn": "Pridėti",
     "admin_editgame_decreasebtn": "Atimti",
+    "admin_editgame_editbtn": "Redaguoti",
     "admin_editgame_deletebtn": "Ištrinti",
     "admin_addgame_heading": "Pridėti Naują Žaidimą",
     "admin_addgame_warning": "Visi laukai turi būti užpildyti",
@@ -139,5 +141,5 @@
     "admin_addgame_form_intro": "Intro",
     "admin_addgame_form_description": "Aprašymas",
     "admin_addgame_form_image": "Paveikslėlis",
-    "admin_addgame_form_addbtn": "Pridėti"
+    "admin_addgame_form_btnadd": "Pridėti"
 }

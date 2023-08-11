@@ -24,7 +24,7 @@ export default function ServicesSection(props) {
 
                 {props.isAuthenticated ? (
                     <Link to='/account' className={cn('link')}>
-                        <Button theme='primary'>Services</Button>
+                        <Button theme='primary'>{t('home_services_button2')}</Button>
                     </Link>
                 ) : (
                     <Link to='/login' className={cn('link')}>

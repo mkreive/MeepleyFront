@@ -124,6 +124,7 @@
     "admin_editgame_remaining": "Remaining: ",
     "admin_editgame_increasebtn": "Increase",
     "admin_editgame_decreasebtn": "Decrease",
+    "admin_editgame_editbtn": "Edit",
     "admin_editgame_deletebtn": "Delete",
     "admin_addgame_heading": "Add New Game",
     "admin_addgame_warning": "All fields must be filled out",

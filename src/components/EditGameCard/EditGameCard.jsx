@@ -51,6 +51,24 @@ export default function EditGameCard(props) {
         setRemaining(remaining - 1);
     }
 
+    async function editGame() {
+        const url = `/api/admin/secure/decrease/game/quantity?gameId=${game.id}`;
+        const requestOptions = {
+            method: 'PUT',
+            headers: {
+                Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
+                'Content-Type': 'application/json',
+            },
+        };
+
+        const quantityUpdateResponse = await fetch(url, requestOptions);
+        if (!quantityUpdateResponse.ok) {
+            throw new Error('Something went wrong!');
+        }
+        setQuantity(quantity - 1);
+        setRemaining(remaining - 1);
+    }
+
     async function deleteGame() {
         const url = `/api/admin/secure/delete/game?gameId=${game.id}`;
         const requestOptions = {
@@ -85,7 +103,8 @@ export default function EditGameCard(props) {
                     {game.title}
                 </Heading>
                 <Paragraph style='regular'>
-                    {t('admin_editgame_quantity')}${quantity}
+                    {t('admin_editgame_quantity')}
+                    {quantity}
                 </Paragraph>
                 <Paragraph style='regular'>
                     {t('admin_editgame_remaining')}
@@ -98,6 +117,9 @@ export default function EditGameCard(props) {
             </button>
             <button className={cn('btn', 'btn--minus')} onClick={decreaseQuantity}>
                 {t('admin_editgame_decreasebtn')}
+            </button>
+            <button className={cn('btn', 'btn--edit')} onClick={editGame}>
+                {t('admin_editgame_editbtn')}
             </button>
             <button className={cn('btn', 'btn--delete')} onClick={deleteGame}>
                 {t('admin_editgame_deletebtn')}
