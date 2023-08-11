@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useOktaAuth } from '@okta/okta-react';
 import { fetchHistory } from '../../utils/fetchHistory';
 import classNames from 'classnames/bind';
@@ -12,6 +13,7 @@ import HistoryCard from '../../components/HistoryCard/HistoryCard';
 const cn = classNames.bind(styles);
 
 export default function HistorySection() {
+    const { t } = useTranslation();
     const { authState } = useOktaAuth();
     const [history, setHistory] = useState([]);
     const [loading, setLoading] = useState(true);

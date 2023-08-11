@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Navigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './account-page.module.scss';
@@ -12,6 +13,7 @@ import { useOktaAuth } from '@okta/okta-react';
 const cn = classNames.bind(styles);
 
 export default function AccountPage() {
+    const { t } = useTranslation();
     const { authState } = useOktaAuth();
     const [page, setPage] = useState('reservations');
 
@@ -23,7 +25,7 @@ export default function AccountPage() {
         <div className={cn('container')}>
             <div className={cn('container__header')}>
                 <Heading tag='h1' style='big--black'>
-                    Your Account
+                    {t('account_header')}
                 </Heading>
                 <RadioBar onRadioChange={(props) => setPage(props)} pages={['reservations', 'history', 'messages']} />
             </div>

@@ -69,5 +69,18 @@
     "checkout_box_copiesavailable": " kopijos prieinamos",
     "checkout_box_paragraph": "Šis numeris gali keistis, kol užsakymas nebus atliktas.",
     "checkout_box_error": "Kažkas ne taip!",
-    "checkout_box_textarea_placeholder": "Palikite savo atsiliepimą čia"
+    "checkout_box_textarea_placeholder": "Palikite savo atsiliepimą čia",
+
+    "account_header": "Jūsų Paskyra",
+    "account_reservations_header": "Jūsų rezervacijos",
+    "account_reservations_allgamesad_title": "Norite rezervuoti žaidimą?",
+    "account_reservations_allgamesad_text": "Apsilankykite mūsų žaidimų kolekcijoje",
+    "account_reservations_allgamesad_button": "Visi žaidimai",
+    "account_reservations_card_returnbtn": "Grąžinti žaidimą",
+    "account_reservations_card_latedues": "Vėluojami grąžinimai negali būti atnaujinti",
+    "account_reservations_card_renew": "Atnaujinkite rezervaciją 7 dienoms",
+    "account_reservations_card_renewloanbtn": "Atnaujinti",
+    "account_reservations_card_detailsbtn": "Detalės",
+    "account_reservations_card_helpothers": "Padėkite kitiems apsispręsti palikdami atsiliepimą.",
+    "account_reservations_card_leavereviewbtn": "Palikti atsiliepimą"
 }

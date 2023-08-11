@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import styles from './reservation-card.module.scss';
 import Heading from '../Heading/Heading';
@@ -10,6 +11,7 @@ const cn = classNames.bind(styles);
 
 export default function ReservationCard(props) {
     const { game, daysLeft, onReturnGame, onRenewLoan } = props;
+    const { t } = useTranslation();
 
     return (
         <div className={cn('container')}>
@@ -35,28 +37,28 @@ export default function ReservationCard(props) {
                 </div>
                 <Paragraph style='regular'>{game.intro}</Paragraph>
                 <Link to={`/checkout/${game.id}`} className={cn('link')}>
-                    <Button theme='black'>Details</Button>
+                    <Button theme='black'>{t('account_reservations_card_detailsbtn')}</Button>
                 </Link>
             </div>
 
             <div className={cn('loans__container')}>
                 <Paragraph style='small'>{`Due in ${daysLeft} days`}</Paragraph>
                 <Button theme='black--small' onClick={() => onReturnGame(game.id)}>
-                    Return game
+                    {t('account_reservations_card_returnbtn')}
                 </Button>
                 <span className={cn('line')}></span>
 
                 <Paragraph style='small'>
-                    {daysLeft < 0 ? 'Late dues cannot be renewed' : 'Renew your loan for 7 days'}
+                    {daysLeft < 0 ? {t('account_reservations_card_latedues')} : {t('account_reservations_card_renew')}}
                 </Paragraph>
                 <Button theme={daysLeft < 0 ? 'disabled' : 'black--small'} onClick={() => onRenewLoan(game.id)}>
-                    Renew loan
+                    {t('account_reservations_card_renewloanbtn')}
                 </Button>
                 <span className={cn('line')}></span>
 
-                <Paragraph style='small'>Help others by reviewing your recent loan.</Paragraph>
+                <Paragraph style='small'>{t('account_reservations_card_helpothers')}</Paragraph>
                 <Link className={cn('link')} to={`/checkout/${game.id}`}>
-                    <Button theme='black--small'>Leave a review</Button>
+                    <Button theme='black--small'>{t('account_reservations_card_leavereviewbtn')}</Button>
                 </Link>
             </div>
         </div>

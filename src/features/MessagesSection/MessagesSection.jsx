@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useOktaAuth } from '@okta/okta-react';
 import { fetchMessages } from '../../utils/fetchMessages';
 import classNames from 'classnames/bind';
@@ -13,6 +14,7 @@ import MessageCard from '../../components/MessageCard/MessageCard';
 const cn = classNames.bind(styles);
 
 export default function MessagesSection() {
+    const { t } = useTranslation();
     const { authState } = useOktaAuth();
     const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(true);

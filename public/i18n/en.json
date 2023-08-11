@@ -69,5 +69,18 @@
     "checkout_box_copiesavailable": " copies available",
     "checkout_box_paragraph": "This number can change until placing order has been complete.",
     "checkout_box_error": "Something went wrong!",
-    "checkout_box_textarea_placeholder": "Leave your review here"
+    "checkout_box_textarea_placeholder": "Leave your review here",
+
+    "account_header": "Your Account",
+    "account_reservations_header": "Current Reservations",
+    "account_reservations_allgamesad_title": "Want to reserve a game?",
+    "account_reservations_allgamesad_text": "Visit our game collection",
+    "account_reservations_allgamesad_button": "All games",
+    "account_reservations_card_returnbtn": "Return game",
+    "account_reservations_card_latedues": "Late dues cannot be renewed",
+    "account_reservations_card_renew": "Renew your loan for 7 days",
+    "account_reservations_card_renewloanbtn": "Renew loan",
+    "account_reservations_card_detailsbtn": "Details",
+    "account_reservations_card_helpothers": "Help others by reviewing your recent loan.",
+    "account_reservations_card_leavereviewbtn": "Leave a review"
 }
