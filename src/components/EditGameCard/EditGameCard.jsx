@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import { useOktaAuth } from '@okta/okta-react';
@@ -34,24 +35,6 @@ export default function EditGameCard(props) {
     }
 
     async function decreaseQuantity() {
-        const url = `/api/admin/secure/decrease/game/quantity?gameId=${game.id}`;
-        const requestOptions = {
-            method: 'PUT',
-            headers: {
-                Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
-                'Content-Type': 'application/json',
-            },
-        };
-
-        const quantityUpdateResponse = await fetch(url, requestOptions);
-        if (!quantityUpdateResponse.ok) {
-            throw new Error('Something went wrong!');
-        }
-        setQuantity(quantity - 1);
-        setRemaining(remaining - 1);
-    }
-
-    async function editGame() {
         const url = `/api/admin/secure/decrease/game/quantity?gameId=${game.id}`;
         const requestOptions = {
             method: 'PUT',
@@ -118,9 +101,13 @@ export default function EditGameCard(props) {
             <button className={cn('btn', 'btn--minus')} onClick={decreaseQuantity}>
                 {t('admin_editgame_decreasebtn')}
             </button>
-            <button className={cn('btn', 'btn--edit')} onClick={editGame}>
-                {t('admin_editgame_editbtn')}
+
+            <button className={cn('btn', 'btn--edit')}>
+                <Link to={`/edit/${game.id}`} className={cn('btn', 'btn--edit', 'link')}>
+                    {t('admin_editgame_editbtn')}
+                </Link>
             </button>
+
             <button className={cn('btn', 'btn--delete')} onClick={deleteGame}>
                 {t('admin_editgame_deletebtn')}
             </button>

@@ -111,8 +111,9 @@
 
     "admin_heading": "Manage Store",
     "admin_page_messages": "messages",
-    "admin_page_addgame": "add game",
-    "admin_page_editgame": "edit game",
+    "admin_page_addgame": "add",
+    "admin_page_games": "games",
+    "admin_page_editgame": "edit",
     "admin_messages_heading": "Pending Questions",
     "admin_messages_nomsg": "No pending questions",
     "admin_messages_msgcard_case": "Case #:",
@@ -141,6 +142,9 @@
     "admin_addgame_form_description": "Description",
     "admin_addgame_form_image": "Image",
     "admin_addgame_form_addbtn": "Add Game",
+    "admin_edit_heading": "Edit Game",
+    "admin_editgame_form_editbtn": "Save Game",
+    "admin_editgame_succesedit": "Game edited and saved successfuly! Redirecting you back to administration page...",
 
     "notfoundpage_heading": "Sorry, looks like the page you are trying to reach no longer exists.",
     "notfoundpage_letsgetyou": "Let's get you ",

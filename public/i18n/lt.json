@@ -113,6 +113,7 @@
     "admin_heading": "Tvarkyti parduotuvę",
     "admin_page_messages": "žinutės",
     "admin_page_addgame": "pridėti",
+    "admin_page_games": "žaidimai",
     "admin_page_editgame": "redaguoti",
     "admin_messages_heading": "Laukiantys klausimai",
     "admin_messages_nomsg": "Nėra laukiančių klausimų",
@@ -142,6 +143,9 @@
     "admin_addgame_form_description": "Aprašymas",
     "admin_addgame_form_image": "Paveikslėlis",
     "admin_addgame_form_btnadd": "Pridėti",
+    "admin_edit_heading": "Redaguoti Žaidimą",
+    "admin_editgame_form_editbtn": "Išsaugoti",
+    "admin_editgame_succesedit": "Žaidimas sėkmingai redaguotas ir išsaugotas! Peradresuojama atgal į administravimo puslapį...",
 
     "notfoundpage_heading": "Atsiprašome, atrodo, kad puslapio, kurį bandote pasiekti, nebėra.",
     "notfoundpage_letsgetyou": "Eikite į ",

@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useOktaAuth } from '@okta/okta-react';
 import { useTranslation } from 'react-i18next';
+import { fetchGame } from '../../utils/fetchGame';
 import classNames from 'classnames/bind';
-import styles from './add-new-game.module.scss';
+import styles from './edit-game.module.scss';
 import Heading from '../../components/Heading/Heading';
 import Card from '../../components/Card/Card';
 import Button from '../../components/Button/Button';
 import Paragraph from '../../components/Paragraph/Paragraph';
+import { Navigate } from 'react-router-dom';
 
 const cn = classNames.bind(styles);
 
-export default function AddNewGameSection() {
+export default function EditGame() {
     const { authState } = useOktaAuth();
     const { t } = useTranslation();
+    const navigate = useNavigate();
+    const gameId = window.location.pathname.split('/')[2];
+    const [game, setGame] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
     const [title, setTitle] = useState('');
     const [designer, setDesigner] = useState('');
     const [publisher, setPublisher] = useState('');
@@ -23,30 +31,35 @@ export default function AddNewGameSection() {
     const [complexity, setComplexity] = useState('');
     const [players, setPlayers] = useState('');
     const [playingTime, setPlayingTime] = useState('');
-    const [selectedImage, setSelectedImage] = useState(null);
     const [displayWarning, setDisplayWarning] = useState(false);
     const [displaySuccess, setDisplaySuccess] = useState(false);
 
-    async function base64ConversionForImages(e) {
-        if (e.target.files[0]) {
-            getBase64(e.target.files[0]);
-        }
-    }
-
-    function getBase64(file) {
-        let reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function () {
-            const base64result = reader.result.split(',')[1];
-            setSelectedImage(base64result);
+    useEffect(() => {
+        const getGame = async function () {
+            const fetchedGame = await fetchGame(`/api/games/${gameId}`);
+            if (fetchedGame) {
+                setLoading(false);
+                setGame(fetchedGame);
+                setTitle(fetchedGame.title);
+                setDesigner(fetchedGame.designer);
+                setPublisher(fetchedGame.publisher);
+                setIntro(fetchedGame.intro);
+                setDescription(fetchedGame.description);
+                setCopies(fetchedGame.copies);
+                setCategory(fetchedGame.category);
+                setComplexity(fetchedGame.complexity);
+                setPlayers(fetchedGame.players);
+                setPlayingTime(fetchedGame.playingTime);
+            } else {
+                setError(fetchedGame);
+            }
         };
-        reader.onerror = function (error) {
-            console.log('Error', error);
-        };
-    }
+        getGame();
+        window.scrollTo(0, 0);
+    }, []);
 
-    async function submitNewGame() {
-        const url = `/api/admin/secure/add/game`;
+    async function submitEditedGame() {
+        const url = `/api/admin/secure/edit/game?gameId=${gameId}`;
         if (
             authState &&
             authState?.isAuthenticated &&
@@ -61,7 +74,7 @@ export default function AddNewGameSection() {
             playingTime !== '' &&
             copies >= 0
         ) {
-            const game = {
+            const gameEdited = {
                 title,
                 designer,
                 publisher,
@@ -72,54 +85,46 @@ export default function AddNewGameSection() {
                 copies,
                 players,
                 playingTime,
-                img: selectedImage,
             };
 
             const requestOptions = {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(game),
+                body: JSON.stringify(gameEdited),
             };
 
-            const submitNewGameResponse = await fetch(url, requestOptions);
-            if (!submitNewGameResponse.ok) {
+            const submitEditedGameResponse = await fetch(url, requestOptions);
+            if (!submitEditedGameResponse.ok) {
                 throw new Error('Something went wrong!');
             }
-            setTitle('');
-            setDesigner('');
-            setPublisher('');
-            setIntro('');
-            setDescription('');
-            setCopies(0);
-            setCategory('');
-            setComplexity('');
-            setPlayers('');
-            setPlayingTime('');
-            setSelectedImage(null);
+
             setDisplayWarning(false);
             setDisplaySuccess(true);
+            window.scrollTo(0, 0);
+            setTimeout(() => {
+                navigate('/admin', window.location.origin);
+            }, 4000);
         } else {
             setDisplayWarning(true);
             setDisplaySuccess(false);
         }
-        window.scrollTo(0, 0);
     }
 
     return (
         <section className={cn('wrapper')}>
             <Heading tag='h2' style='medium'>
-                {t('admin_addgame_heading')}
+                {t('admin_edit_heading')}
             </Heading>
 
             {displayWarning && <Paragraph style='regular--alert_bold'>{t('admin_addgame_warning')}</Paragraph>}
 
-            {displaySuccess && <Paragraph style='regular--secondary_bold'>{t('admin_addgame_success')}</Paragraph>}
+            {displaySuccess && <Paragraph style='regular--secondary_bold'>{t('admin_editgame_succesedit')}</Paragraph>}
 
             <Card>
-                <form method='POST' className={cn('form')}>
+                <form method='PUT' className={cn('form')}>
                     <div className={cn('group')}>
                         <label className={cn('label')}>
                             {t('admin_addgame_form_title')}
@@ -230,13 +235,8 @@ export default function AddNewGameSection() {
                         />
                     </label>
 
-                    <label className={cn('label')}>
-                        {t('admin_addgame_form_image')}
-                        <input type='file' className={cn('input')} onChange={(e) => base64ConversionForImages(e)} />
-                    </label>
-
-                    <Button theme='black--small' onClick={submitNewGame}>
-                        {t('admin_addgame_form_addbtn')}
+                    <Button theme='black--small' onClick={submitEditedGame}>
+                        {t('admin_editgame_form_editbtn')}
                     </Button>
                 </form>
             </Card>
