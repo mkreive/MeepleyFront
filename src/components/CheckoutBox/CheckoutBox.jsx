@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { fetchLoans } from '../../utils/fetchLoans';
 import { fetchCheckout } from '../../utils/fetchCheckout';
@@ -19,6 +20,7 @@ export default function CheckoutBox({
     isReviewLeft,
     onReviewSubmit,
 }) {
+    const { t } = useTranslation();
     const [loans, setLoans] = useState(0);
     const [loadingLoans, setLoadingLoans] = useState(true);
     const [loansError, setLoansError] = useState(false);
@@ -83,24 +85,24 @@ export default function CheckoutBox({
             if (!checkout && loans < 5 && copiesAvailable > 0) {
                 return (
                     <Button theme='secondary' onClick={reserveGame}>
-                        Reserve
+                        {t('checkout_box_reserve_button')}
                     </Button>
                 );
             } else if (checkout) {
-                return <Paragraph style='regular--bold'>You reserved this game. Enjoy!</Paragraph>;
+                return <Paragraph style='regular--bold'>{t('checkout_box_reserve_success')}</Paragraph>;
             } else if (!checkout && loans === 5) {
-                return <Paragraph style='regular--tertiary'>Too many games reserved..</Paragraph>;
+                return <Paragraph style='regular--tertiary'>{t('checkout_box_reserve_toomany')}</Paragraph>;
             } else if (!checkout && copiesAvailable === 0) {
                 return (
                     <Button theme='disabled' disabled={true}>
-                        Reserve
+                        {t('checkout_box_reserve_button')}
                     </Button>
                 );
             }
         } else {
             return (
                 <Link to='/login'>
-                    <Button theme='secondary'>Sign in</Button>
+                    <Button theme='secondary'>{t('checkout_box_signin_button')}</Button>
                 </Link>
             );
         }
@@ -114,20 +116,20 @@ export default function CheckoutBox({
                         <textarea
                             id='gameReview'
                             className={cn('review__input')}
-                            placeholder='Leave your review here...'
+                            placeholder={t('checkout_box_textarea_placeholder')}
                             rows={6}
                             onChange={(e) => setGameReview(e.target.value)}
                         ></textarea>
                     </label>
                     <Button theme='primary' onClick={submitReview}>
-                        Submit
+                        {t('checkout_box_review_button')}
                     </Button>
                 </form>
             );
         } else if (authState?.isAuthenticated && isReviewLeft) {
-            return <Paragraph style='regular'>Thank you for your review!</Paragraph>;
+            return <Paragraph style='regular'>{t('checkout_box_review_thankyou')}</Paragraph>;
         }
-        return <Paragraph style='regular--gray'>Sign in to reserve games and leave reviews</Paragraph>;
+        return <Paragraph style='regular--gray'>{t('checkout_box_review_signin')}</Paragraph>;
     }
 
     async function reserveGame() {
@@ -141,7 +143,7 @@ export default function CheckoutBox({
         };
         const checkoutResponse = await fetch(url, requestOptions);
         if (!checkoutResponse.ok) {
-            throw new Error('Something went wrong!');
+            throw new Error(t('checkout_box_error'));
         }
         setCheckout(true);
         onCheckout(true);
@@ -160,7 +162,7 @@ export default function CheckoutBox({
 
         const returnResponse = await fetch(url, requestOptions);
         if (!returnResponse.ok) {
-            throw new Error('Something went wrong!');
+            throw new Error(t('checkout_box_error'));
         }
         setReviewSubmited(true);
         onReviewSubmit(true);
@@ -171,23 +173,27 @@ export default function CheckoutBox({
             <div className={cn('upper_block')}>
                 {!loadingLoans && (
                     <>
-                        <Paragraph style='medium'>{`${loans}/5 games reserved`}</Paragraph>
+                        <Paragraph style='medium'>
+                            {loans}
+                            {loans === 1 ? t('checkout_box_game_reserved') : t('checkout_box_games_reserved')}
+                        </Paragraph>
                         <span className={cn('line')}></span>
                     </>
                 )}
 
                 {copiesAvailable > 0 ? (
                     <Heading tag='h3' style='medium--secondary'>
-                        Available
+                        {t('checkout_box_available')}
                     </Heading>
                 ) : (
                     <Heading tag='h3' style='medium--tertiary'>
-                        Not available
+                        {t('checkout_box_notavailable')}
                     </Heading>
                 )}
 
                 <Paragraph style='small'>
-                    {copies} copies / {copiesAvailable} available
+                    {copies}/{copiesAvailable}
+                    {copies === 1 ? t('checkout_box_copyavailable') : t('checkout_box_copiesavailable')}
                 </Paragraph>
 
                 {buttonRender()}
@@ -195,7 +201,7 @@ export default function CheckoutBox({
             <span className={cn('line')}></span>
 
             <div className={cn('bottom_block')}>
-                <Paragraph style='regular'>This number can change until placing order has been complete.</Paragraph>
+                <Paragraph style='regular'> {t('checkout_box_paragraph')}</Paragraph>
 
                 {reviewRender()}
             </div>

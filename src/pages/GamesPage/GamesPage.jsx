@@ -73,6 +73,7 @@ export default function GamesPage() {
             }
         };
         getGames();
+        window.scrollTo(0, 0);
     }, [categories, complexities, title]);
 
     return (

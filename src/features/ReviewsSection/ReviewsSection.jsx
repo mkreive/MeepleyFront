@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { fetchReviews } from '../../utils/fetchReviews';
 import classNames from 'classnames/bind';
 import styles from './reviews-section.module.scss';
@@ -11,6 +12,7 @@ import Paragraph from '../../components/Paragraph/Paragraph';
 const cn = classNames.bind(styles);
 
 export default function ReviewsSection({ gameId, authState, isReviewLeft }) {
+    const { t } = useTranslation();
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -31,7 +33,7 @@ export default function ReviewsSection({ gameId, authState, isReviewLeft }) {
     return (
         <section className={cn(`${!error ? 'wrapper__reviews' : 'hidden'}`)}>
             <Heading tag='h2' style='big--black'>
-                Reviews
+                {t('checkout_reviews_heading')}
             </Heading>
 
             {loading && <Loader />}
@@ -39,14 +41,14 @@ export default function ReviewsSection({ gameId, authState, isReviewLeft }) {
             {reviews.length > 0 && !loading && reviews.map((r) => <ReviewCard key={r.id} review={r} />)}
 
             {reviews.length === 0 && !loading && (
-                <Paragraph style='regular'>Currently there is no reviews for this game</Paragraph>
+                <Paragraph style='regular'>{t('checkout_reviews_signinad_title')}</Paragraph>
             )}
 
             {!authState?.isAuthenticated && (
                 <SectionWithButton
-                    title='Want to leave your review?'
-                    text='Sign in to be able to leave a review and use our services :)'
-                    button='Sign up'
+                    title={t('checkout_reviews_signinad_title')}
+                    text={t('checkout_reviews_signinad_text')}
+                    button={t('checkout_reviews_signinad_button')}
                     link='/login'
                 />
             )}
