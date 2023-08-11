@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import styles from './admin-page.module.scss';
 import Heading from '../../components/Heading/Heading';
@@ -12,8 +13,9 @@ import EditGameSection from '../../features/EditGameSection/EditGameSecton';
 const cn = classNames.bind(styles);
 
 export default function AdminPage() {
+    const { t } = useTranslation();
     const { authState } = useOktaAuth();
-    const [page, setPage] = useState('messages');
+    const [page, setPage] = useState(t('admin_page_messages'));
 
     if (authState?.accessToken?.claims.userType === undefined) {
         return <Navigate to='/home' />;
@@ -23,16 +25,19 @@ export default function AdminPage() {
         <div className={cn('container')}>
             <div className={cn('container__header')}>
                 <Heading tag='h1' style='big--black'>
-                    Manage Store
+                    {t('admin_heading')}
                 </Heading>
-                <RadioBar onRadioChange={(props) => setPage(props)} pages={['messages', 'add game', 'edit game']} />
+                <RadioBar
+                    onRadioChange={(props) => setPage(props)}
+                    pages={[t('admin_page_messages'), t('admin_page_addgame'), t('admin_page_editgame')]}
+                />
             </div>
 
-            {page === 'messages' && <AdminMessagesSection />}
+            {page === t('admin_page_messages') && <AdminMessagesSection />}
 
-            {page === 'add game' && <AddNewGameSection />}
+            {page === t('admin_page_addgame') && <AddNewGameSection />}
 
-            {page === 'edit game' && <EditGameSection />}
+            {page === t('admin_page_editgame') && <EditGameSection />}
         </div>
     );
 }

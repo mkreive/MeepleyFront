@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import styles from './add-new-game.module.scss';
 import Heading from '../../components/Heading/Heading';
@@ -11,7 +12,7 @@ const cn = classNames.bind(styles);
 
 export default function AddNewGameSection() {
     const { authState } = useOktaAuth();
-
+    const { t } = useTranslation();
     const [title, setTitle] = useState('');
     const [designer, setDesigner] = useState('');
     const [publisher, setPublisher] = useState('');
@@ -110,18 +111,18 @@ export default function AddNewGameSection() {
     return (
         <section className={cn('wrapper')}>
             <Heading tag='h2' style='medium'>
-                Add New Game
+                {t('admin_addgame_heading')}
             </Heading>
 
-            {displayWarning && <Paragraph style='regular--alert_bold'>All fields must be filled out</Paragraph>}
+            {displayWarning && <Paragraph style='regular--alert_bold'>{t('admin_addgame_warning')}</Paragraph>}
 
-            {displaySuccess && <Paragraph style='regular--secondary_bold'>New game added successfully</Paragraph>}
+            {displaySuccess && <Paragraph style='regular--secondary_bold'>{t('admin_addgame_success')}</Paragraph>}
 
             <Card>
                 <form method='POST' className={cn('form')}>
                     <div className={cn('group')}>
                         <label className={cn('label')}>
-                            Title
+                            {t('admin_addgame_form_title')}
                             <input
                                 type='text'
                                 className={cn('input')}
@@ -131,7 +132,7 @@ export default function AddNewGameSection() {
                             />
                         </label>
                         <label className={cn('label')}>
-                            Designer
+                            {t('admin_addgame_form_designer')}
                             <input
                                 type='text'
                                 className={cn('input')}
@@ -144,7 +145,7 @@ export default function AddNewGameSection() {
 
                     <div className={cn('group')}>
                         <label className={cn('label')}>
-                            Publisher
+                            {t('admin_addgame_form_publisher')}
                             <input
                                 type='text'
                                 className={cn('input')}
@@ -154,7 +155,7 @@ export default function AddNewGameSection() {
                             />
                         </label>
                         <label className={cn('label')}>
-                            Category
+                            {t('admin_addgame_form_category')}
                             <input
                                 type='text'
                                 className={cn('input')}
@@ -167,7 +168,7 @@ export default function AddNewGameSection() {
 
                     <div className={cn('group')}>
                         <label className={cn('label')}>
-                            Complexity
+                            {t('admin_addgame_form_complexity')}
                             <input
                                 type='text'
                                 className={cn('input')}
@@ -177,7 +178,7 @@ export default function AddNewGameSection() {
                             />
                         </label>
                         <label className={cn('label')}>
-                            Playing Time
+                            {t('admin_addgame_form_playingtime')}
                             <input
                                 type='text'
                                 className={cn('input')}
@@ -187,7 +188,7 @@ export default function AddNewGameSection() {
                             />
                         </label>
                         <label className={cn('label')}>
-                            Number of Players
+                            {t('admin_addgame_form_players')}
                             <input
                                 type='text'
                                 className={cn('input')}
@@ -197,7 +198,7 @@ export default function AddNewGameSection() {
                             />
                         </label>
                         <label className={cn('label')}>
-                            Copies
+                            {t('admin_addgame_form_copies')}
                             <input
                                 type='number'
                                 className={cn('input')}
@@ -209,7 +210,7 @@ export default function AddNewGameSection() {
                     </div>
 
                     <label className={cn('label')}>
-                        Intro
+                        {t('admin_addgame_form_intro')}
                         <textarea
                             rows={3}
                             className={cn('input--textarea')}
@@ -220,7 +221,7 @@ export default function AddNewGameSection() {
                     </label>
 
                     <label className={cn('label')}>
-                        Description
+                        {t('admin_addgame_form_description')}
                         <textarea
                             rows={5}
                             className={cn('input--textarea')}
@@ -230,12 +231,12 @@ export default function AddNewGameSection() {
                     </label>
 
                     <label className={cn('label')}>
-                        Image
+                        {t('admin_addgame_form_image')}
                         <input type='file' className={cn('input')} onChange={(e) => base64ConversionForImages(e)} />
                     </label>
 
                     <Button theme='black--small' onClick={submitNewGame}>
-                        Add Game
+                        {t('admin_addgame_form_btnadd')}
                     </Button>
                 </form>
             </Card>

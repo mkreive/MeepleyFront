@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
+import { useTranslation } from 'react-i18next';
 import { fetchMessages } from '../../utils/fetchMessages';
 import classNames from 'classnames/bind';
 import styles from './admin-messages-section.module.scss';
@@ -11,6 +12,7 @@ import AdminMessageCard from '../../components/AdminMessageCard/AdminMessageCard
 const cn = classNames.bind(styles);
 
 export default function AdminMessagesSection() {
+    const { t } = useTranslation();
     const { authState } = useOktaAuth();
     const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -48,7 +50,7 @@ export default function AdminMessagesSection() {
     return (
         <section className={cn(`${!error ? 'wrapper' : 'hidden'}`)}>
             <Heading tag='h2' style='medium'>
-                Pending Questions
+                {t('admin_messages_heading')}
             </Heading>
 
             {loading && <Loader />}
@@ -59,7 +61,7 @@ export default function AdminMessagesSection() {
                     <AdminMessageCard key={i} message={msg} onMessageSend={(props) => setSendMessage(props)} />
                 ))}
 
-            {messages.length === 0 && !loading && <Paragraph style='regular'>No pending questions.</Paragraph>}
+            {messages.length === 0 && !loading && <Paragraph style='regular'>{t('admin_messages_nomsg')}</Paragraph>}
         </section>
     );
 }

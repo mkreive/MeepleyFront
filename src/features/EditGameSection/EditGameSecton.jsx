@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchGames } from '../../utils/fetchGames';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import styles from './edit-game-section.module.scss';
 import Heading from '../../components/Heading/Heading';
@@ -11,6 +12,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 const cn = classNames.bind(styles);
 
 export default function EditGameSection() {
+    const { t } = useTranslation();
     const [games, setGames] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -48,7 +50,7 @@ export default function EditGameSection() {
     return (
         <div className={cn('container')}>
             <Heading tag='h2' style='medium'>
-                Edit Games
+                {t('admin_editgame_heading')}
             </Heading>
 
             <SearchBar onChange={(e) => setTitle(e.target.value)} onSearch={handleSearch} value={title} />
