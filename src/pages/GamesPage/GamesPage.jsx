@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchGames } from '../../utils/fetchGames';
+import { useTranslation } from 'react-i18next';
 import { useFetchReviews } from '../../hooks/useFetchReviews';
 import classNames from 'classnames/bind';
 import styles from './games-page.module.scss';
@@ -8,12 +9,13 @@ import GamesSection from '../../features/GamesSection/GamesSection';
 import SectionWithButton from '../../components/SectionWithButton/SectionWithButton';
 import NewReviewsSection from '../../features/NewReviewsSection/NewReviewsSection';
 import qs from 'qs';
-import Button from '../../components/Button/Button';
+
 import { useOktaAuth } from '@okta/okta-react';
 
 const cn = classNames.bind(styles);
 
 export default function GamesPage() {
+    const { t } = useTranslation();
     const { authState } = useOktaAuth();
     const { loadingReviews, reviews, errorReviews } = useFetchReviews('/api/reviews');
     const [loading, setLoading] = useState(true);
@@ -47,13 +49,6 @@ export default function GamesPage() {
         }
     };
 
-    const handleClearFilters = function () {
-        // TODO checkboxus panaikinti isclearinus filtrus
-        setCategories([]);
-        setComplexities([]);
-        setTitle('');
-    };
-
     useEffect(() => {
         const params = {
             complexity: complexities,
@@ -78,6 +73,7 @@ export default function GamesPage() {
             }
         };
         getGames();
+        window.scrollTo(0, 0);
     }, [categories, complexities, title]);
 
     return (
@@ -86,28 +82,23 @@ export default function GamesPage() {
                 onSearch={handleSearch}
                 onCategorySelection={handleCategory}
                 onComplexitySelection={handleComplexity}
+                selectedCategories={categories}
             />
 
             <GamesSection loading={loading} error={error} games={games} />
 
-            {(categories.length > 0 || complexities.length > 0 || title) && (
-                <Button theme='black' onClick={handleClearFilters}>
-                    Clear all filters
-                </Button>
-            )}
-
             {authState?.isAuthenticated ? (
                 <SectionWithButton
-                    title="Haven't find what you were looking for?"
-                    text='Write us a letter and we will help you!'
-                    button='Services'
+                    title={t('games_ad_services_title')}
+                    text={t('games_ad_services_text')}
+                    button={t('games_ad_services_button')}
                     link='/services'
                 />
             ) : (
                 <SectionWithButton
-                    title="Haven't find what you were looking for?"
-                    text='Sign in to use our services'
-                    button='Sign in'
+                    title={t('games_ad_signin_title')}
+                    text={t('games_ad_signin_text')}
+                    button={t('games_ad_signin_button')}
                     link='/login'
                 />
             )}

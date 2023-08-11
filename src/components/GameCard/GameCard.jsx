@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import styles from './game-card.module.scss';
 import { fetchGame } from '../../utils/fetchGame';
@@ -10,6 +11,7 @@ import Loader from '../Loader/Loader';
 const cn = classNames.bind(styles);
 
 export default function GameCard({ gameId, authState, isReviewLeft, onReviewSubmit }) {
+    const { t } = useTranslation();
     const [game, setGame] = useState({});
     const [loading, setLoading] = useState(true);
     const [gameReserved, setGameReserved] = useState(false);
@@ -61,10 +63,18 @@ export default function GameCard({ gameId, authState, isReviewLeft, onReviewSubm
                         </div>
 
                         <div className={cn('headings__container')}>
-                            <Paragraph style='small--gray'>CATEGORY: {game.category.toLowerCase()}</Paragraph>
-                            <Paragraph style='small--gray'>COMPLEXITY: {game.complexity}</Paragraph>
-                            <Paragraph style='small--gray'>PLAYERS: {game.players}</Paragraph>
-                            <Paragraph style='small--gray'>PLAY TIME: {game.playingTime} min</Paragraph>
+                            <Paragraph style='small--gray'>
+                                {t('checkout_game_category')}: {game.category.toLowerCase()}
+                            </Paragraph>
+                            <Paragraph style='small--gray'>
+                                {t('checkout_game_complexity')}: {game.complexity}
+                            </Paragraph>
+                            <Paragraph style='small--gray'>
+                                {t('checkout_game_players')}: {game.players}
+                            </Paragraph>
+                            <Paragraph style='small--gray'>
+                                {t('checkout_game_playingtime')}: {game.playingTime} min
+                            </Paragraph>
                         </div>
 
                         <Paragraph style='regular'>{game.description}</Paragraph>

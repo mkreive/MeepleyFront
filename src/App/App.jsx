@@ -3,7 +3,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import styles from './app.module.scss';
 import classNames from 'classnames/bind';
 import { oktaConfig } from '../lib/oktaConfig';
-import { LoginCallback, useOktaAuth } from '@okta/okta-react';
+import { LoginCallback } from '@okta/okta-react';
 import AuthLayout from '../Auth/AuthLayout';
 import HomePage from '../pages/HomePage/HomePage';
 import GamesPage from '../pages/GamesPage/GamesPage';
@@ -12,6 +12,7 @@ import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import LoginWidget from '../Auth/LoginWidget';
 import AccountPage from '../pages/AccountPage/AccountPage';
 import AdminPage from '../pages/AdminPage/AdminPage';
+import EditGame from '../components/EditGame/EditGame';
 
 const cn = classNames.bind(styles);
 
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
             <Route path='*' element={<NotFoundPage />} />
             <Route path='/account' element={<AccountPage />} />
             <Route path='/admin' element={<AdminPage />} />
+            <Route path='/edit/:gameId' element={<EditGame />} />
         </Route>
     )
 );

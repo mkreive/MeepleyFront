@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import styles from './admin-message-card.module.scss';
 import Paragraph from '../Paragraph/Paragraph';
@@ -9,6 +10,7 @@ import { useOktaAuth } from '@okta/okta-react';
 const cn = classNames.bind(styles);
 
 export default function AdminMessageCard({ message, onMessageSend }) {
+    const { t } = useTranslation();
     const { authState } = useOktaAuth();
     const [response, setResponse] = useState('');
     const [displayWarning, setDisplayWarning] = useState(false);
@@ -42,7 +44,10 @@ export default function AdminMessageCard({ message, onMessageSend }) {
     return (
         <div className={cn('container')}>
             <div className={cn('group')}>
-                <Heading tag='h4' style='small'>{`Case #${message.id}: ${message.title}`}</Heading>
+                <Heading tag='h4' style='small'>
+                    {t('admin_messages_msgcard_case')}
+                    {`${message.id}: ${message.title}`}
+                </Heading>
                 <Heading tag='h5' style='very-very-small-bold'>
                     {message.userEmail}
                 </Heading>
@@ -54,16 +59,18 @@ export default function AdminMessageCard({ message, onMessageSend }) {
                     <textarea
                         rows={5}
                         className={cn('input--textarea')}
-                        placeholder='Answer'
+                        placeholder={t('admin_messages_msgcard_placeholder')}
                         onChange={(e) => setResponse(e.target.value)}
                         value={response}
                     />
                 </label>
 
-                {displayWarning && <Paragraph style='regular--alert_bold'>All fields must be filled out</Paragraph>}
+                {displayWarning && (
+                    <Paragraph style='regular--alert_bold'>{t('admin_messages_msgcard_warning')}</Paragraph>
+                )}
 
                 <Button theme='black--small' onClick={submitAnswer}>
-                    Submit Response
+                    {t('admin_messages_msgcard_submitbtn')}
                 </Button>
             </form>
         </div>

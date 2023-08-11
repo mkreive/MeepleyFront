@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useOktaAuth } from '@okta/okta-react';
 import { fetchLoans } from '../../utils/fetchLoans';
 import classNames from 'classnames/bind';
@@ -12,6 +13,7 @@ import ReservationCard from '../../components/ReservationCard/ReservationCard';
 const cn = classNames.bind(styles);
 
 export default function ReviewsSection() {
+    const { t } = useTranslation();
     const { authState } = useOktaAuth();
     const [loans, setLoans] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -78,7 +80,7 @@ export default function ReviewsSection() {
     return (
         <section className={cn(`${!error ? 'wrapper' : 'hidden'}`)}>
             <Heading tag='h2' style='medium'>
-                Current Reservations
+                {t('account_reservations_header')}
             </Heading>
 
             {loading && <Loader />}
@@ -101,9 +103,9 @@ export default function ReviewsSection() {
 
             {loans.length === 0 && !loading && (
                 <SectionWithButton
-                    title='Want to reserve a game?'
-                    text='Visit our game collection'
-                    button='Top games'
+                    title={t('account_reservations_allgamesad_title')}
+                    text={t('account_reservations_allgamesad_text')}
+                    button={t('account_reservations_allgamesad_button')}
                     link='/games'
                 />
             )}

@@ -11,7 +11,7 @@ import ExploreSection from '../../features/ExploreSection/ExploreSection';
 import { useOktaAuth } from '@okta/okta-react';
 
 const cn = classNames.bind(styles);
-const gamesUrl = '/api/games';
+const gamesUrl = '/api/games/search/findGames';
 
 export default function HomePage() {
     const { authState } = useOktaAuth();

@@ -7,12 +7,11 @@
     position: relative;
     align-items: center;
     justify-content: space-between;
-    gap: 10rem;
+    gap: 15rem;
 
     @include respond(phone) {
-        margin-top: 10rem;
+        margin-top: 6rem;
         flex-direction: column;
-        gap: 20rem;
     }
 }
 
@@ -20,11 +19,15 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 4rem;
 }
 
 .image {
     flex: 1;
     height: 100%;
-    max-width: 50rem;
+    max-width: 40rem;
+
+    @include respond(phone) {
+        max-width: 30rem;
+    }
 }

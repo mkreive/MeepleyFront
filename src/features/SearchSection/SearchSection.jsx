@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import styles from './search-section.module.scss';
 import Heading from '../../components/Heading/Heading';
@@ -29,6 +30,7 @@ const complexityCategories = ['easy', 'medium', 'complex'];
 
 export default function SearchSection(props) {
     const [searchInput, setSearchInput] = useState('');
+    const { t } = useTranslation();
 
     const handleInputChange = (e) => {
         setSearchInput(e.target.value);
@@ -43,23 +45,20 @@ export default function SearchSection(props) {
         <div className={cn('container')}>
             <section className={cn('text__wrapper')}>
                 <Heading tag='h1' style='medium--secondary'>
-                    Board Games
+                    {t('games_search_heading')}
                 </Heading>
-                <Paragraph style='big--gray'>
-                    Check out our range of brand new board games, all available to rent or buy online at MEEPLEY. Order
-                    today for fast home delivery internationally.
-                </Paragraph>
+                <Paragraph style='big--gray'>{t('games_search_paragraph')}</Paragraph>
                 <SearchBar onChange={handleInputChange} onSearch={handleSearch} value={searchInput} />
             </section>
 
             <FilterBar
-                filterName={'category'}
+                filterName={t('games_search_filterName1')}
                 filterCategories={gameCategories}
                 onChange={(e) => props.onCategorySelection(e.target.value)}
             />
 
             <FilterBar
-                filterName={'complexity'}
+                filterName={t('games_search_filterName2')}
                 filterCategories={complexityCategories}
                 onChange={(e) => props.onComplexitySelection(e.target.value)}
             />

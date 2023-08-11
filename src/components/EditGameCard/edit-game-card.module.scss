@@ -36,6 +36,7 @@
 }
 
 .btn {
+    position: relative;
     width: 130%;
     padding-top: var(--spacer-l);
     padding-bottom: var(--spacer-l);
@@ -60,4 +61,21 @@
     &--minus:hover {
         background-color: var(--color-primary);
     }
+    &--edit:hover {
+        background-color: var(--color-gray-medium);
+    }
+}
+
+.link {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    text-decoration: none;
+    border: none;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
 }

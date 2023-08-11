@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import { useOktaAuth } from '@okta/okta-react';
 import styles from './edit-game-card.module.scss';
@@ -8,6 +10,7 @@ import Paragraph from '../Paragraph/Paragraph';
 const cn = classNames.bind(styles);
 
 export default function EditGameCard(props) {
+    const { t } = useTranslation();
     const { game, onDelete } = props;
     const { authState } = useOktaAuth();
     const [quantity, setQuantity] = useState(game.copies);
@@ -82,18 +85,31 @@ export default function EditGameCard(props) {
                 <Heading tag='h4' style='small'>
                     {game.title}
                 </Heading>
-                <Paragraph style='regular'>{`Quantity ${quantity}`}</Paragraph>
-                <Paragraph style='regular'>{`Remaining: ${remaining}`}</Paragraph>
+                <Paragraph style='regular'>
+                    {t('admin_editgame_quantity')}
+                    {quantity}
+                </Paragraph>
+                <Paragraph style='regular'>
+                    {t('admin_editgame_remaining')}
+                    {remaining}
+                </Paragraph>
             </div>
 
             <button className={cn('btn', 'btn--add')} onClick={increaseQuantity}>
-                Increase
+                {t('admin_editgame_increasebtn')}
             </button>
             <button className={cn('btn', 'btn--minus')} onClick={decreaseQuantity}>
-                Decrease
+                {t('admin_editgame_decreasebtn')}
             </button>
+
+            <button className={cn('btn', 'btn--edit')}>
+                <Link to={`/edit/${game.id}`} className={cn('btn', 'btn--edit', 'link')}>
+                    {t('admin_editgame_editbtn')}
+                </Link>
+            </button>
+
             <button className={cn('btn', 'btn--delete')} onClick={deleteGame}>
-                Delete
+                {t('admin_editgame_deletebtn')}
             </button>
         </div>
     );

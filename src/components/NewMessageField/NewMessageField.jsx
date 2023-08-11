@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useOktaAuth } from '@okta/okta-react';
 import classNames from 'classnames/bind';
 import styles from './new-message-field.module.scss';
@@ -8,6 +9,7 @@ import Button from '../Button/Button';
 const cn = classNames.bind(styles);
 
 export default function NewMessageField(props) {
+    const { t } = useTranslation();
     const { authState } = useOktaAuth();
     const [title, setTitle] = useState('');
     const [question, setQuestion] = useState('');
@@ -45,14 +47,14 @@ export default function NewMessageField(props) {
 
     return (
         <div className={cn('container')}>
-            <Paragraph style='regular--bold'>Ask a question:</Paragraph>
+            <Paragraph style='regular--bold'>{t('account_messsages_newmsg_title')}</Paragraph>
 
             <form method='POST' className={cn('form')}>
                 <label className={cn('label')}>
                     <input
                         type='text'
                         className={cn('input')}
-                        placeholder='Title'
+                        placeholder={t('account_messsages_newmsg_input_placeholder')}
                         onChange={(e) => setTitle(e.target.value)}
                         value={title}
                     />
@@ -62,18 +64,22 @@ export default function NewMessageField(props) {
                     <textarea
                         rows={5}
                         className={cn('input--textarea')}
-                        placeholder='Question'
+                        placeholder={t('account_messsages_newmsg_textarea_placeholder')}
                         onChange={(e) => setQuestion(e.target.value)}
                         value={question}
                     />
                 </label>
 
-                {displayWarning && <Paragraph style='regular--alert_bold'>All fields must be filled out</Paragraph>}
+                {displayWarning && (
+                    <Paragraph style='regular--alert_bold'>{t('account_messsages_newmsg_warning')}</Paragraph>
+                )}
 
-                {displaySuccess && <Paragraph style='regular--secondary_bold'>Question added successfully!</Paragraph>}
+                {displaySuccess && (
+                    <Paragraph style='regular--secondary_bold'>{t('account_messsages_newmsg_success')}</Paragraph>
+                )}
 
                 <Button theme='black--small' onClick={submitNewQuestion}>
-                    Submit Question
+                    {t('account_messsages_newmsg_submitbtn')}
                 </Button>
             </form>
         </div>
