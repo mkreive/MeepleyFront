@@ -34,7 +34,7 @@ export default function DesktopNavigation({ loggedIn, onLogout, isAdmin }) {
 
             {isAdmin && (
                 <Link className={cn('link')} to='/admin'>
-                    Admin
+                    {t('navigation_admin')}
                 </Link>
             )}
 

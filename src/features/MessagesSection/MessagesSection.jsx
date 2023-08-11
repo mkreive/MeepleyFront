@@ -51,28 +51,23 @@ export default function MessagesSection() {
     return (
         <section className={cn(`${!error ? 'wrapper' : 'hidden'}`)}>
             <Heading tag='h2' style='medium'>
-                New Message
+                {t('account_messages_newmsg_heading')}
             </Heading>
             <NewMessageField onMessageSend={(props) => setSendMessage(props)} />
             <span className={cn('line')}></span>
 
             <Heading tag='h2' style='medium'>
-                Messages History
+                {t('account_messages_heading')}
             </Heading>
 
             {loading && <Loader />}
 
             {messages.length > 0 && !loading && messages.map((msg, i) => <MessageCard key={i} message={msg} />)}
 
-            {messages.length === 0 && !loading && (
-                <Paragraph style='regular'>Currently there is no messages.</Paragraph>
-            )}
+            {messages.length === 0 && !loading && <Paragraph style='regular'>{t('account_messages_nomsg')}</Paragraph>}
 
             {messages.length === 0 && !loading && (
-                <SectionWithButton
-                    title='Have any questions?'
-                    text='Write us a message and we will respond as soon as we can!'
-                />
+                <SectionWithButton title={t('account_messages_ad_title')} text={t('account_messages_ad_text')} />
             )}
         </section>
     );

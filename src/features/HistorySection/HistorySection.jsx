@@ -49,20 +49,22 @@ export default function HistorySection() {
     return (
         <section className={cn(`${!error ? 'wrapper' : 'hidden'}`)}>
             <Heading tag='h2' style='medium'>
-                Reservations History
+                {t('account_history_heading')}
             </Heading>
 
             {loading && <Loader />}
 
             {history.length > 0 && !loading && history.map((entry, i) => <HistoryCard history={entry} key={i} />)}
 
-            {history.length === 0 && !loading && <Paragraph style='regular'>Currently there is no history.</Paragraph>}
+            {history.length === 0 && !loading && (
+                <Paragraph style='regular'>{t('account_history_noreservations')}</Paragraph>
+            )}
 
             {history.length === 0 && !loading && (
                 <SectionWithButton
-                    title='Want to reserve a game?'
-                    text='Visit our game collection'
-                    button='Top games'
+                    title={t('account_reservations_allgamesad_title')}
+                    text={t('account_reservations_allgamesad_text')}
+                    button={t('account_reservations_allgamesad_button')}
                     link='/games'
                 />
             )}

@@ -15,7 +15,7 @@ const cn = classNames.bind(styles);
 export default function AccountPage() {
     const { t } = useTranslation();
     const { authState } = useOktaAuth();
-    const [page, setPage] = useState('reservations');
+    const [page, setPage] = useState(t('account_pages_reservations'));
 
     if (!authState?.accessToken?.claims) {
         return <Navigate to='/home' />;
@@ -27,14 +27,17 @@ export default function AccountPage() {
                 <Heading tag='h1' style='big--black'>
                     {t('account_header')}
                 </Heading>
-                <RadioBar onRadioChange={(props) => setPage(props)} pages={['reservations', 'history', 'messages']} />
+                <RadioBar
+                    onRadioChange={(props) => setPage(props)}
+                    pages={[t('account_pages_reservations'), t('account_pages_history'), t('account_pages_messages')]}
+                />
             </div>
 
-            {page === 'reservations' && <ReservationsSection />}
+            {page === t('account_pages_reservations') && <ReservationsSection />}
 
-            {page === 'history' && <HistorySection />}
+            {page === t('account_pages_history') && <HistorySection />}
 
-            {page === 'messages' && <MessagesSection />}
+            {page === t('account_pages_messages') && <MessagesSection />}
         </div>
     );
 }

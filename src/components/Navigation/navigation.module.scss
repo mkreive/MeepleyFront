@@ -6,6 +6,10 @@
     gap: var(--spacer-xl);
     margin-right: 5rem;
 
+    @include respond(tab) {
+        gap: var(--spacer-m);
+    }
+
     @include respond(phone) {
         display: none;
     }
@@ -39,6 +43,10 @@
 
     &:hover {
         color: var(--color-primary);
+    }
+
+    @include respond(tab) {
+        font-size: var(--font-size-regular);
     }
 }
 

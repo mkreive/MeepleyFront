@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import styles from './history-card.module.scss';
 import Heading from '../Heading/Heading';
@@ -7,6 +8,8 @@ import Paragraph from '../Paragraph/Paragraph';
 const cn = classNames.bind(styles);
 
 export default function HistoryCard({ history }) {
+    const { t } = useTranslation();
+
     return (
         <div className={cn('container')}>
             {history.img ? (
@@ -32,8 +35,14 @@ export default function HistoryCard({ history }) {
 
                 <Paragraph style='regular'>{history.intro}</Paragraph>
                 <span className={cn('line')}></span>
-                <Paragraph style='regular'>{`Reserved: ${history.checkoutDate}`}</Paragraph>
-                <Paragraph style='regular'>{`Returned: ${history.returnedDate}`}</Paragraph>
+                <Paragraph style='regular'>
+                    {t('account_history_reserved')}
+                    {history.checkoutDate}
+                </Paragraph>
+                <Paragraph style='regular'>
+                    {t('account_history_returned')}
+                    {history.returnedDate}
+                </Paragraph>
             </div>
         </div>
     );

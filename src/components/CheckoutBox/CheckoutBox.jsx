@@ -173,10 +173,7 @@ export default function CheckoutBox({
             <div className={cn('upper_block')}>
                 {!loadingLoans && (
                     <>
-                        <Paragraph style='medium'>
-                            {loans}
-                            {loans === 1 ? t('checkout_box_game_reserved') : t('checkout_box_games_reserved')}
-                        </Paragraph>
+                        <Paragraph style='medium'>{t('checkout_box_game_reserved', { count: loans })}</Paragraph>
                         <span className={cn('line')}></span>
                     </>
                 )}
