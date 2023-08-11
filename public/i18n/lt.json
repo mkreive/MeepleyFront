@@ -141,5 +141,9 @@
     "admin_addgame_form_intro": "Intro",
     "admin_addgame_form_description": "Aprašymas",
     "admin_addgame_form_image": "Paveikslėlis",
-    "admin_addgame_form_btnadd": "Pridėti"
+    "admin_addgame_form_btnadd": "Pridėti",
+
+    "notfoundpage_heading": "Atsiprašome, atrodo, kad puslapio, kurį bandote pasiekti, nebėra.",
+    "notfoundpage_letsgetyou": "Eikite į ",
+    "notfoundpage_link": "pagrindinį"
 }

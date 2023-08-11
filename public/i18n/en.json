@@ -140,5 +140,9 @@
     "admin_addgame_form_intro": "Intro",
     "admin_addgame_form_description": "Description",
     "admin_addgame_form_image": "Image",
-    "admin_addgame_form_addbtn": "Add Game"
+    "admin_addgame_form_addbtn": "Add Game",
+
+    "notfoundpage_heading": "Sorry, looks like the page you are trying to reach no longer exists.",
+    "notfoundpage_letsgetyou": "Let's get you ",
+    "notfoundpage_link": "home"
 }
